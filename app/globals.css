@@ -358,5 +358,14 @@ a {
 }
 
 .modal-content {
-  z-index: 10000 !important;
+  z-index: 10001 !important;
+  background-color: white !important;
+  background: white !important;
 }
+
+/* Specific override for UserModal */
+.modal-content[class*="bg-white"] {
+  background-color: white !important;
+  background: white !important;
+}
+

@@ -31,6 +31,17 @@
     "profile": "Perfil",
     "settings": "Configuración"
   },
+  "user": {
+    "memberSince": "Miembro desde",
+    "email": "Correo electrónico",
+    "joined": "Se unió",
+    "avatar": "Avatar",
+    "googleAccount": "Cuenta de Google",
+    "miraclesShared": "Milagros Compartidos",
+    "countriesVisited": "Países",
+    "settings": "Configuración de Cuenta",
+    "madeWithLove": "Hecho con ❤️ para la comunidad global"
+  },
   "auth": {
     "welcome": "Bienvenido a Milagros",
     "signInTitle": "Iniciar Sesión",

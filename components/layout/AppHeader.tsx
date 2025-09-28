@@ -6,6 +6,7 @@ import { Heart, Filter, Menu, X, HelpCircle } from 'lucide-react'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
 import MapControls from '@/components/layout/MapControls'
 import UserActions from '@/components/layout/UserActions'
+import UserModal from '@/components/layout/UserModal'
 import MapTypeSelector, { MapTypeSelectorMobile } from '@/components/map/MapTypeSelector'
 import IconButton from '@/components/ui/IconButton'
 import GradientIcon from '@/components/ui/GradientIcon'
@@ -22,8 +23,6 @@ interface AppHeaderProps {
   } | null
   showFilters: boolean
   onToggleFilters: () => void
-  user: any
-  onSignOut: () => void
   onShowAuthModal: () => void
   onShowMiracleForm: () => void
   selectedMapType: MapType
@@ -35,8 +34,6 @@ export default function AppHeader({
   zoomControls,
   showFilters,
   onToggleFilters,
-  user,
-  onSignOut,
   onShowAuthModal,
   onShowMiracleForm,
   selectedMapType,
@@ -44,6 +41,7 @@ export default function AppHeader({
 }: AppHeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false)
+  const [isUserModalOpen, setIsUserModalOpen] = useState(false)
 
   return (
     <>
@@ -96,11 +94,12 @@ export default function AppHeader({
 
               {/* User Actions */}
               <UserActions
-                user={user}
-                onSignOut={onSignOut}
                 onShowAuthModal={onShowAuthModal}
                 onShowMiracleForm={onShowMiracleForm}
-                getTranslation={getTranslation}
+                onShowUserModal={() => {
+                  setIsUserModalOpen(true)
+                  setIsMobileMenuOpen(false)
+                }}
               />
             </div>
 
@@ -187,11 +186,12 @@ export default function AppHeader({
                   {getTranslation('navigation.profile', 'Account')}
                 </h3>
                 <UserActions
-                  user={user}
-                  onSignOut={onSignOut}
                   onShowAuthModal={onShowAuthModal}
                   onShowMiracleForm={onShowMiracleForm}
-                  getTranslation={getTranslation}
+                  onShowUserModal={() => {
+                    setIsUserModalOpen(true)
+                    setIsMobileMenuOpen(false)
+                  }}
                 />
               </div>
             </div>
@@ -205,6 +205,12 @@ export default function AppHeader({
         onClose={() => setIsHelpModalOpen(false)}
         getTranslation={getTranslation}
         position="center"
+      />
+
+      {/* User Modal */}
+      <UserModal
+        isOpen={isUserModalOpen}
+        onClose={() => setIsUserModalOpen(false)}
       />
     </>
   )

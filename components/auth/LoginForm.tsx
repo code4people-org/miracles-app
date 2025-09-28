@@ -56,7 +56,7 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
       exit={{ opacity: 0, y: -20 }}
       className="w-full max-w-md mx-auto"
     >
-      <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-miracle-gold/20">
+      <div className="rounded-2xl shadow-2xl p-8 border border-miracle-gold/20" style={{ backgroundColor: '#ffffff' }}>
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-miracle-gold to-miracle-coral rounded-full mb-4">
             <Heart className="w-8 h-8 text-white" />

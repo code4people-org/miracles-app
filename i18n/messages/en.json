@@ -31,6 +31,17 @@
     "profile": "Profile",
     "settings": "Settings"
   },
+  "user": {
+    "memberSince": "Member since",
+    "email": "Email",
+    "joined": "Joined",
+    "avatar": "Avatar",
+    "googleAccount": "Google Account",
+    "miraclesShared": "Miracles Shared",
+    "countriesVisited": "Countries",
+    "settings": "Account Settings",
+    "madeWithLove": "Made with ❤️ for the global community"
+  },
   "auth": {
     "welcome": "Welcome to Miracles",
     "signInTitle": "Sign In",

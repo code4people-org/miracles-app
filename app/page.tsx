@@ -74,8 +74,6 @@ export default function HomePage() {
         zoomControls={zoomControls}
         showFilters={showFilters}
         onToggleFilters={() => setShowFilters(!showFilters)}
-        user={user}
-        onSignOut={handleSignOut}
         onShowAuthModal={() => setShowAuthModal(true)}
         onShowMiracleForm={() => setShowMiracleForm(true)}
         selectedMapType={selectedMapType}

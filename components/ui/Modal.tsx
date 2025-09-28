@@ -37,9 +37,9 @@ export default function Modal({
   }
   
   const modalPositionClasses = {
-    center: "relative",
+    center: "",
     bottom: "absolute bottom-6 left-6 right-6",
-    right: "absolute right-0 top-0 h-full w-80 max-w-[85vw]"
+    right: "absolute right-0 top-0 h-full w-80 max-w-[85vw] sm:w-96"
   }
 
   return (
@@ -49,7 +49,7 @@ export default function Modal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className={`fixed inset-0 modal-overlay bg-black/20 backdrop-blur-sm z-30 ${positionClasses[position]}`}
+          className={`fixed inset-0 modal-overlay bg-black/30 z-50 ${positionClasses[position]}`}
           onClick={onClose}
         >
           <motion.div
@@ -57,7 +57,7 @@ export default function Modal({
             animate={position === 'center' ? { y: 0, opacity: 1 } : position === 'bottom' ? { opacity: 1, scale: 1, y: 0 } : { x: 0 }}
             exit={position === 'center' ? { y: 50, opacity: 0 } : position === 'bottom' ? { opacity: 0, scale: 0.9, y: 20 } : { x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className={`${modalPositionClasses[position]} ${sizeClasses[size]} w-full bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-miracle-gold/20 modal-content ${className}`}
+            className={`${modalPositionClasses[position]} ${sizeClasses[size]} w-full bg-white rounded-2xl shadow-2xl border border-miracle-gold/20 modal-content ${className}`}
             onClick={(e) => e.stopPropagation()}
           >
             {title && (
