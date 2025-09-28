@@ -2,30 +2,47 @@
 
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Heart } from 'lucide-react'
+import { Heart, Hand } from 'lucide-react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import type { MapType } from '@/lib/mapTypes'
-import { type Miracle } from '@/lib/mapUtils'
+import { type Miracle, type PrayerRequest } from '@/lib/mapUtils'
 import { useMapInstance } from '@/hooks/useMapInstance'
 import MiracleCategoriesLegend from './MiracleCategoriesLegend'
 import MiracleMarkers from './MiracleMarkers'
+import PrayerMarkers from './PrayerMarkers'
 import TileLayer from './TileLayer'
+import type { LayerType } from '@/components/layout/LayerToggle'
 
 interface LeafletWorldMapProps {
   miracles: Miracle[]
+  prayerRequests: PrayerRequest[]
   onMiracleSelect: (miracle: Miracle) => void
+  onPrayerSelect: (prayerRequest: PrayerRequest) => void
   loading: boolean
+  prayerLoading: boolean
   selectedMapType: MapType
+  activeLayer: LayerType
   onZoomControlsReady?: (controls: { zoomIn: () => void; zoomOut: () => void; fitBounds: () => void; worldView: () => void }) => void
   getTranslation: (key: string, fallback: string) => string
 }
 
-export default function LeafletWorldMap({ selectedMapType, miracles, onMiracleSelect, onZoomControlsReady, getTranslation }: LeafletWorldMapProps) {
+export default function LeafletWorldMap({ 
+  selectedMapType, 
+  miracles, 
+  prayerRequests,
+  onMiracleSelect, 
+  onPrayerSelect,
+  onZoomControlsReady, 
+  getTranslation,
+  activeLayer 
+}: LeafletWorldMapProps) {
   const { mapRef, isReady, mapInstance } = useMapInstance({
     selectedMapType,
     miracles,
+    prayerRequests,
     onMiracleSelect,
+    onPrayerSelect,
     onZoomControlsReady
   })
 
@@ -50,11 +67,20 @@ export default function LeafletWorldMap({ selectedMapType, miracles, onMiracleSe
       {isReady && mapInstance && (
         <>
           <TileLayer map={mapInstance} mapType={selectedMapType} />
-          <MiracleMarkers 
-            map={mapInstance} 
-            miracles={miracles} 
-            onMiracleSelect={onMiracleSelect} 
-          />
+          {(activeLayer === 'miracles' || activeLayer === 'both') && (
+            <MiracleMarkers 
+              map={mapInstance} 
+              miracles={miracles} 
+              onMiracleSelect={onMiracleSelect} 
+            />
+          )}
+          {(activeLayer === 'prayers' || activeLayer === 'both') && (
+            <PrayerMarkers 
+              map={mapInstance} 
+              prayerRequests={prayerRequests} 
+              onPrayerSelect={onPrayerSelect} 
+            />
+          )}
         </>
       )}
 
@@ -83,12 +109,25 @@ export default function LeafletWorldMap({ selectedMapType, miracles, onMiracleSe
           animate={{ opacity: 1, y: 0 }}
           className="absolute top-20 left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-miracle-gold/20 pointer-events-auto z-10"
         >
-          <div className="flex items-center space-x-2">
-            <Heart className="w-5 h-5 text-miracle-gold" />
-            <div>
-              <p className="text-2xl font-bold text-gray-800">{miracles.length}</p>
-              <p className="text-sm text-gray-600">{getTranslation('map.miraclesShared', 'Miracles Shared')}</p>
-            </div>
+          <div className="space-y-3">
+            {(activeLayer === 'miracles' || activeLayer === 'both') && (
+              <div className="flex items-center space-x-2">
+                <Heart className="w-5 h-5 text-miracle-gold" />
+                <div>
+                  <p className="text-2xl font-bold text-gray-800">{miracles.length}</p>
+                  <p className="text-sm text-gray-600">{getTranslation('map.miraclesShared', 'Miracles Shared')}</p>
+                </div>
+              </div>
+            )}
+            {(activeLayer === 'prayers' || activeLayer === 'both') && (
+              <div className="flex items-center space-x-2">
+                <Hand className="w-5 h-5 text-purple-500" />
+                <div>
+                  <p className="text-2xl font-bold text-gray-800">{prayerRequests.length}</p>
+                  <p className="text-sm text-gray-600">{getTranslation('prayers.title', 'Prayer Requests')}</p>
+                </div>
+              </div>
+            )}
           </div>
         </motion.div>
       </div>

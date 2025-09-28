@@ -1,21 +1,22 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import L from 'leaflet'
 import type { MapType } from '@/lib/mapTypes'
-import { createTileLayer, createZoomControls, parseLocation, createMiracleIcon, createMiraclePopup, type Miracle, MAP_CONFIG } from '@/lib/mapUtils'
+import { createTileLayer, createZoomControls, type Miracle, type PrayerRequest, MAP_CONFIG } from '@/lib/mapUtils'
 
 interface UseMapInstanceProps {
   selectedMapType: MapType
   miracles: Miracle[]
+  prayerRequests: PrayerRequest[]
   onMiracleSelect: (miracle: Miracle) => void
+  onPrayerSelect: (prayerRequest: PrayerRequest) => void
   onZoomControlsReady?: (controls: { zoomIn: () => void; zoomOut: () => void; fitBounds: () => void; worldView: () => void }) => void
 }
 
-export function useMapInstance({ selectedMapType, miracles, onMiracleSelect, onZoomControlsReady }: UseMapInstanceProps) {
+export function useMapInstance({ selectedMapType, miracles, prayerRequests, onMiracleSelect, onPrayerSelect, onZoomControlsReady }: UseMapInstanceProps) {
   const [isReady, setIsReady] = useState(false)
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstanceRef = useRef<L.Map | null>(null)
   const isInitializedRef = useRef(false)
-  const markersRef = useRef<L.Marker[]>([])
 
   // Initialize map once
   useEffect(() => {
@@ -26,15 +27,27 @@ export function useMapInstance({ selectedMapType, miracles, onMiracleSelect, onZ
       const map = L.map(mapRef.current, {
         center: MAP_CONFIG.DEFAULT_CENTER,
         zoom: MAP_CONFIG.DEFAULT_ZOOM,
+        minZoom: 2.0, // Prevent zooming out too much (1 = world view level)
         zoomControl: false,
         attributionControl: false,
         worldCopyJump: false,
-        maxBoundsViscosity: 0.0
+        maxBounds: L.latLngBounds(
+          [-85, -180], // Southwest corner (southernmost latitude, westernmost longitude)
+          [85, 180]    // Northeast corner (northernmost latitude, easternmost longitude)
+        ),
+        maxBoundsViscosity: 2.0, // Prevent any over-panning beyond bounds
+        inertia: false // Disable inertia to prevent adjustment after mouse release
       })
 
       // Add initial tile layer
       const tileLayer = createTileLayer(selectedMapType.url, selectedMapType.attribution)
       tileLayer.addTo(map)
+
+      // Set bounds after map creation to ensure proper behavior
+      map.setMaxBounds(L.latLngBounds(
+        [-85, -180], // Southwest corner
+        [85, 180]    // Northeast corner
+      ))
 
       mapInstanceRef.current = map
       isInitializedRef.current = true
@@ -42,7 +55,7 @@ export function useMapInstance({ selectedMapType, miracles, onMiracleSelect, onZ
 
       // Set up zoom controls immediately after map creation
       if (onZoomControlsReady) {
-        const controls = createZoomControls(map, miracles)
+        const controls = createZoomControls(map, [...miracles, ...prayerRequests])
         onZoomControlsReady(controls)
       }
 
@@ -52,28 +65,6 @@ export function useMapInstance({ selectedMapType, miracles, onMiracleSelect, onZ
     }
   }, []) // Only run once
 
-  // Update markers when miracles change
-  useEffect(() => {
-    if (!mapInstanceRef.current || !isReady) return
-
-    // Clear existing markers
-    markersRef.current.forEach(marker => {
-      mapInstanceRef.current!.removeLayer(marker)
-    })
-    markersRef.current = []
-
-    // Add new markers
-    miracles.forEach((miracle) => {
-      const { lat, lng } = parseLocation(miracle.location)
-      const customIcon = createMiracleIcon(miracle.category)
-      const marker = L.marker([lat, lng], { icon: customIcon }).addTo(mapInstanceRef.current!)
-      
-      marker.bindPopup(createMiraclePopup(miracle))
-      marker.on('click', () => onMiracleSelect(miracle))
-      
-      markersRef.current.push(marker)
-    })
-  }, [miracles, onMiracleSelect, isReady])
 
   // Update tile layer when map type changes
   useEffect(() => {
@@ -91,13 +82,13 @@ export function useMapInstance({ selectedMapType, miracles, onMiracleSelect, onZ
     tileLayer.addTo(mapInstanceRef.current)
   }, [selectedMapType.url, selectedMapType.attribution, isReady])
 
-  // Update zoom controls when miracles change
+  // Update zoom controls when data changes
   useEffect(() => {
     if (!mapInstanceRef.current || !isReady || !onZoomControlsReady) return
 
-    const controls = createZoomControls(mapInstanceRef.current, miracles)
+    const controls = createZoomControls(mapInstanceRef.current, [...miracles, ...prayerRequests])
     onZoomControlsReady(controls)
-  }, [miracles, onZoomControlsReady, isReady])
+  }, [miracles, prayerRequests, onZoomControlsReady, isReady])
 
   // Cleanup on unmount
   useEffect(() => {
@@ -106,7 +97,6 @@ export function useMapInstance({ selectedMapType, miracles, onMiracleSelect, onZ
         mapInstanceRef.current.remove()
         mapInstanceRef.current = null
         isInitializedRef.current = false
-        markersRef.current = []
       }
     }
   }, [])

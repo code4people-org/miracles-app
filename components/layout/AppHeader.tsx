@@ -2,12 +2,13 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Heart, Filter, Menu, X, HelpCircle } from 'lucide-react'
+import { Heart, Filter, Menu, X, HelpCircle, Cross } from 'lucide-react'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
 import MapControls from '@/components/layout/MapControls'
 import UserActions from '@/components/layout/UserActions'
 import UserModal from '@/components/layout/UserModal'
 import MapTypeSelector, { MapTypeSelectorMobile } from '@/components/map/MapTypeSelector'
+import LayerToggle, { LayerToggleMobile, type LayerType } from '@/components/layout/LayerToggle'
 import IconButton from '@/components/ui/IconButton'
 import GradientIcon from '@/components/ui/GradientIcon'
 import HelpModal from '@/components/ui/HelpModal'
@@ -25,8 +26,11 @@ interface AppHeaderProps {
   onToggleFilters: () => void
   onShowAuthModal: () => void
   onShowMiracleForm: () => void
+  onShowPrayerForm: () => void
   selectedMapType: MapType
   onMapTypeChange: (mapType: MapType) => void
+  activeLayer: LayerType
+  onLayerChange: (layer: LayerType) => void
 }
 
 export default function AppHeader({
@@ -36,8 +40,11 @@ export default function AppHeader({
   onToggleFilters,
   onShowAuthModal,
   onShowMiracleForm,
+  onShowPrayerForm,
   selectedMapType,
-  onMapTypeChange
+  onMapTypeChange,
+  activeLayer,
+  onLayerChange
 }: AppHeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false)
@@ -64,6 +71,13 @@ export default function AppHeader({
             <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
               {/* Language Switcher */}
               <LanguageSwitcher />
+
+              {/* Layer Toggle */}
+              <LayerToggle
+                activeLayer={activeLayer}
+                onLayerChange={onLayerChange}
+                getTranslation={getTranslation}
+              />
 
               {/* Map Type Selector */}
               <MapTypeSelector
@@ -96,6 +110,7 @@ export default function AppHeader({
               <UserActions
                 onShowAuthModal={onShowAuthModal}
                 onShowMiracleForm={onShowMiracleForm}
+                onShowPrayerForm={onShowPrayerForm}
                 onShowUserModal={() => {
                   setIsUserModalOpen(true)
                   setIsMobileMenuOpen(false)
@@ -106,6 +121,12 @@ export default function AppHeader({
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center space-x-2">
               {/* Essential mobile controls */}
+              <LayerToggleMobile
+                activeLayer={activeLayer}
+                onLayerChange={onLayerChange}
+                getTranslation={getTranslation}
+              />
+              
               <MapControls
                 zoomControls={zoomControls}
                 getTranslation={getTranslation}
@@ -147,6 +168,18 @@ export default function AppHeader({
                 <LanguageSwitcher />
               </div>
 
+              {/* Layer Toggle */}
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                  {getTranslation('layers.switchLayer', 'Switch Layer')}
+                </h3>
+                <LayerToggle
+                  activeLayer={activeLayer}
+                  onLayerChange={onLayerChange}
+                  getTranslation={getTranslation}
+                />
+              </div>
+
               {/* Map Type Selector */}
               <div className="mb-6">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
@@ -180,6 +213,25 @@ export default function AppHeader({
                 </motion.button>
               </div>
 
+              {/* Prayer Request Button */}
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                  {getTranslation('prayers.title', 'Prayer Requests')}
+                </h3>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    onShowPrayerForm()
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="w-full flex items-center space-x-3 p-3 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-200"
+                >
+                  <Cross className="w-5 h-5" />
+                  <span className="font-medium">{getTranslation('prayers.requestPrayer', 'Request Prayer')}</span>
+                </motion.button>
+              </div>
+
               {/* User Actions */}
               <div>
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
@@ -188,6 +240,7 @@ export default function AppHeader({
                 <UserActions
                   onShowAuthModal={onShowAuthModal}
                   onShowMiracleForm={onShowMiracleForm}
+                  onShowPrayerForm={onShowPrayerForm}
                   onShowUserModal={() => {
                     setIsUserModalOpen(true)
                     setIsMobileMenuOpen(false)

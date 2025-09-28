@@ -3,27 +3,35 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "postgis";
 
 -- Create custom types
-CREATE TYPE miracle_category AS ENUM (
-  'kindness',
-  'nature',
-  'health',
-  'family',
-  'friendship',
-  'achievement',
-  'recovery',
-  'discovery',
-  'gratitude',
-  'other'
-);
+DO $$ BEGIN
+    CREATE TYPE miracle_category AS ENUM (
+      'kindness',
+      'nature',
+      'health',
+      'family',
+      'friendship',
+      'achievement',
+      'recovery',
+      'discovery',
+      'gratitude',
+      'other'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
 
-CREATE TYPE privacy_level AS ENUM (
-  'public',
-  'anonymous',
-  'blurred_location'
-);
+DO $$ BEGIN
+    CREATE TYPE privacy_level AS ENUM (
+      'public',
+      'anonymous',
+      'blurred_location'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
 
 -- Create profiles table (extends auth.users)
-CREATE TABLE public.profiles (
+CREATE TABLE IF NOT EXISTS public.profiles (
   id UUID REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
   email TEXT UNIQUE NOT NULL,
   full_name TEXT,
@@ -35,7 +43,7 @@ CREATE TABLE public.profiles (
 );
 
 -- Create miracles table
-CREATE TABLE public.miracles (
+CREATE TABLE IF NOT EXISTS public.miracles (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   title TEXT NOT NULL CHECK (length(title) >= 3 AND length(title) <= 100),
@@ -55,7 +63,7 @@ CREATE TABLE public.miracles (
 );
 
 -- Create upvotes table
-CREATE TABLE public.upvotes (
+CREATE TABLE IF NOT EXISTS public.upvotes (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   miracle_id UUID REFERENCES public.miracles(id) ON DELETE CASCADE NOT NULL,
@@ -64,7 +72,7 @@ CREATE TABLE public.upvotes (
 );
 
 -- Create comments table
-CREATE TABLE public.comments (
+CREATE TABLE IF NOT EXISTS public.comments (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   miracle_id UUID REFERENCES public.miracles(id) ON DELETE CASCADE NOT NULL,
@@ -74,7 +82,7 @@ CREATE TABLE public.comments (
 );
 
 -- Create reports table for moderation
-CREATE TABLE public.reports (
+CREATE TABLE IF NOT EXISTS public.reports (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   reporter_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   miracle_id UUID REFERENCES public.miracles(id) ON DELETE CASCADE,
@@ -91,21 +99,21 @@ CREATE TABLE public.reports (
 );
 
 -- Create indexes for better performance
-CREATE INDEX idx_miracles_location ON public.miracles USING GIST (location);
-CREATE INDEX idx_miracles_category ON public.miracles(category);
-CREATE INDEX idx_miracles_created_at ON public.miracles(created_at DESC);
-CREATE INDEX idx_miracles_user_id ON public.miracles(user_id);
-CREATE INDEX idx_miracles_approved ON public.miracles(is_approved) WHERE is_approved = true;
+CREATE INDEX IF NOT EXISTS idx_miracles_location ON public.miracles USING GIST (location);
+CREATE INDEX IF NOT EXISTS idx_miracles_category ON public.miracles(category);
+CREATE INDEX IF NOT EXISTS idx_miracles_created_at ON public.miracles(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_miracles_user_id ON public.miracles(user_id);
+CREATE INDEX IF NOT EXISTS idx_miracles_approved ON public.miracles(is_approved) WHERE is_approved = true;
 
-CREATE INDEX idx_upvotes_miracle_id ON public.upvotes(miracle_id);
-CREATE INDEX idx_upvotes_user_id ON public.upvotes(user_id);
+CREATE INDEX IF NOT EXISTS idx_upvotes_miracle_id ON public.upvotes(miracle_id);
+CREATE INDEX IF NOT EXISTS idx_upvotes_user_id ON public.upvotes(user_id);
 
-CREATE INDEX idx_comments_miracle_id ON public.comments(miracle_id);
-CREATE INDEX idx_comments_user_id ON public.comments(user_id);
-CREATE INDEX idx_comments_created_at ON public.comments(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_comments_miracle_id ON public.comments(miracle_id);
+CREATE INDEX IF NOT EXISTS idx_comments_user_id ON public.comments(user_id);
+CREATE INDEX IF NOT EXISTS idx_comments_created_at ON public.comments(created_at DESC);
 
-CREATE INDEX idx_reports_status ON public.reports(status);
-CREATE INDEX idx_reports_created_at ON public.reports(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_reports_status ON public.reports(status);
+CREATE INDEX IF NOT EXISTS idx_reports_created_at ON public.reports(created_at DESC);
 
 -- Create updated_at trigger function
 CREATE OR REPLACE FUNCTION public.handle_updated_at()
@@ -117,18 +125,22 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Create triggers for updated_at
+DROP TRIGGER IF EXISTS handle_updated_at ON public.profiles;
 CREATE TRIGGER handle_updated_at
   BEFORE UPDATE ON public.profiles
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 
+DROP TRIGGER IF EXISTS handle_updated_at ON public.miracles;
 CREATE TRIGGER handle_updated_at
   BEFORE UPDATE ON public.miracles
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 
+DROP TRIGGER IF EXISTS handle_updated_at ON public.comments;
 CREATE TRIGGER handle_updated_at
   BEFORE UPDATE ON public.comments
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 
+DROP TRIGGER IF EXISTS handle_updated_at ON public.reports;
 CREATE TRIGGER handle_updated_at
   BEFORE UPDATE ON public.reports
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
@@ -153,6 +165,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Create trigger for upvotes count
+DROP TRIGGER IF EXISTS update_miracle_upvotes_count_trigger ON public.upvotes;
 CREATE TRIGGER update_miracle_upvotes_count_trigger
   AFTER INSERT OR DELETE ON public.upvotes
   FOR EACH ROW EXECUTE FUNCTION public.update_miracle_upvotes_count();
@@ -177,6 +190,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Create trigger for comments count
+DROP TRIGGER IF EXISTS update_miracle_comments_count_trigger ON public.comments;
 CREATE TRIGGER update_miracle_comments_count_trigger
   AFTER INSERT OR DELETE ON public.comments
   FOR EACH ROW EXECUTE FUNCTION public.update_miracle_comments_count();
@@ -197,6 +211,7 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create trigger for new user signup
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
 CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
@@ -210,77 +225,98 @@ ALTER TABLE public.reports ENABLE ROW LEVEL SECURITY;
 
 -- Create RLS policies
 -- Profiles policies
+DROP POLICY IF EXISTS "Public profiles are viewable by everyone" ON public.profiles;
 CREATE POLICY "Public profiles are viewable by everyone" ON public.profiles
   FOR SELECT USING (true);
 
+DROP POLICY IF EXISTS "Users can insert their own profile" ON public.profiles;
 CREATE POLICY "Users can insert their own profile" ON public.profiles
   FOR INSERT WITH CHECK (auth.uid() = id);
 
+DROP POLICY IF EXISTS "Users can update their own profile" ON public.profiles;
 CREATE POLICY "Users can update their own profile" ON public.profiles
   FOR UPDATE USING (auth.uid() = id);
 
 -- Miracles policies
+DROP POLICY IF EXISTS "Approved miracles are viewable by everyone" ON public.miracles;
 CREATE POLICY "Approved miracles are viewable by everyone" ON public.miracles
   FOR SELECT USING (is_approved = true);
 
+DROP POLICY IF EXISTS "Users can insert their own miracles" ON public.miracles;
 CREATE POLICY "Users can insert their own miracles" ON public.miracles
   FOR INSERT WITH CHECK (auth.uid() = user_id);
 
+DROP POLICY IF EXISTS "Users can update their own miracles" ON public.miracles;
 CREATE POLICY "Users can update their own miracles" ON public.miracles
   FOR UPDATE USING (auth.uid() = user_id);
 
+DROP POLICY IF EXISTS "Users can delete their own miracles" ON public.miracles;
 CREATE POLICY "Users can delete their own miracles" ON public.miracles
   FOR DELETE USING (auth.uid() = user_id);
 
 -- Upvotes policies
+DROP POLICY IF EXISTS "Upvotes are viewable by everyone" ON public.upvotes;
 CREATE POLICY "Upvotes are viewable by everyone" ON public.upvotes
   FOR SELECT USING (true);
 
+DROP POLICY IF EXISTS "Users can insert their own upvotes" ON public.upvotes;
 CREATE POLICY "Users can insert their own upvotes" ON public.upvotes
   FOR INSERT WITH CHECK (auth.uid() = user_id);
 
+DROP POLICY IF EXISTS "Users can delete their own upvotes" ON public.upvotes;
 CREATE POLICY "Users can delete their own upvotes" ON public.upvotes
   FOR DELETE USING (auth.uid() = user_id);
 
 -- Comments policies
+DROP POLICY IF EXISTS "Comments are viewable by everyone" ON public.comments;
 CREATE POLICY "Comments are viewable by everyone" ON public.comments
   FOR SELECT USING (true);
 
+DROP POLICY IF EXISTS "Users can insert their own comments" ON public.comments;
 CREATE POLICY "Users can insert their own comments" ON public.comments
   FOR INSERT WITH CHECK (auth.uid() = user_id);
 
+DROP POLICY IF EXISTS "Users can update their own comments" ON public.comments;
 CREATE POLICY "Users can update their own comments" ON public.comments
   FOR UPDATE USING (auth.uid() = user_id);
 
+DROP POLICY IF EXISTS "Users can delete their own comments" ON public.comments;
 CREATE POLICY "Users can delete their own comments" ON public.comments
   FOR DELETE USING (auth.uid() = user_id);
 
 -- Reports policies
+DROP POLICY IF EXISTS "Users can insert their own reports" ON public.reports;
 CREATE POLICY "Users can insert their own reports" ON public.reports
   FOR INSERT WITH CHECK (auth.uid() = reporter_id);
 
+DROP POLICY IF EXISTS "Users can view their own reports" ON public.reports;
 CREATE POLICY "Users can view their own reports" ON public.reports
   FOR SELECT USING (auth.uid() = reporter_id);
 
 -- Create storage bucket for miracle photos and videos
-INSERT INTO storage.buckets (id, name, public) VALUES ('miracle-media', 'miracle-media', true);
+INSERT INTO storage.buckets (id, name, public) VALUES ('miracle-media', 'miracle-media', true)
+ON CONFLICT (id) DO NOTHING;
 
 -- Create storage policies
+DROP POLICY IF EXISTS "Miracle media is publicly accessible" ON storage.objects;
 CREATE POLICY "Miracle media is publicly accessible" ON storage.objects
   FOR SELECT USING (bucket_id = 'miracle-media');
 
+DROP POLICY IF EXISTS "Users can upload their own miracle media" ON storage.objects;
 CREATE POLICY "Users can upload their own miracle media" ON storage.objects
   FOR INSERT WITH CHECK (
     bucket_id = 'miracle-media' AND
     auth.uid()::text = (storage.foldername(name))[1]
   );
 
+DROP POLICY IF EXISTS "Users can update their own miracle media" ON storage.objects;
 CREATE POLICY "Users can update their own miracle media" ON storage.objects
   FOR UPDATE USING (
     bucket_id = 'miracle-media' AND
     auth.uid()::text = (storage.foldername(name))[1]
   );
 
+DROP POLICY IF EXISTS "Users can delete their own miracle media" ON storage.objects;
 CREATE POLICY "Users can delete their own miracle media" ON storage.objects
   FOR DELETE USING (
     bucket_id = 'miracle-media' AND

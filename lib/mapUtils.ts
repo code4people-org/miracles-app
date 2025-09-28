@@ -1,8 +1,31 @@
 import L from 'leaflet'
 import type { Database } from '@/lib/supabase'
 import { getCategoryColor, getCategoryEmoji, type MiracleCategory } from '@/lib/miracleCategories'
+import { getPrayerCategoryColor, getPrayerCategoryEmoji, getPrayerUrgencyColor, getPrayerUrgencyEmoji, type PrayerCategory, type PrayerUrgency } from '@/lib/prayerCategories'
 
 export type Miracle = Database['public']['Tables']['miracles']['Row']
+
+// Temporary type definition for prayer requests until we regenerate Supabase types
+export type PrayerRequest = {
+  id: string
+  user_id: string
+  title: string
+  description: string
+  category: PrayerCategory
+  urgency: PrayerUrgency
+  location: string
+  location_name: string | null
+  privacy_level: 'public' | 'anonymous' | 'blurred_location'
+  photo_url: string | null
+  is_anonymous: boolean
+  is_answered: boolean
+  answered_at: string | null
+  prayers_count: number
+  comments_count: number
+  is_approved: boolean
+  created_at: string
+  updated_at: string
+}
 
 // Convert PostGIS POINT to lat/lng
 export function parseLocation(location: string): { lat: number; lng: number } {
@@ -77,7 +100,7 @@ export function createMiraclePopup(miracle: Miracle): string {
 }
 
 // Create zoom controls for map
-export function createZoomControls(map: L.Map, miracles: Miracle[]) {
+export function createZoomControls(map: L.Map, items: (Miracle | PrayerRequest)[]) {
   return {
     zoomIn: () => {
       try {
@@ -100,10 +123,10 @@ export function createZoomControls(map: L.Map, miracles: Miracle[]) {
     fitBounds: () => {
       try {
         if (map && map.getContainer()) {
-          if (miracles.length > 0) {
+          if (items.length > 0) {
             const bounds = L.latLngBounds(
-              miracles.map(miracle => {
-                const { lat, lng } = parseLocation(miracle.location)
+              items.map(item => {
+                const { lat, lng } = parseLocation(item.location)
                 return [lat, lng]
               })
             )
@@ -135,6 +158,101 @@ export function createTileLayer(url: string, attribution: string): L.TileLayer {
     maxZoom: 19,
     subdomains: ['a', 'b', 'c']
   })
+}
+
+// Create custom icon for prayer request markers
+export function createPrayerIcon(category: PrayerCategory, urgency: PrayerUrgency, isAnswered: boolean): L.DivIcon {
+  const urgencyColor = getPrayerUrgencyColor(urgency)
+  const categoryEmoji = getPrayerCategoryEmoji(category)
+  const urgencyEmoji = getPrayerUrgencyEmoji(urgency)
+  
+  // Use gray for answered prayers
+  const iconColor = isAnswered ? '#6B7280' : urgencyColor
+  const borderColor = isAnswered ? '#9CA3AF' : '#FFFFFF'
+  
+  return L.divIcon({
+    html: `
+      <div style="
+        background: radial-gradient(circle, ${iconColor}, ${iconColor}88);
+        border: 3px solid ${borderColor};
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        animation: ${isAnswered ? 'none' : 'prayerPulse 2s infinite'};
+        position: relative;
+      ">
+        ${isAnswered ? '✅' : categoryEmoji}
+        ${!isAnswered && urgency === 'urgent' ? `
+          <div style="
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #EF4444;
+            color: white;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: bold;
+          ">!</div>
+        ` : ''}
+      </div>
+      <style>
+        @keyframes prayerPulse {
+          0% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+          50% { transform: scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+          100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        }
+      </style>
+    `,
+    className: 'custom-prayer-marker',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -16]
+  })
+}
+
+// Create popup content for prayer request markers
+export function createPrayerPopup(prayerRequest: PrayerRequest): string {
+  const categoryEmoji = getPrayerCategoryEmoji(prayerRequest.category)
+  const urgencyEmoji = getPrayerUrgencyEmoji(prayerRequest.urgency)
+  const urgencyColor = getPrayerUrgencyColor(prayerRequest.urgency)
+  
+  return `
+    <div class="p-2">
+      <div class="flex items-center space-x-2 mb-2">
+        <span class="text-lg">${prayerRequest.is_answered ? '✅' : categoryEmoji}</span>
+        <h3 class="font-semibold text-gray-800">${prayerRequest.title}</h3>
+        ${prayerRequest.is_answered ? '<span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Answered</span>' : ''}
+      </div>
+      <p class="text-sm text-gray-600 mb-2">${prayerRequest.description.substring(0, 100)}...</p>
+      <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+        <span>${prayerRequest.location_name || 'Unknown location'}</span>
+        <div class="flex items-center space-x-1">
+          <span style="color: ${urgencyColor}">${urgencyEmoji}</span>
+          <span>${prayerRequest.urgency}</span>
+        </div>
+      </div>
+      <div class="flex items-center justify-between text-xs text-gray-500">
+        <div class="flex items-center space-x-1">
+          <span>🙏</span>
+          <span>${prayerRequest.prayers_count}</span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <span>💬</span>
+          <span>${prayerRequest.comments_count}</span>
+        </div>
+      </div>
+    </div>
+  `
 }
 
 // Map configuration constants

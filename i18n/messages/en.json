@@ -203,5 +203,60 @@
     "clickMarkers": "Click on miracle markers to read stories",
     "useFilters": "Use filters to find specific types",
     "tip": "Tip: Use the menu button (☰) to access more options"
+  },
+  "prayers": {
+    "title": "Prayer Requests",
+    "subtitle": "Share Your Prayer Needs",
+    "description": "Request prayers and support from our global community. Share your needs and receive spiritual support from people around the world.",
+    "requestPrayer": "Request Prayer",
+    "offerPrayer": "Offer Prayer",
+    "prayersOffered": "Prayers Offered",
+    "answered": "Answered",
+    "unanswered": "Unanswered",
+    "categories": {
+      "health": "Health & Healing",
+      "family": "Family & Relationships",
+      "work": "Work & Career",
+      "relationships": "Relationships",
+      "spiritual_growth": "Spiritual Growth",
+      "financial": "Financial Needs",
+      "education": "Education",
+      "peace": "Peace & Comfort",
+      "grief": "Grief & Loss",
+      "other": "Other"
+    },
+    "urgency": {
+      "low": "Low",
+      "medium": "Medium", 
+      "high": "High",
+      "urgent": "Urgent"
+    },
+    "form": {
+      "step1": "Prayer Details",
+      "step2": "Location & Privacy",
+      "step3": "Review & Submit",
+      "titlePlaceholder": "Brief description of your prayer need...",
+      "descriptionPlaceholder": "Share more details about your situation and what you're praying for...",
+      "urgencyLabel": "How urgent is this prayer request?",
+      "categoryLabel": "What category best describes your prayer need?",
+      "anonymousLabel": "Make this request anonymous",
+      "anonymousDesc": "Hide your name but show your location",
+      "sharing": "Sharing...",
+      "sharePrayer": "Share Prayer Request",
+      "cancel": "Cancel",
+      "back": "Back",
+      "reviewTitle": "Review Your Prayer Request",
+      "previewAlt": "Preview",
+      "geolocationError": "Geolocation is not supported by this browser",
+      "locationError": "Unable to get your location: {error}",
+      "photoSizeError": "Photo must be smaller than 10MB",
+      "submitError": "Failed to submit prayer request"
+    }
+  },
+  "layers": {
+    "miracles": "Miracles",
+    "prayers": "Prayer Requests", 
+    "both": "Both",
+    "switchLayer": "Switch Layer"
   }
 }
