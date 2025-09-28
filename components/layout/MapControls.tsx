@@ -18,42 +18,42 @@ export default function MapControls({ zoomControls, getTranslation }: MapControl
   if (!zoomControls) return null
 
   return (
-    <div className="flex items-center space-x-1 bg-gray-100 rounded-lg p-1">
+    <div className="flex items-center space-x-0.5 sm:space-x-1 bg-gray-100 rounded-lg p-0.5 sm:p-1">
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={zoomControls.zoomOut}
-        className="p-2 rounded-md hover:bg-gray-200 transition-colors duration-200"
+        className="p-1.5 sm:p-2 rounded-md hover:bg-gray-200 transition-colors duration-200 touch-manipulation"
         title={getTranslation('map.zoomOut', 'Zoom Out')}
       >
-        <ZoomOut className="w-4 h-4 text-gray-700" />
+        <ZoomOut className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={zoomControls.zoomIn}
-        className="p-2 rounded-md hover:bg-gray-200 transition-colors duration-200"
+        className="p-1.5 sm:p-2 rounded-md hover:bg-gray-200 transition-colors duration-200 touch-manipulation"
         title={getTranslation('map.zoomIn', 'Zoom In')}
       >
-        <ZoomIn className="w-4 h-4 text-gray-700" />
+        <ZoomIn className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={zoomControls.fitBounds}
-        className="p-2 rounded-md hover:bg-gray-200 transition-colors duration-200"
+        className="p-1.5 sm:p-2 rounded-md hover:bg-gray-200 transition-colors duration-200 touch-manipulation"
         title={getTranslation('map.fitBounds', 'Fit All Miracles')}
       >
-        <Maximize className="w-4 h-4 text-gray-700" />
+        <Maximize className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={zoomControls.worldView}
-        className="p-2 rounded-md hover:bg-gray-200 transition-colors duration-200"
+        className="p-1.5 sm:p-2 rounded-md hover:bg-gray-200 transition-colors duration-200 touch-manipulation"
         title={getTranslation('map.worldView', 'Show Full World')}
       >
-        <Globe className="w-4 h-4 text-gray-700" />
+        <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
       </motion.button>
     </div>
   )

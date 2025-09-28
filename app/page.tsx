@@ -65,7 +65,7 @@ export default function HomePage() {
       />
 
       {/* Main Content */}
-      <main className="h-full pt-16">
+      <main className="h-full pt-14 sm:pt-16">
         {/* World Map */}
         <div className="relative h-full">
           <DynamicLeafletMap
@@ -80,7 +80,7 @@ export default function HomePage() {
         <AnimatePresence>
           {showFilters && (
             <div
-              className="fixed left-4 top-20 z-30 w-80 max-h-[calc(100vh-6rem)] overflow-y-auto"
+              className="fixed left-2 right-2 top-16 sm:top-20 z-30 sm:left-4 sm:right-auto sm:w-80 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-6rem)] overflow-y-auto"
               style={{
                 animation: 'slideInLeft 0.3s ease-out'
               }}
@@ -98,7 +98,7 @@ export default function HomePage() {
         <AnimatePresence>
           {selectedMiracle && (
             <div
-              className="fixed right-4 top-20 z-30 w-96 max-h-[calc(100vh-6rem)] overflow-y-auto"
+              className="fixed left-2 right-2 top-16 sm:top-20 z-30 sm:left-auto sm:right-4 sm:w-96 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-6rem)] overflow-y-auto"
               style={{
                 animation: 'slideInRight 0.3s ease-out'
               }}
