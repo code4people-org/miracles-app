@@ -154,8 +154,11 @@
     "within100km": "Within 100 km"
   },
   "welcome": {
-    "title": "See and share the small miracles happening all around the world",
-    "subtitle": "Join our community of positivity and inspiration",
+    "title": "Discover & Share Life's Small Miracles",
+    "subtitle": "From a stranger's kindness to nature's beauty - share the positive moments that make life wonderful.",
+    "explore": "Explore miracles from around the world",
+    "share": "Share your own positive experiences",
+    "connect": "Connect with a global community",
     "getStarted": "Get Started",
     "learnMore": "Learn More"
   },

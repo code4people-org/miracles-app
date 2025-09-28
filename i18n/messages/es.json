@@ -154,8 +154,11 @@
     "within100km": "Dentro de 100 km"
   },
   "welcome": {
-    "title": "Ve y comparte los pequeños milagros que suceden en todo el mundo",
-    "subtitle": "Únete a nuestra comunidad de positividad e inspiración",
+    "title": "Descubre y Comparte los Pequeños Milagros de la Vida",
+    "subtitle": "Desde la bondad de un extraño hasta la belleza de la naturaleza - comparte los momentos positivos que hacen la vida maravillosa.",
+    "explore": "Explora milagros de todo el mundo",
+    "share": "Comparte tus propias experiencias positivas",
+    "connect": "Conéctate con una comunidad global",
     "getStarted": "Comenzar",
     "learnMore": "Saber Más"
   },

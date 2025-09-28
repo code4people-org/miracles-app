@@ -155,10 +155,13 @@
     "within100km": "Within 100 km"
   },
   "welcome": {
-    "title": "See and share the small miracles happening all around the world",
-    "subtitle": "Join our community of positivity and inspiration",
-    "getStarted": "Get Started",
-    "learnMore": "Learn More"
+    "title": "Entdecke und teile die kleinen Wunder des Lebens",
+    "subtitle": "Von der Freundlichkeit eines Fremden bis zur Schönheit der Natur - teile die positiven Momente, die das Leben wunderbar machen.",
+    "explore": "Erkunde Wunder aus der ganzen Welt",
+    "share": "Teile deine eigenen positiven Erfahrungen",
+    "connect": "Verbinde dich mit einer globalen Gemeinschaft",
+    "getStarted": "Loslegen",
+    "learnMore": "Mehr erfahren"
   },
   "meta": {
     "title": "Miracles - Share the World's Small Wonders",

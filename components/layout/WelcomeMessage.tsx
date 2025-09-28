@@ -32,11 +32,27 @@ export default function WelcomeMessage({
             <GradientIcon icon={Heart} gradient="gold" size="lg" />
           </div>
           <h3 className="text-lg font-bold text-gray-800 mb-2">
-            {getTranslation('welcome.title', 'See and share the small miracles happening all around the world')}
+            {getTranslation('welcome.title', 'Discover & Share Life\'s Small Miracles')}
           </h3>
           <p className="text-gray-600 mb-4">
-            {getTranslation('welcome.subtitle', 'Join our community of positivity and inspiration')}
+            {getTranslation('welcome.subtitle', 'From a stranger\'s kindness to nature\'s beauty - share the positive moments that make life wonderful.')}
           </p>
+          
+          {/* Features List */}
+          <div className="space-y-2 mb-4 text-sm text-gray-600">
+            <div className="flex items-center space-x-2">
+              <span className="text-miracle-gold">✨</span>
+              <span>{getTranslation('welcome.explore', 'Explore miracles from around the world')}</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-miracle-gold">💝</span>
+              <span>{getTranslation('welcome.share', 'Share your own positive experiences')}</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-miracle-gold">🌍</span>
+              <span>{getTranslation('welcome.connect', 'Connect with a global community')}</span>
+            </div>
+          </div>
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

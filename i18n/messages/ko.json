@@ -155,10 +155,13 @@
     "within100km": "Within 100 km"
   },
   "welcome": {
-    "title": "See and share the small miracles happening all around the world",
-    "subtitle": "Join our community of positivity and inspiration",
-    "getStarted": "Get Started",
-    "learnMore": "Learn More"
+    "title": "인생의 작은 기적을 발견하고 공유하세요",
+    "subtitle": "낯선 사람의 친절함부터 자연의 아름다움까지 - 인생을 아름답게 만드는 긍정적인 순간들을 공유하세요.",
+    "explore": "전 세계의 기적들을 탐험하세요",
+    "share": "당신만의 긍정적인 경험을 공유하세요",
+    "connect": "글로벌 커뮤니티와 연결되세요",
+    "getStarted": "시작하기",
+    "learnMore": "더 알아보기"
   },
   "meta": {
     "title": "Miracles - Share the World's Small Wonders",
