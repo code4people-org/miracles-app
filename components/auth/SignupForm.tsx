@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
+import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { Eye, EyeOff, Mail, Lock, User, Heart } from 'lucide-react'
 
@@ -12,6 +13,7 @@ interface SignupFormProps {
 
 export default function SignupForm({ onToggleMode, onClose }: SignupFormProps) {
   const { signUp, signInWithGoogle } = useAuth()
+  const t = useTranslations()
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -28,13 +30,13 @@ export default function SignupForm({ onToggleMode, onClose }: SignupFormProps) {
     setError('')
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match')
+      setError(t('auth.passwordsDoNotMatch'))
       setLoading(false)
       return
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters long')
+      setError(t('auth.passwordTooShort'))
       setLoading(false)
       return
     }

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
+import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { Eye, EyeOff, Mail, Lock, Heart } from 'lucide-react'
 
@@ -12,6 +13,7 @@ interface LoginFormProps {
 
 export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
   const { signIn, signInWithGoogle } = useAuth()
+  const t = useTranslations()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -59,8 +61,8 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-miracle-gold to-miracle-coral rounded-full mb-4">
             <Heart className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome Back</h2>
-          <p className="text-gray-600">Continue sharing miracles with the world</p>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('auth.welcome')}</h2>
+          <p className="text-gray-600">{t('miracles.description')}</p>
         </div>
 
         {error && (
@@ -76,7 +78,7 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-              Email Address
+              {t('auth.email')}
             </label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -87,14 +89,14 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-miracle-gold focus:border-transparent transition-all duration-200"
-                placeholder="Enter your email"
+                placeholder={t('auth.email')}
               />
             </div>
           </div>
 
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-              Password
+              {t('auth.password')}
             </label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -105,7 +107,7 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-miracle-gold focus:border-transparent transition-all duration-200"
-                placeholder="Enter your password"
+                placeholder={t('auth.password')}
               />
               <button
                 type="button"
@@ -124,7 +126,7 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
             whileTap={{ scale: 0.98 }}
             className="w-full bg-gradient-to-r from-miracle-gold to-miracle-coral text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Signing In...' : 'Sign In'}
+            {loading ? t('common.loading') : t('auth.signInTitle')}
           </motion.button>
         </form>
 
@@ -134,7 +136,7 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              <span className="px-2 bg-white text-gray-500">{t('auth.signInWithGoogle')}</span>
             </div>
           </div>
 
@@ -163,18 +165,18 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            <span>Continue with Google</span>
+            <span>{t('auth.signInWithGoogle')}</span>
           </motion.button>
         </div>
 
         <div className="mt-6 text-center">
           <p className="text-gray-600">
-            Don&apos;t have an account?{' '}
+            {t('auth.noAccount')}{' '}
             <button
               onClick={onToggleMode}
               className="text-miracle-teal hover:text-miracle-gold font-semibold transition-colors duration-200"
             >
-              Sign up
+              {t('navigation.signUp')}
             </button>
           </p>
         </div>

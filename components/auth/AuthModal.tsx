@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
@@ -14,6 +15,7 @@ interface AuthModalProps {
 
 export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: AuthModalProps) {
   const [mode, setMode] = useState<'login' | 'signup'>(initialMode)
+  const t = useTranslations()
 
   const toggleMode = () => {
     setMode(mode === 'login' ? 'signup' : 'login')

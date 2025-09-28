@@ -1,50 +1,38 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { AuthProvider } from '@/contexts/AuthContext'
+import type { Metadata } from "next";
+import { cookies } from 'next/headers'
+import { Inter } from "next/font/google";
+import "./globals.css";
+import I18nClientProvider from "@/components/i18n/I18nClientProvider";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { detectServerLocale } from "@/lib/locale";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: 'Miracles - Share the World\'s Small Wonders',
-  description: 'Discover and share the small but meaningful miracles happening all around the world. Join our community of positivity and inspiration.',
-  keywords: 'miracles, positivity, inspiration, community, kindness, nature, health, gratitude',
-  authors: [{ name: 'Miracles Team' }],
-  openGraph: {
-    title: 'Miracles - Share the World\'s Small Wonders',
-    description: 'Discover and share the small but meaningful miracles happening all around the world.',
-    type: 'website',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Miracles - Share the World\'s Small Wonders',
-    description: 'Discover and share the small but meaningful miracles happening all around the world.',
-  },
-}
+  title: "Miracles - Share the World's Small Wonders",
+  description: "Discover and share the small but meaningful miracles happening all around the world. Join our community of positivity and inspiration.",
+};
 
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  themeColor: '#FFD700',
-}
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const cookieStore = await cookies()
+  const cookieLocale = cookieStore.get('locale')?.value
+  const lang = detectServerLocale(cookieLocale)
+  
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      </head>
+    <html lang={lang}>
       <body className={inter.className}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <I18nClientProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </I18nClientProvider>
       </body>
     </html>
-  )
+  );
 }
