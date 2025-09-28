@@ -74,6 +74,8 @@ Run the migration in `supabase/migrations/20251201000001_initial_schema.sql` on 
 2. **Maps not loading**: Verify Leaflet CSS is being loaded
 3. **Build failures**: Check that all dependencies are in `package.json`
 4. **Environment variables**: Ensure all required variables are set in Vercel
+5. **Function Runtime Error**: If you see "Function Runtimes must have a valid version", remove the `functions` section from `vercel.json` - Vercel auto-detects Next.js functions
+6. **Build Command Issues**: Vercel automatically detects Next.js projects, so custom build commands are usually unnecessary
 
 ### Build Logs:
 Check the build logs in Vercel dashboard if deployment fails.
