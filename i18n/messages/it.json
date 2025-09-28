@@ -16,7 +16,10 @@
     "next": "Next",
     "previous": "Previous",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "language": "Lingua",
+    "step": "Passo",
+    "of": "di"
   },
   "navigation": {
     "home": "Home",
@@ -77,17 +80,45 @@
     "miracleUpdated": "Miracle updated successfully!",
     "miracleDeleted": "Miracle deleted successfully!",
     "categories": {
-      "nature": "Nature",
-      "health": "Health & Wellness",
-      "kindness": "Acts of Kindness",
-      "technology": "Technology",
-      "education": "Education",
-      "family": "Family & Relationships",
-      "community": "Community",
-      "recovery": "Recovery & Healing",
-      "achievement": "Achievement",
-      "gratitude": "Gratitude",
-      "other": "Other"
+      "nature": "Natura",
+      "health": "Salute e Benessere",
+      "kindness": "Atti di Gentilezza",
+      "family": "Famiglia e Relazioni",
+      "friendship": "Amicizia",
+      "achievement": "Successi",
+      "recovery": "Recupero e Guarigione",
+      "discovery": "Scoperta",
+      "gratitude": "Gratitudine",
+      "other": "Altro"
+    },
+    "privacy": {
+      "public": "Pubblico",
+      "publicDesc": "Condividi la tua posizione e nome",
+      "anonymous": "Anonimo",
+      "anonymousDesc": "Condividi la tua posizione ma nascondi il tuo nome",
+      "blurred": "Posizione Sfocata",
+      "blurredDesc": "Mostra solo posizione approssimativa"
+    },
+    "form": {
+      "step1": "Informazioni di Base",
+      "step2": "Media e Posizione",
+      "step3": "Privacy e Invia",
+      "titlePlaceholder": "Dai un titolo significativo al tuo miracolo...",
+      "descriptionPlaceholder": "Raccontaci del tuo miracolo... Cosa è successo? Come ti sei sentito?",
+      "locationPlaceholder": "Aggiungi un nome di luogo (es., Central Park, New York)",
+      "gettingLocation": "Ottenendo posizione...",
+      "useCurrentLocation": "Usa la mia posizione attuale",
+      "sharing": "Condivisione in corso...",
+      "shareMiracle": "Condividi Miracolo",
+      "cancel": "Annulla",
+      "back": "Indietro",
+      "reviewTitle": "Rivedi il Tuo Miracolo",
+      "previewAlt": "Anteprima",
+      "geolocationError": "La geolocalizzazione non è supportata da questo browser",
+      "locationError": "Impossibile ottenere la tua posizione: {error}",
+      "photoSizeError": "La foto deve essere più piccola di 10MB",
+      "videoSizeError": "Il video deve essere più piccolo di 50MB",
+      "submitError": "Errore nell'invio del miracolo"
     }
   },
   "map": {
@@ -99,7 +130,11 @@
     "currentLocation": "Current Location",
     "noLocation": "No location specified",
     "loadingMap": "Loading map...",
-    "mapError": "Error loading map"
+    "mapError": "Error loading map",
+    "selectMapType": "Seleziona Tipo di Mappa",
+    "mapTypes": "Tipi di Mappe",
+    "miracleCategories": "Categorie di Miracoli",
+    "miraclesShared": "Miracoli Condivisi"
   },
   "filters": {
     "title": "Filters",
@@ -146,5 +181,14 @@
     "url": "Please enter a valid URL",
     "number": "Please enter a valid number",
     "positive": "Must be a positive number"
+  },
+  "help": {
+    "title": "Aiuto",
+    "howToExplore": "Come Esplorare",
+    "dragToPan": "Trascina per muoverti nel mondo",
+    "scrollToZoom": "Scorri per zoomare dentro/fuori",
+    "clickMarkers": "Clicca sui marcatori di miracoli per leggere le storie",
+    "useFilters": "Usa i filtri per trovare tipi specifici",
+    "tip": "Suggerimento: Usa il pulsante del menu (☰) per accedere a più opzioni"
   }
 }

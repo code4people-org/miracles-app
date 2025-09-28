@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
+import type { MapType } from '@/lib/mapTypes'
 
 // Dynamically import the Leaflet map to avoid SSR issues
 const LeafletWorldMap = dynamic(() => import('./LeafletWorldMap'), {
@@ -28,16 +29,20 @@ interface DynamicLeafletMapProps {
   miracles: any[]
   onMiracleSelect: (miracle: any) => void
   loading: boolean
+  selectedMapType: MapType
   onZoomControlsReady?: (controls: { zoomIn: () => void; zoomOut: () => void; fitBounds: () => void; worldView: () => void }) => void
+  getTranslation: (key: string, fallback: string) => string
 }
 
-export default function DynamicLeafletMap({ miracles, onMiracleSelect, loading, onZoomControlsReady }: DynamicLeafletMapProps) {
+export default function DynamicLeafletMap({ miracles, onMiracleSelect, loading, selectedMapType, onZoomControlsReady, getTranslation }: DynamicLeafletMapProps) {
   return (
     <LeafletWorldMap
       miracles={miracles}
       onMiracleSelect={onMiracleSelect}
       loading={loading}
+      selectedMapType={selectedMapType}
       onZoomControlsReady={onZoomControlsReady}
+      getTranslation={getTranslation}
     />
   )
 }

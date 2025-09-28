@@ -6,32 +6,21 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Upload, MapPin, Heart, Camera, Video, Link, Eye, EyeOff } from 'lucide-react'
 import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
+import { miracleCategories } from '@/lib/miracleCategories'
 
 interface MiracleFormProps {
   onClose: () => void
   onSubmit: () => void
+  getTranslation: (key: string, fallback: string) => string
 }
 
-const categories = [
-  { value: 'kindness', label: 'Kindness', icon: '🤝' },
-  { value: 'nature', label: 'Nature', icon: '🌱' },
-  { value: 'health', label: 'Health', icon: '💚' },
-  { value: 'family', label: 'Family', icon: '👨‍👩‍👧‍👦' },
-  { value: 'friendship', label: 'Friendship', icon: '👫' },
-  { value: 'achievement', label: 'Achievement', icon: '🏆' },
-  { value: 'recovery', label: 'Recovery', icon: '🌅' },
-  { value: 'discovery', label: 'Discovery', icon: '🔍' },
-  { value: 'gratitude', label: 'Gratitude', icon: '🙏' },
-  { value: 'other', label: 'Other', icon: '✨' },
-]
 
-const privacyOptions = [
-  { value: 'public', label: 'Public', description: 'Share your location and name' },
-  { value: 'anonymous', label: 'Anonymous', description: 'Share your location but hide your name' },
-  { value: 'blurred_location', label: 'Blurred Location', description: 'Show approximate location only' },
-]
-
-export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
+export default function MiracleForm({ onClose, onSubmit, getTranslation }: MiracleFormProps) {
+  const privacyOptions = [
+    { value: 'public', label: getTranslation('miracles.privacy.public', 'Public'), description: getTranslation('miracles.privacy.publicDesc', 'Share your location and name') },
+    { value: 'anonymous', label: getTranslation('miracles.privacy.anonymous', 'Anonymous'), description: getTranslation('miracles.privacy.anonymousDesc', 'Share your location but hide your name') },
+    { value: 'blurred_location', label: getTranslation('miracles.privacy.blurred', 'Blurred Location'), description: getTranslation('miracles.privacy.blurredDesc', 'Show approximate location only') },
+  ]
   const { user } = useAuth()
   const [formData, setFormData] = useState({
     title: '',
@@ -56,7 +45,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
 
   const getCurrentLocation = () => {
     if (!navigator.geolocation) {
-      setError('Geolocation is not supported by this browser')
+      setError(getTranslation('miracles.form.geolocationError', 'Geolocation is not supported by this browser'))
       return
     }
 
@@ -70,7 +59,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
         setLoading(false)
       },
       (error) => {
-        setError('Unable to get your location: ' + error.message)
+        setError(getTranslation('miracles.form.locationError', 'Unable to get your location: {error}').replace('{error}', error.message))
         setLoading(false)
       }
     )
@@ -80,7 +69,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
     const file = e.target.files?.[0]
     if (file) {
       if (file.size > 10 * 1024 * 1024) { // 10MB limit
-        setError('Photo must be smaller than 10MB')
+        setError(getTranslation('miracles.form.photoSizeError', 'Photo must be smaller than 10MB'))
         return
       }
       setPhotoFile(file)
@@ -94,7 +83,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
     const file = e.target.files?.[0]
     if (file) {
       if (file.size > 50 * 1024 * 1024) { // 50MB limit
-        setError('Video must be smaller than 50MB')
+        setError(getTranslation('miracles.form.videoSizeError', 'Video must be smaller than 50MB'))
         return
       }
       setVideoFile(file)
@@ -166,7 +155,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
 
       onSubmit()
     } catch (error: any) {
-      setError(error.message || 'Failed to submit miracle')
+      setError(error.message || getTranslation('miracles.form.submitError', 'Failed to submit miracle'))
     } finally {
       setLoading(false)
     }
@@ -191,14 +180,14 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 modal-overlay flex items-center justify-center p-4"
       style={{ background: 'rgba(0, 0, 0, 0.5)' }}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl"
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl modal-content"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -231,7 +220,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
               ))}
             </div>
             <p className="text-sm text-gray-600 mt-2">
-              Step {step} of 3: {step === 1 ? 'Basic Info' : step === 2 ? 'Media & Location' : 'Privacy & Submit'}
+              {getTranslation('common.step', 'Step')} {step} {getTranslation('common.of', 'of')} 3: {step === 1 ? getTranslation('miracles.form.step1', 'Basic Info') : step === 2 ? getTranslation('miracles.form.step2', 'Media & Location') : getTranslation('miracles.form.step3', 'Privacy & Submit')}
             </p>
           </div>
         </div>
@@ -267,7 +256,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                   required
                   maxLength={100}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-miracle-gold focus:border-transparent transition-all duration-200"
-                  placeholder="Give your miracle a meaningful title..."
+                  placeholder={getTranslation('miracles.form.titlePlaceholder', 'Give your miracle a meaningful title...')}
                 />
                 <p className="text-xs text-gray-500 mt-1">{formData.title.length}/100 characters</p>
               </div>
@@ -284,7 +273,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                   maxLength={1000}
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-miracle-gold focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Tell us about your miracle... What happened? How did it make you feel?"
+                  placeholder={getTranslation('miracles.form.descriptionPlaceholder', 'Tell us about your miracle... What happened? How did it make you feel?')}
                 />
                 <p className="text-xs text-gray-500 mt-1">{formData.description.length}/1000 characters</p>
               </div>
@@ -294,7 +283,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                   Category *
                 </label>
                 <div className="grid grid-cols-3 gap-2">
-                  {categories.map((category) => (
+                  {miracleCategories.map((category) => (
                     <motion.button
                       key={category.value}
                       type="button"
@@ -308,7 +297,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                       }`}
                     >
                       <div className="text-base mb-1">{category.icon}</div>
-                      <div className="text-xs font-normal text-center leading-tight px-1 text-gray-700">{category.label}</div>
+                      <div className="text-xs font-normal text-center leading-tight px-1 text-gray-700">{getTranslation(`miracles.categories.${category.value}`, category.label)}</div>
                     </motion.button>
                   ))}
                 </div>
@@ -349,7 +338,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                     <div className="relative">
                       <Image
                         src={photoPreview}
-                        alt="Preview"
+                        alt={getTranslation('miracles.form.previewAlt', 'Preview')}
                         width={600}
                         height={192}
                         className="w-full h-48 object-cover rounded-lg"
@@ -445,7 +434,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                   >
                     <MapPin className="w-5 h-5 text-gray-400" />
                     <span className="text-gray-600">
-                      {loading ? 'Getting location...' : 'Use my current location'}
+                      {loading ? getTranslation('miracles.form.gettingLocation', 'Getting location...') : getTranslation('miracles.form.useCurrentLocation', 'Use my current location')}
                     </span>
                   </button>
                   
@@ -462,7 +451,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                     value={formData.location_name}
                     onChange={(e) => setFormData({ ...formData, location_name: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-miracle-gold focus:border-transparent transition-all duration-200"
-                    placeholder="Add a location name (e.g., Central Park, New York)"
+                    placeholder={getTranslation('miracles.form.locationPlaceholder', 'Add a location name (e.g., Central Park, New York)')}
                   />
                 </div>
               </div>
@@ -504,7 +493,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                 <h4 className="font-medium text-gray-800 mb-2">Review Your Miracle</h4>
                 <div className="space-y-2 text-sm text-gray-600">
                   <p><strong>Title:</strong> {formData.title}</p>
-                  <p><strong>Category:</strong> {categories.find(c => c.value === formData.category)?.label}</p>
+                  <p><strong>Category:</strong> {getTranslation(`miracles.categories.${formData.category}`, miracleCategories.find(c => c.value === formData.category)?.label || '')}</p>
                   <p><strong>Privacy:</strong> {privacyOptions.find(p => p.value === formData.privacy_level)?.label}</p>
                   {location && <p><strong>Location:</strong> {location.lat.toFixed(4)}, {location.lng.toFixed(4)}</p>}
                 </div>
@@ -519,7 +508,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
               onClick={step === 1 ? onClose : prevStep}
               className="px-6 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             >
-              {step === 1 ? 'Cancel' : 'Back'}
+              {step === 1 ? getTranslation('miracles.form.cancel', 'Cancel') : getTranslation('miracles.form.back', 'Back')}
             </button>
             
             {step < 3 ? (
@@ -541,7 +530,7 @@ export default function MiracleForm({ onClose, onSubmit }: MiracleFormProps) {
                 whileTap={{ scale: 0.98 }}
                 className="btn-miracle text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Sharing...' : 'Share Miracle'}
+                {loading ? getTranslation('miracles.form.sharing', 'Sharing...') : getTranslation('miracles.form.shareMiracle', 'Share Miracle')}
               </motion.button>
             )}
           </div>

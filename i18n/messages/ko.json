@@ -16,7 +16,10 @@
     "next": "Next",
     "previous": "Previous",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "language": "언어",
+    "step": "단계",
+    "of": "의"
   },
   "navigation": {
     "home": "Home",
@@ -77,17 +80,45 @@
     "miracleUpdated": "Miracle updated successfully!",
     "miracleDeleted": "Miracle deleted successfully!",
     "categories": {
-      "nature": "Nature",
-      "health": "Health & Wellness",
-      "kindness": "Acts of Kindness",
-      "technology": "Technology",
-      "education": "Education",
-      "family": "Family & Relationships",
-      "community": "Community",
-      "recovery": "Recovery & Healing",
-      "achievement": "Achievement",
-      "gratitude": "Gratitude",
-      "other": "Other"
+      "nature": "자연",
+      "health": "건강과 웰니스",
+      "kindness": "친절한 행동",
+      "family": "가족과 관계",
+      "friendship": "우정",
+      "achievement": "성취",
+      "recovery": "회복과 치유",
+      "discovery": "발견",
+      "gratitude": "감사",
+      "other": "기타"
+    },
+    "privacy": {
+      "public": "공개",
+      "publicDesc": "위치와 이름 공유",
+      "anonymous": "익명",
+      "anonymousDesc": "위치는 공유하지만 이름은 숨김",
+      "blurred": "흐린 위치",
+      "blurredDesc": "대략적인 위치만 표시"
+    },
+    "form": {
+      "step1": "기본 정보",
+      "step2": "미디어 및 위치",
+      "step3": "개인정보 및 제출",
+      "titlePlaceholder": "기적에 의미 있는 제목을 주세요...",
+      "descriptionPlaceholder": "기적에 대해 알려주세요... 무엇이 일어났나요? 어떻게 느꼈나요?",
+      "locationPlaceholder": "위치 이름 추가 (예: 센트럴 파크, 뉴욕)",
+      "gettingLocation": "위치 가져오는 중...",
+      "useCurrentLocation": "현재 위치 사용",
+      "sharing": "공유 중...",
+      "shareMiracle": "기적 공유",
+      "cancel": "취소",
+      "back": "뒤로",
+      "reviewTitle": "기적 검토",
+      "previewAlt": "미리보기",
+      "geolocationError": "이 브라우저는 위치 서비스를 지원하지 않습니다",
+      "locationError": "위치를 가져올 수 없습니다: {error}",
+      "photoSizeError": "사진은 10MB보다 작아야 합니다",
+      "videoSizeError": "동영상은 50MB보다 작아야 합니다",
+      "submitError": "기적 제출 실패"
     }
   },
   "map": {
@@ -99,7 +130,11 @@
     "currentLocation": "Current Location",
     "noLocation": "No location specified",
     "loadingMap": "Loading map...",
-    "mapError": "Error loading map"
+    "mapError": "Error loading map",
+    "selectMapType": "지도 유형 선택",
+    "mapTypes": "지도 유형",
+    "miracleCategories": "기적 카테고리",
+    "miraclesShared": "공유된 기적"
   },
   "filters": {
     "title": "Filters",
@@ -146,5 +181,14 @@
     "url": "Please enter a valid URL",
     "number": "Please enter a valid number",
     "positive": "Must be a positive number"
+  },
+  "help": {
+    "title": "도움말",
+    "howToExplore": "탐색 방법",
+    "dragToPan": "드래그하여 세계를 탐색하세요",
+    "scrollToZoom": "스크롤하여 확대/축소하세요",
+    "clickMarkers": "기적 마커를 클릭하여 이야기를 읽으세요",
+    "useFilters": "필터를 사용하여 특정 유형을 찾으세요",
+    "tip": "팁: 메뉴 버튼(☰)을 사용하여 더 많은 옵션에 액세스하세요"
   }
 }

@@ -16,7 +16,10 @@
     "next": "Next",
     "previous": "Previous",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "language": "语言",
+    "step": "步骤",
+    "of": "的"
   },
   "navigation": {
     "home": "Home",
@@ -77,17 +80,45 @@
     "miracleUpdated": "Miracle updated successfully!",
     "miracleDeleted": "Miracle deleted successfully!",
     "categories": {
-      "nature": "Nature",
-      "health": "Health & Wellness",
-      "kindness": "Acts of Kindness",
-      "technology": "Technology",
-      "education": "Education",
-      "family": "Family & Relationships",
-      "community": "Community",
-      "recovery": "Recovery & Healing",
-      "achievement": "Achievement",
-      "gratitude": "Gratitude",
-      "other": "Other"
+      "nature": "自然",
+      "health": "健康与福祉",
+      "kindness": "善行",
+      "family": "家庭与关系",
+      "friendship": "友谊",
+      "achievement": "成就",
+      "recovery": "康复与治愈",
+      "discovery": "发现",
+      "gratitude": "感恩",
+      "other": "其他"
+    },
+    "privacy": {
+      "public": "公开",
+      "publicDesc": "分享您的位置和姓名",
+      "anonymous": "匿名",
+      "anonymousDesc": "分享您的位置但隐藏您的姓名",
+      "blurred": "模糊位置",
+      "blurredDesc": "仅显示大概位置"
+    },
+    "form": {
+      "step1": "基本信息",
+      "step2": "媒体和位置",
+      "step3": "隐私和提交",
+      "titlePlaceholder": "为您的奇迹起一个有意义的名字...",
+      "descriptionPlaceholder": "告诉我们您的奇迹...发生了什么？您感觉如何？",
+      "locationPlaceholder": "添加位置名称（例如：中央公园，纽约）",
+      "gettingLocation": "正在获取位置...",
+      "useCurrentLocation": "使用我的当前位置",
+      "sharing": "正在分享...",
+      "shareMiracle": "分享奇迹",
+      "cancel": "取消",
+      "back": "返回",
+      "reviewTitle": "查看您的奇迹",
+      "previewAlt": "预览",
+      "geolocationError": "此浏览器不支持地理位置服务",
+      "locationError": "无法获取您的位置：{error}",
+      "photoSizeError": "照片必须小于10MB",
+      "videoSizeError": "视频必须小于50MB",
+      "submitError": "提交奇迹失败"
     }
   },
   "map": {
@@ -99,7 +130,11 @@
     "currentLocation": "Current Location",
     "noLocation": "No location specified",
     "loadingMap": "Loading map...",
-    "mapError": "Error loading map"
+    "mapError": "Error loading map",
+    "selectMapType": "选择地图类型",
+    "mapTypes": "地图类型",
+    "miracleCategories": "奇迹类别",
+    "miraclesShared": "分享的奇迹"
   },
   "filters": {
     "title": "Filters",
@@ -146,5 +181,14 @@
     "url": "Please enter a valid URL",
     "number": "Please enter a valid number",
     "positive": "Must be a positive number"
+  },
+  "help": {
+    "title": "帮助",
+    "howToExplore": "如何探索",
+    "dragToPan": "拖拽在世界中移动",
+    "scrollToZoom": "滚动进行缩放",
+    "clickMarkers": "点击奇迹标记阅读故事",
+    "useFilters": "使用过滤器查找特定类型",
+    "tip": "提示：使用菜单按钮（☰）访问更多选项"
   }
 }

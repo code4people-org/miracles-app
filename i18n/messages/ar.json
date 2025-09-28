@@ -16,7 +16,10 @@
     "next": "Next",
     "previous": "Previous",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "language": "اللغة",
+    "step": "خطوة",
+    "of": "من"
   },
   "navigation": {
     "home": "Home",
@@ -77,17 +80,45 @@
     "miracleUpdated": "Miracle updated successfully!",
     "miracleDeleted": "Miracle deleted successfully!",
     "categories": {
-      "nature": "Nature",
-      "health": "Health & Wellness",
-      "kindness": "Acts of Kindness",
-      "technology": "Technology",
-      "education": "Education",
-      "family": "Family & Relationships",
-      "community": "Community",
-      "recovery": "Recovery & Healing",
-      "achievement": "Achievement",
-      "gratitude": "Gratitude",
-      "other": "Other"
+      "nature": "الطبيعة",
+      "health": "الصحة والعافية",
+      "kindness": "أعمال اللطف",
+      "family": "العائلة والعلاقات",
+      "friendship": "الصداقة",
+      "achievement": "الإنجاز",
+      "recovery": "الشفاء والتعافي",
+      "discovery": "الاكتشاف",
+      "gratitude": "الامتنان",
+      "other": "أخرى"
+    },
+    "privacy": {
+      "public": "عام",
+      "publicDesc": "مشاركة موقعك واسمك",
+      "anonymous": "مجهول",
+      "anonymousDesc": "مشاركة موقعك ولكن إخفاء اسمك",
+      "blurred": "موقع ضبابي",
+      "blurredDesc": "إظهار الموقع التقريبي فقط"
+    },
+    "form": {
+      "step1": "المعلومات الأساسية",
+      "step2": "الوسائط والموقع",
+      "step3": "الخصوصية والإرسال",
+      "titlePlaceholder": "أعطِ معجزتك عنواناً ذا معنى...",
+      "descriptionPlaceholder": "أخبرنا عن معجزتك... ماذا حدث؟ كيف شعرت؟",
+      "locationPlaceholder": "أضف اسم موقع (مثال: سنترال بارك، نيويورك)",
+      "gettingLocation": "جاري الحصول على الموقع...",
+      "useCurrentLocation": "استخدم موقعي الحالي",
+      "sharing": "جاري المشاركة...",
+      "shareMiracle": "مشاركة المعجزة",
+      "cancel": "إلغاء",
+      "back": "رجوع",
+      "reviewTitle": "راجع معجزتك",
+      "previewAlt": "معاينة",
+      "geolocationError": "تحديد الموقع الجغرافي غير مدعوم في هذا المتصفح",
+      "locationError": "لا يمكن الحصول على موقعك: {error}",
+      "photoSizeError": "يجب أن تكون الصورة أصغر من 10 ميجابايت",
+      "videoSizeError": "يجب أن يكون الفيديو أصغر من 50 ميجابايت",
+      "submitError": "فشل في إرسال المعجزة"
     }
   },
   "map": {
@@ -99,7 +130,11 @@
     "currentLocation": "Current Location",
     "noLocation": "No location specified",
     "loadingMap": "Loading map...",
-    "mapError": "Error loading map"
+    "mapError": "Error loading map",
+    "selectMapType": "اختر نوع الخريطة",
+    "mapTypes": "أنواع الخرائط",
+    "miracleCategories": "فئات المعجزات",
+    "miraclesShared": "المعجزات المشتركة"
   },
   "filters": {
     "title": "Filters",
@@ -146,5 +181,14 @@
     "url": "Please enter a valid URL",
     "number": "Please enter a valid number",
     "positive": "Must be a positive number"
+  },
+  "help": {
+    "title": "مساعدة",
+    "howToExplore": "كيفية الاستكشاف",
+    "dragToPan": "اسحب للتنقل حول العالم",
+    "scrollToZoom": "مرر للتكبير/التصغير",
+    "clickMarkers": "انقر على علامات المعجزات لقراءة القصص",
+    "useFilters": "استخدم المرشحات للعثور على أنواع محددة",
+    "tip": "نصيحة: استخدم زر القائمة (☰) للوصول إلى المزيد من الخيارات"
   }
 }

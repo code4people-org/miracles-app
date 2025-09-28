@@ -16,7 +16,10 @@
     "next": "Next",
     "previous": "Previous",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "language": "言語",
+    "step": "ステップ",
+    "of": "の"
   },
   "navigation": {
     "home": "Home",
@@ -59,7 +62,6 @@
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
-    "description": "Description",
     "date": "Date",
     "author": "Author",
     "likes": "Likes",
@@ -77,17 +79,45 @@
     "miracleUpdated": "Miracle updated successfully!",
     "miracleDeleted": "Miracle deleted successfully!",
     "categories": {
-      "nature": "Nature",
-      "health": "Health & Wellness",
-      "kindness": "Acts of Kindness",
-      "technology": "Technology",
-      "education": "Education",
-      "family": "Family & Relationships",
-      "community": "Community",
-      "recovery": "Recovery & Healing",
-      "achievement": "Achievement",
-      "gratitude": "Gratitude",
-      "other": "Other"
+      "nature": "自然",
+      "health": "健康とウェルネス",
+      "kindness": "親切な行為",
+      "family": "家族と関係",
+      "friendship": "友情",
+      "achievement": "達成",
+      "recovery": "回復と癒し",
+      "discovery": "発見",
+      "gratitude": "感謝",
+      "other": "その他"
+    },
+    "privacy": {
+      "public": "公開",
+      "publicDesc": "位置情報と名前を共有",
+      "anonymous": "匿名",
+      "anonymousDesc": "位置情報は共有するが名前は隠す",
+      "blurred": "ぼかし位置",
+      "blurredDesc": "おおよその位置のみ表示"
+    },
+    "form": {
+      "step1": "基本情報",
+      "step2": "メディアと位置",
+      "step3": "プライバシーと送信",
+      "titlePlaceholder": "奇跡に意味のあるタイトルを付けてください...",
+      "descriptionPlaceholder": "奇跡について教えてください... 何が起こりましたか？ どのように感じましたか？",
+      "locationPlaceholder": "場所名を追加（例：セントラルパーク、ニューヨーク）",
+      "gettingLocation": "位置情報を取得中...",
+      "useCurrentLocation": "現在の位置を使用",
+      "sharing": "共有中...",
+      "shareMiracle": "奇跡を共有",
+      "cancel": "キャンセル",
+      "back": "戻る",
+      "reviewTitle": "奇跡を確認",
+      "previewAlt": "プレビュー",
+      "geolocationError": "このブラウザは位置情報をサポートしていません",
+      "locationError": "位置情報を取得できませんでした：{error}",
+      "photoSizeError": "写真は10MB未満である必要があります",
+      "videoSizeError": "動画は50MB未満である必要があります",
+      "submitError": "奇跡の送信に失敗しました"
     }
   },
   "map": {
@@ -99,7 +129,11 @@
     "currentLocation": "Current Location",
     "noLocation": "No location specified",
     "loadingMap": "Loading map...",
-    "mapError": "Error loading map"
+    "mapError": "Error loading map",
+    "selectMapType": "マップタイプを選択",
+    "mapTypes": "マップタイプ",
+    "miracleCategories": "奇跡のカテゴリー",
+    "miraclesShared": "共有された奇跡"
   },
   "filters": {
     "title": "Filters",
@@ -146,5 +180,14 @@
     "url": "Please enter a valid URL",
     "number": "Please enter a valid number",
     "positive": "Must be a positive number"
+  },
+  "help": {
+    "title": "ヘルプ",
+    "howToExplore": "探索方法",
+    "dragToPan": "ドラッグして世界を移動",
+    "scrollToZoom": "スクロールしてズームイン/アウト",
+    "clickMarkers": "奇跡のマーカーをクリックしてストーリーを読む",
+    "useFilters": "フィルターを使用して特定のタイプを見つける",
+    "tip": "ヒント: メニューボタン（☰）を使用してより多くのオプションにアクセス"
   }
 }

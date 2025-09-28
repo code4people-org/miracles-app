@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { X, Filter, Clock, MapPin, Tag } from 'lucide-react'
+import { miracleCategories } from '@/lib/miracleCategories'
 
 interface FiltersProps {
   filters: {
@@ -12,21 +13,8 @@ interface FiltersProps {
   }
   onFiltersChange: (filters: any) => void
   onClose: () => void
+  getTranslation: (key: string, fallback: string) => string
 }
-
-const categories = [
-  { value: '', label: 'All Categories', icon: '✨' },
-  { value: 'kindness', label: 'Kindness', icon: '🤝' },
-  { value: 'nature', label: 'Nature', icon: '🌱' },
-  { value: 'health', label: 'Health', icon: '💚' },
-  { value: 'family', label: 'Family', icon: '👨‍👩‍👧‍👦' },
-  { value: 'friendship', label: 'Friendship', icon: '👫' },
-  { value: 'achievement', label: 'Achievement', icon: '🏆' },
-  { value: 'recovery', label: 'Recovery', icon: '🌅' },
-  { value: 'discovery', label: 'Discovery', icon: '🔍' },
-  { value: 'gratitude', label: 'Gratitude', icon: '🙏' },
-  { value: 'other', label: 'Other', icon: '✨' },
-]
 
 const timeRanges = [
   { value: '', label: 'All Time' },
@@ -45,7 +33,15 @@ const proximityOptions = [
   { value: 100, label: 'Within 100 km' },
 ]
 
-export default function Filters({ filters, onFiltersChange, onClose }: FiltersProps) {
+export default function Filters({ filters, onFiltersChange, onClose, getTranslation }: FiltersProps) {
+  const categories = [
+    { value: '', label: getTranslation('filters.allCategories', 'All Categories'), icon: '✨' },
+    ...miracleCategories.map(cat => ({
+      value: cat.value,
+      label: getTranslation(`miracles.categories.${cat.value}`, cat.label),
+      icon: cat.icon
+    }))
+  ]
   const updateFilter = (key: string, value: string | number) => {
     onFiltersChange({
       ...filters,

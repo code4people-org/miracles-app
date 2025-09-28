@@ -29,7 +29,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 modal-overlay flex items-center justify-center p-4"
         style={{ background: 'rgba(0, 0, 0, 0.5)' }}
         onClick={onClose}
       >
@@ -37,7 +37,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="relative w-full max-w-md"
+          className="relative w-full max-w-md modal-content"
           onClick={(e) => e.stopPropagation()}
         >
           <button

@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-@import 'leaflet/dist/leaflet.css';
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -74,6 +74,15 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(45deg, #FFA500, #FF6347);
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
 
 /* Glow effects */
@@ -286,4 +295,34 @@ a {
   button {
     color: inherit;
   }
+}
+
+/* Leaflet Map Z-Index Control */
+.leaflet-container {
+  z-index: 1 !important;
+}
+
+.leaflet-control-container {
+  z-index: 2 !important;
+}
+
+.leaflet-popup {
+  z-index: 1000 !important;
+}
+
+.leaflet-popup-pane {
+  z-index: 1000 !important;
+}
+
+.leaflet-tooltip-pane {
+  z-index: 1000 !important;
+}
+
+/* Ensure modals appear above map */
+.modal-overlay {
+  z-index: 9999 !important;
+}
+
+.modal-content {
+  z-index: 10000 !important;
 }

@@ -61,10 +61,10 @@ export default function LanguageSwitcher() {
         title="Change Language"
       >
         <Globe className="w-4 h-4 text-gray-700" />
-        <span className="text-sm font-medium text-gray-700 hidden sm:block">
+        <span className="text-sm font-medium text-gray-700 hidden lg:block">
           {currentLanguage?.flag} {currentLanguage?.name}
         </span>
-        <span className="text-sm font-medium text-gray-700 sm:hidden">
+        <span className="text-sm font-medium text-gray-700 lg:hidden">
           {currentLanguage?.flag}
         </span>
       </motion.button>
@@ -82,7 +82,7 @@ export default function LanguageSwitcher() {
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            className="absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-2xl border border-miracle-gold/20 z-20 overflow-hidden"
+            className="absolute right-0 top-full mt-2 w-64 max-w-[90vw] bg-white rounded-xl shadow-2xl border border-miracle-gold/20 z-20 overflow-hidden"
           >
             <div className="p-2">
               <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-3 py-2">

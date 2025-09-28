@@ -16,7 +16,10 @@
     "next": "Weiter",
     "previous": "Vorherige",
     "yes": "Ja",
-    "no": "Nein"
+    "no": "Nein",
+    "language": "Sprache",
+    "step": "Schritt",
+    "of": "von"
   },
   "navigation": {
     "home": "Startseite",
@@ -77,17 +80,45 @@
     "miracleUpdated": "Miracle updated successfully!",
     "miracleDeleted": "Miracle deleted successfully!",
     "categories": {
-      "nature": "Nature",
-      "health": "Health & Wellness",
-      "kindness": "Acts of Kindness",
-      "technology": "Technology",
-      "education": "Education",
-      "family": "Family & Relationships",
-      "community": "Community",
-      "recovery": "Recovery & Healing",
-      "achievement": "Achievement",
-      "gratitude": "Gratitude",
-      "other": "Other"
+      "nature": "Natur",
+      "health": "Gesundheit & Wohlbefinden",
+      "kindness": "Akte der Güte",
+      "family": "Familie & Beziehungen",
+      "friendship": "Freundschaft",
+      "achievement": "Erfolg",
+      "recovery": "Erholung & Heilung",
+      "discovery": "Entdeckung",
+      "gratitude": "Dankbarkeit",
+      "other": "Andere"
+    },
+    "privacy": {
+      "public": "Öffentlich",
+      "publicDesc": "Teilen Sie Ihren Standort und Namen",
+      "anonymous": "Anonym",
+      "anonymousDesc": "Teilen Sie Ihren Standort, aber verstecken Sie Ihren Namen",
+      "blurred": "Unschärfer Standort",
+      "blurredDesc": "Nur ungefähren Standort anzeigen"
+    },
+    "form": {
+      "step1": "Grundinformationen",
+      "step2": "Medien und Standort",
+      "step3": "Datenschutz und Senden",
+      "titlePlaceholder": "Geben Sie Ihrem Wunder einen bedeutungsvollen Titel...",
+      "descriptionPlaceholder": "Erzählen Sie uns von Ihrem Wunder... Was ist passiert? Wie haben Sie sich gefühlt?",
+      "locationPlaceholder": "Fügen Sie einen Ortsnamen hinzu (z.B. Central Park, New York)",
+      "gettingLocation": "Standort wird ermittelt...",
+      "useCurrentLocation": "Meinen aktuellen Standort verwenden",
+      "sharing": "Wird geteilt...",
+      "shareMiracle": "Wunder Teilen",
+      "cancel": "Abbrechen",
+      "back": "Zurück",
+      "reviewTitle": "Überprüfen Sie Ihr Wunder",
+      "previewAlt": "Vorschau",
+      "geolocationError": "Geolokalisierung wird von diesem Browser nicht unterstützt",
+      "locationError": "Standort konnte nicht ermittelt werden: {error}",
+      "photoSizeError": "Foto muss kleiner als 10MB sein",
+      "videoSizeError": "Video muss kleiner als 50MB sein",
+      "submitError": "Fehler beim Senden des Wunders"
     }
   },
   "map": {
@@ -99,7 +130,11 @@
     "currentLocation": "Current Location",
     "noLocation": "No location specified",
     "loadingMap": "Loading map...",
-    "mapError": "Error loading map"
+    "mapError": "Error loading map",
+    "selectMapType": "Kartentyp Auswählen",
+    "mapTypes": "Kartentypen",
+    "miracleCategories": "Wunder-Kategorien",
+    "miraclesShared": "Geteilte Wunder"
   },
   "filters": {
     "title": "Filters",
@@ -146,5 +181,14 @@
     "url": "Please enter a valid URL",
     "number": "Please enter a valid number",
     "positive": "Must be a positive number"
+  },
+  "help": {
+    "title": "Hilfe",
+    "howToExplore": "Wie man erkundet",
+    "dragToPan": "Ziehen Sie, um sich in der Welt zu bewegen",
+    "scrollToZoom": "Scrollen Sie zum Zoomen hinein/hinaus",
+    "clickMarkers": "Klicken Sie auf Wunder-Marker, um Geschichten zu lesen",
+    "useFilters": "Verwenden Sie Filter, um bestimmte Typen zu finden",
+    "tip": "Tipp: Verwenden Sie die Menü-Schaltfläche (☰) für mehr Optionen"
   }
 }

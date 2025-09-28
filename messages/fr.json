@@ -59,7 +59,6 @@
     "miracleDetails": "Détails du Miracle",
     "category": "Catégorie",
     "location": "Emplacement",
-    "description": "Description",
     "date": "Date",
     "author": "Auteur",
     "likes": "J'aime",
@@ -99,7 +98,9 @@
     "currentLocation": "Emplacement Actuel",
     "noLocation": "Aucun emplacement spécifié",
     "loadingMap": "Chargement de la carte...",
-    "mapError": "Erreur lors du chargement de la carte"
+    "mapError": "Erreur lors du chargement de la carte",
+    "selectMapType": "Sélectionner le Type de Carte",
+    "mapTypes": "Types de Cartes"
   },
   "filters": {
     "title": "Filtres",

@@ -16,7 +16,10 @@
     "next": "Next",
     "previous": "Previous",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "language": "Language",
+    "step": "Step",
+    "of": "of"
   },
   "navigation": {
     "home": "Home",
@@ -59,7 +62,6 @@
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
-    "description": "Description",
     "date": "Date",
     "author": "Author",
     "likes": "Likes",
@@ -80,14 +82,42 @@
       "nature": "Nature",
       "health": "Health & Wellness",
       "kindness": "Acts of Kindness",
-      "technology": "Technology",
-      "education": "Education",
       "family": "Family & Relationships",
-      "community": "Community",
-      "recovery": "Recovery & Healing",
+      "friendship": "Friendship",
       "achievement": "Achievement",
+      "recovery": "Recovery & Healing",
+      "discovery": "Discovery",
       "gratitude": "Gratitude",
       "other": "Other"
+    },
+    "privacy": {
+      "public": "Public",
+      "publicDesc": "Share your location and name",
+      "anonymous": "Anonymous",
+      "anonymousDesc": "Share your location but hide your name",
+      "blurred": "Blurred Location",
+      "blurredDesc": "Show approximate location only"
+    },
+    "form": {
+      "step1": "Basic Info",
+      "step2": "Media & Location",
+      "step3": "Privacy & Submit",
+      "titlePlaceholder": "Give your miracle a meaningful title...",
+      "descriptionPlaceholder": "Tell us about your miracle... What happened? How did it make you feel?",
+      "locationPlaceholder": "Add a location name (e.g., Central Park, New York)",
+      "gettingLocation": "Getting location...",
+      "useCurrentLocation": "Use my current location",
+      "sharing": "Sharing...",
+      "shareMiracle": "Share Miracle",
+      "cancel": "Cancel",
+      "back": "Back",
+      "reviewTitle": "Review Your Miracle",
+      "previewAlt": "Preview",
+      "geolocationError": "Geolocation is not supported by this browser",
+      "locationError": "Unable to get your location: {error}",
+      "photoSizeError": "Photo must be smaller than 10MB",
+      "videoSizeError": "Video must be smaller than 50MB",
+      "submitError": "Failed to submit miracle"
     }
   },
   "map": {
@@ -99,14 +129,18 @@
     "currentLocation": "Current Location",
     "noLocation": "No location specified",
     "loadingMap": "Loading map...",
-    "mapError": "Error loading map"
+    "mapError": "Error loading map",
+    "selectMapType": "Select Map Type",
+    "mapTypes": "Map Types",
+    "miracleCategories": "Miracle Categories",
+    "miraclesShared": "Miracles Shared"
   },
   "filters": {
     "title": "Filters",
     "category": "Category",
     "timeRange": "Time Range",
-    "proximity": "Proximity",
     "allCategories": "All Categories",
+    "proximity": "Proximity",
     "allTime": "All Time",
     "last24Hours": "Last 24 Hours",
     "last7Days": "Last 7 Days",
@@ -146,5 +180,14 @@
     "url": "Please enter a valid URL",
     "number": "Please enter a valid number",
     "positive": "Must be a positive number"
+  },
+  "help": {
+    "title": "Help",
+    "howToExplore": "How to Explore",
+    "dragToPan": "Drag to pan around the world",
+    "scrollToZoom": "Scroll to zoom in/out",
+    "clickMarkers": "Click on miracle markers to read stories",
+    "useFilters": "Use filters to find specific types",
+    "tip": "Tip: Use the menu button (☰) to access more options"
   }
 }

@@ -11,9 +11,11 @@ import Filters from '@/components/ui/Filters'
 import AppHeader from '@/components/layout/AppHeader'
 import WelcomeMessage from '@/components/layout/WelcomeMessage'
 import FloatingActionButton from '@/components/layout/FloatingActionButton'
+import HelpButton from '@/components/layout/HelpButton'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useMiracles } from '@/hooks/useMiracles'
 import type { Database } from '@/lib/supabase'
+import { getDefaultMapType, type MapType } from '@/lib/mapTypes'
 
 type Miracle = Database['public']['Tables']['miracles']['Row']
 
@@ -33,6 +35,7 @@ export default function HomePage() {
   const [showMiracleForm, setShowMiracleForm] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
   const [selectedMiracle, setSelectedMiracle] = useState<Miracle | null>(null)
+  const [selectedMapType, setSelectedMapType] = useState<MapType>(getDefaultMapType())
   const [zoomControls, setZoomControls] = useState<{
     zoomIn: () => void
     zoomOut: () => void
@@ -62,18 +65,22 @@ export default function HomePage() {
         onSignOut={handleSignOut}
         onShowAuthModal={() => setShowAuthModal(true)}
         onShowMiracleForm={() => setShowMiracleForm(true)}
+        selectedMapType={selectedMapType}
+        onMapTypeChange={setSelectedMapType}
       />
 
       {/* Main Content */}
       <main className="h-full pt-14 sm:pt-16">
         {/* World Map */}
         <div className="relative h-full">
-          <DynamicLeafletMap
-            miracles={filteredMiracles}
-            onMiracleSelect={setSelectedMiracle}
-            loading={loading}
-            onZoomControlsReady={setZoomControls}
-          />
+                 <DynamicLeafletMap
+                   miracles={filteredMiracles}
+                   onMiracleSelect={setSelectedMiracle}
+                   loading={loading}
+                   selectedMapType={selectedMapType}
+                   onZoomControlsReady={setZoomControls}
+                   getTranslation={getTranslation}
+                 />
         </div>
 
         {/* Filters Panel */}
@@ -89,6 +96,7 @@ export default function HomePage() {
                 filters={filters}
                 onFiltersChange={setFilters}
                 onClose={() => setShowFilters(false)}
+                getTranslation={getTranslation}
               />
             </div>
           )}
@@ -117,6 +125,9 @@ export default function HomePage() {
           user={user}
           onShowMiracleForm={() => setShowMiracleForm(true)}
         />
+
+               {/* Help Button - Mobile */}
+               <HelpButton getTranslation={getTranslation} />
       </main>
 
       {/* Modals */}
@@ -131,6 +142,7 @@ export default function HomePage() {
           <MiracleForm
             onClose={() => setShowMiracleForm(false)}
             onSubmit={handleMiracleSubmit}
+            getTranslation={getTranslation}
           />
         )}
       </AnimatePresence>

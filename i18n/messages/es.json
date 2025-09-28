@@ -16,7 +16,10 @@
     "next": "Siguiente",
     "previous": "Anterior",
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "language": "Idioma",
+    "step": "Paso",
+    "of": "de"
   },
   "navigation": {
     "home": "Inicio",
@@ -59,7 +62,6 @@
     "miracleDetails": "Detalles del Milagro",
     "category": "Categoría",
     "location": "Ubicación",
-    "description": "Descripción",
     "date": "Fecha",
     "author": "Autor",
     "likes": "Me Gusta",
@@ -80,14 +82,42 @@
       "nature": "Naturaleza",
       "health": "Salud y Bienestar",
       "kindness": "Actos de Bondad",
-      "technology": "Tecnología",
-      "education": "Educación",
       "family": "Familia y Relaciones",
-      "community": "Comunidad",
-      "recovery": "Recuperación y Sanación",
+      "friendship": "Amistad",
       "achievement": "Logros",
+      "recovery": "Recuperación y Sanación",
+      "discovery": "Descubrimiento",
       "gratitude": "Gratitud",
       "other": "Otro"
+    },
+    "privacy": {
+      "public": "Público",
+      "publicDesc": "Compartir tu ubicación y nombre",
+      "anonymous": "Anónimo",
+      "anonymousDesc": "Compartir tu ubicación pero ocultar tu nombre",
+      "blurred": "Ubicación Difuminada",
+      "blurredDesc": "Mostrar solo ubicación aproximada"
+    },
+    "form": {
+      "step1": "Información Básica",
+      "step2": "Medios y Ubicación",
+      "step3": "Privacidad y Enviar",
+      "titlePlaceholder": "Dale a tu milagro un título significativo...",
+      "descriptionPlaceholder": "Cuéntanos sobre tu milagro... ¿Qué pasó? ¿Cómo te hizo sentir?",
+      "locationPlaceholder": "Agrega un nombre de ubicación (ej., Parque Central, Nueva York)",
+      "gettingLocation": "Obteniendo ubicación...",
+      "useCurrentLocation": "Usar mi ubicación actual",
+      "sharing": "Compartiendo...",
+      "shareMiracle": "Compartir Milagro",
+      "cancel": "Cancelar",
+      "back": "Atrás",
+      "reviewTitle": "Revisa Tu Milagro",
+      "previewAlt": "Vista previa",
+      "geolocationError": "La geolocalización no es compatible con este navegador",
+      "locationError": "No se pudo obtener tu ubicación: {error}",
+      "photoSizeError": "La foto debe ser menor a 10MB",
+      "videoSizeError": "El video debe ser menor a 50MB",
+      "submitError": "Error al enviar el milagro"
     }
   },
   "map": {
@@ -99,14 +129,18 @@
     "currentLocation": "Ubicación Actual",
     "noLocation": "No se especificó ubicación",
     "loadingMap": "Cargando mapa...",
-    "mapError": "Error al cargar el mapa"
+    "mapError": "Error al cargar el mapa",
+    "selectMapType": "Seleccionar Tipo de Mapa",
+    "mapTypes": "Tipos de Mapas",
+    "miracleCategories": "Categorías de Milagros",
+    "miraclesShared": "Milagros Compartidos"
   },
   "filters": {
     "title": "Filtros",
     "category": "Categoría",
     "timeRange": "Rango de Tiempo",
-    "proximity": "Proximidad",
     "allCategories": "Todas las Categorías",
+    "proximity": "Proximidad",
     "allTime": "Todo el Tiempo",
     "last24Hours": "Últimas 24 Horas",
     "last7Days": "Últimos 7 Días",
@@ -146,5 +180,14 @@
     "url": "Por favor, ingresa una URL válida",
     "number": "Por favor, ingresa un número válido",
     "positive": "Debe ser un número positivo"
+  },
+  "help": {
+    "title": "Ayuda",
+    "howToExplore": "Cómo Explorar",
+    "dragToPan": "Arrastra para moverte por el mundo",
+    "scrollToZoom": "Desplázate para acercar/alejar",
+    "clickMarkers": "Haz clic en los marcadores de milagros para leer historias",
+    "useFilters": "Usa filtros para encontrar tipos específicos",
+    "tip": "Consejo: Usa el botón de menú (☰) para acceder a más opciones"
   }
 }
