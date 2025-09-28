@@ -32,11 +32,11 @@ export default function UserActions({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onShowMiracleForm}
-            className="hidden sm:flex btn-miracle text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-semibold items-center space-x-2 text-sm sm:text-base"
+            className="hidden lg:flex btn-miracle text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-semibold items-center space-x-2 text-sm sm:text-base"
           >
             <Plus className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span className="hidden md:inline">{getTranslation('miracles.shareMiracle', 'Share Miracle')}</span>
-            <span className="md:hidden">{getTranslation('miracles.share', 'Share')}</span>
+            <span className="hidden lg:inline">{getTranslation('miracles.shareMiracle', 'Share Miracle')}</span>
+            <span className="lg:hidden">{getTranslation('miracles.share', 'Share')}</span>
           </motion.button>
 
           {/* Request Prayer Button - Hidden on mobile, shown as FAB */}
@@ -44,11 +44,11 @@ export default function UserActions({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onShowPrayerForm}
-            className="hidden sm:flex bg-purple-600 hover:bg-purple-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-semibold items-center space-x-2 text-sm sm:text-base transition-colors duration-200"
+            className="hidden lg:flex bg-purple-600 hover:bg-purple-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-semibold items-center space-x-2 text-sm sm:text-base transition-colors duration-200"
           >
             <Cross className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span className="hidden md:inline">{getTranslation('prayers.requestPrayer', 'Request Prayer')}</span>
-            <span className="md:hidden">{getTranslation('prayers.requestPrayer', 'Prayer')}</span>
+            <span className="hidden lg:inline">{getTranslation('prayers.requestPrayer', 'Request Prayer')}</span>
+            <span className="lg:hidden">{getTranslation('prayers.requestPrayer', 'Prayer')}</span>
           </motion.button>
 
           <div className="flex items-center space-x-1 sm:space-x-2">

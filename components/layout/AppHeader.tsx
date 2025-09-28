@@ -68,15 +68,14 @@ export default function AppHeader({
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-4 lg:space-x-8 xl:space-x-12">
-              {/* Layer Toggle */}
+            <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
+              {/* Essential controls - always visible */}
               <LayerToggle
                 activeLayer={activeLayer}
                 onLayerChange={onLayerChange}
                 getTranslation={getTranslation}
               />
 
-              {/* User Actions - Right after Layer Toggle */}
               <UserActions
                 onShowAuthModal={onShowAuthModal}
                 onShowMiracleForm={onShowMiracleForm}
@@ -87,39 +86,46 @@ export default function AppHeader({
                 }}
               />
 
-              {/* Map Controls */}
               <MapControls
                 zoomControls={zoomControls}
                 getTranslation={getTranslation}
               />
 
-              {/* Filters Button */}
-              <IconButton
-                icon={Filter}
-                onClick={onToggleFilters}
-                title={getTranslation('filters.title', 'Filters')}
-              />
+              {/* Secondary controls - only show on very large screens (1300px+) */}
+              <div className="hidden 2xl:flex items-center space-x-2">
+                <IconButton
+                  icon={Filter}
+                  onClick={onToggleFilters}
+                  title={getTranslation('filters.title', 'Filters')}
+                />
 
-              {/* Help Button */}
-              <IconButton
-                icon={HelpCircle}
-                onClick={() => setIsHelpModalOpen(true)}
-                title={getTranslation('help.title', 'Help')}
-              />
+                <IconButton
+                  icon={HelpCircle}
+                  onClick={() => setIsHelpModalOpen(true)}
+                  title={getTranslation('help.title', 'Help')}
+                />
 
-              {/* Language Switcher */}
-              <LanguageSwitcher />
+                <LanguageSwitcher />
 
-              {/* Map Type Selector */}
-              <MapTypeSelector
-                selectedMapType={selectedMapType}
-                onMapTypeChange={onMapTypeChange}
-                getTranslation={getTranslation}
-              />
+                <MapTypeSelector
+                  selectedMapType={selectedMapType}
+                  onMapTypeChange={onMapTypeChange}
+                  getTranslation={getTranslation}
+                />
+              </div>
+
+              {/* Compact menu for secondary controls on lg-xl screens */}
+              <div className="2xl:hidden">
+                <IconButton
+                  icon={Menu}
+                  onClick={() => setIsMobileMenuOpen(true)}
+                  title="More Options"
+                />
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center space-x-2">
+            <div className="lg:hidden flex items-center space-x-2">
               {/* Essential mobile controls */}
               <LayerToggleMobile
                 activeLayer={activeLayer}
@@ -148,7 +154,7 @@ export default function AppHeader({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <motion.div
@@ -168,17 +174,6 @@ export default function AppHeader({
                 <LanguageSwitcher />
               </div>
 
-              {/* Layer Toggle */}
-              <div className="mb-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                  {getTranslation('layers.switchLayer', 'Switch Layer')}
-                </h3>
-                <LayerToggle
-                  activeLayer={activeLayer}
-                  onLayerChange={onLayerChange}
-                  getTranslation={getTranslation}
-                />
-              </div>
 
               {/* Map Type Selector */}
               <div className="mb-6">
@@ -193,7 +188,7 @@ export default function AppHeader({
               </div>
 
               {/* Filters Button */}
-              <div className="mb-6">
+              <div className="mb-6 2xl:hidden">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
                   {getTranslation('filters.title', 'Filters')}
                 </h3>
@@ -213,8 +208,29 @@ export default function AppHeader({
                 </motion.button>
               </div>
 
-              {/* User Actions */}
-              <div>
+              {/* Help Button */}
+              <div className="mb-6 2xl:hidden">
+                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                  {getTranslation('help.title', 'Help')}
+                </h3>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    setIsHelpModalOpen(true)
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="w-full flex items-center space-x-3 p-3 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+                >
+                  <HelpCircle className="w-5 h-5 text-gray-700" />
+                  <span className="font-medium text-gray-700">
+                    {getTranslation('help.title', 'Help')}
+                  </span>
+                </motion.button>
+              </div>
+
+              {/* User Actions - Only show on mobile */}
+              <div className="lg:hidden">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
                   {getTranslation('navigation.profile', 'Account')}
                 </h3>

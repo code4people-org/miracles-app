@@ -14,7 +14,7 @@ export default function FloatingActionButton({ user, onShowMiracleForm, onShowPr
   if (!user) return null
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col space-y-3 md:hidden">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col space-y-3 lg:hidden">
       {/* Request Prayer Button */}
       <motion.button
         initial={{ opacity: 0, scale: 0 }}

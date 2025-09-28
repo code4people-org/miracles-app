@@ -21,7 +21,7 @@ export default function HelpButton({ getTranslation }: HelpButtonProps) {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-24 z-40 w-12 h-12 bg-gradient-to-br from-miracle-sky to-miracle-teal rounded-full shadow-lg flex items-center justify-center md:hidden"
+        className="fixed bottom-6 right-24 z-40 w-12 h-12 bg-gradient-to-br from-miracle-sky to-miracle-teal rounded-full shadow-lg flex items-center justify-center lg:hidden"
         title={getTranslation('help.title', 'Help')}
       >
         <HelpCircle className="w-6 h-6 text-white" />
