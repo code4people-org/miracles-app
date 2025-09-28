@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
+import GradientIcon from '@/components/ui/GradientIcon'
 
 interface WelcomeMessageProps {
   user: any
@@ -27,8 +28,8 @@ export default function WelcomeMessage({
     >
       <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-miracle-gold/20">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-miracle-gold to-miracle-coral rounded-full mb-4">
-            <Heart className="w-6 h-6 text-white" />
+          <div className="mb-4">
+            <GradientIcon icon={Heart} gradient="gold" size="lg" />
           </div>
           <h3 className="text-lg font-bold text-gray-800 mb-2">
             {getTranslation('welcome.title', 'See and share the small miracles happening all around the world')}

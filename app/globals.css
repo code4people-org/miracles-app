@@ -9,6 +9,13 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 248, 220;
   --background-end-rgb: 255, 255, 255;
+  --header-height: 3.5rem; /* Default mobile height */
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-height: 4rem; /* Desktop height */
+  }
 }
 
 * {
@@ -211,6 +218,14 @@ a {
   overflow: hidden;
 }
 
+/* Responsive map positioning */
+@media (min-width: 640px) {
+  .map-responsive {
+    top: 4rem !important;
+    height: calc(100vh - 4rem) !important;
+  }
+}
+
 /* Miracle point glow */
 .miracle-point {
   position: absolute;
@@ -300,6 +315,25 @@ a {
 /* Leaflet Map Z-Index Control */
 .leaflet-container {
   z-index: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.leaflet-map-pane {
+  background: transparent !important;
+}
+
+.leaflet-tile-pane {
+  background: transparent !important;
+}
+
+.leaflet-tile {
+  background: transparent !important;
 }
 
 .leaflet-control-container {

@@ -26,7 +26,10 @@ export function useMapInstance({ selectedMapType, miracles, onMiracleSelect, onZ
       const map = L.map(mapRef.current, {
         center: MAP_CONFIG.DEFAULT_CENTER,
         zoom: MAP_CONFIG.DEFAULT_ZOOM,
-        zoomControl: false
+        zoomControl: false,
+        attributionControl: false,
+        worldCopyJump: false,
+        maxBoundsViscosity: 0.0
       })
 
       // Add initial tile layer

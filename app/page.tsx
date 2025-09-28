@@ -4,7 +4,20 @@ import React, { useState } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { AnimatePresence } from 'framer-motion'
 import AuthModal from '@/components/auth/AuthModal'
-import DynamicLeafletMap from '@/components/map/DynamicLeafletMap'
+import dynamic from 'next/dynamic'
+
+// Dynamically import the Leaflet map to avoid SSR issues
+const LeafletWorldMap = dynamic(() => import('@/components/map/LeafletWorldMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full bg-gradient-to-br from-miracle-sky to-miracle-teal flex items-center justify-center">
+      <div className="text-center">
+        <div className="spinner mx-auto mb-4"></div>
+        <p className="text-white font-semibold">Loading the world of miracles...</p>
+      </div>
+    </div>
+  )
+})
 import MiracleForm from '@/components/miracles/MiracleForm'
 import MiracleDetails from '@/components/miracles/MiracleDetails'
 import Filters from '@/components/ui/Filters'
@@ -54,7 +67,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="h-screen bg-gradient-to-br from-miracle-warm via-white to-miracle-sky overflow-hidden">
+    <div className="h-screen bg-white overflow-hidden">
       {/* Header */}
       <AppHeader
         getTranslation={getTranslation}
@@ -69,19 +82,25 @@ export default function HomePage() {
         onMapTypeChange={setSelectedMapType}
       />
 
-      {/* Main Content */}
-      <main className="h-full pt-14 sm:pt-16">
-        {/* World Map */}
-        <div className="relative h-full">
-                 <DynamicLeafletMap
-                   miracles={filteredMiracles}
-                   onMiracleSelect={setSelectedMiracle}
-                   loading={loading}
-                   selectedMapType={selectedMapType}
-                   onZoomControlsReady={setZoomControls}
-                   getTranslation={getTranslation}
-                 />
-        </div>
+      {/* World Map */}
+      <div 
+        className="absolute left-0 right-0 map-responsive" 
+        style={{ 
+          top: '3.5rem',
+          height: 'calc(100vh - 3.5rem)',
+          margin: 0, 
+          padding: 0 
+        }}
+      >
+        <LeafletWorldMap
+          miracles={filteredMiracles}
+          onMiracleSelect={setSelectedMiracle}
+          loading={loading}
+          selectedMapType={selectedMapType}
+          onZoomControlsReady={setZoomControls}
+          getTranslation={getTranslation}
+        />
+      </div>
 
         {/* Filters Panel */}
         <AnimatePresence>
@@ -120,15 +139,14 @@ export default function HomePage() {
           )}
         </AnimatePresence>
 
-        {/* Floating Action Button for Mobile */}
-        <FloatingActionButton
-          user={user}
-          onShowMiracleForm={() => setShowMiracleForm(true)}
-        />
+      {/* Floating Action Button for Mobile */}
+      <FloatingActionButton
+        user={user}
+        onShowMiracleForm={() => setShowMiracleForm(true)}
+      />
 
-               {/* Help Button - Mobile */}
-               <HelpButton getTranslation={getTranslation} />
-      </main>
+      {/* Help Button - Mobile */}
+      <HelpButton getTranslation={getTranslation} />
 
       {/* Modals */}
       <AuthModal

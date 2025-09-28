@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Plus, User, LogOut } from 'lucide-react'
+import GradientIcon from '@/components/ui/GradientIcon'
 
 interface UserActionsProps {
   user: any
@@ -35,9 +36,7 @@ export default function UserActions({
         </motion.button>
 
         <div className="flex items-center space-x-1 sm:space-x-2">
-          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-miracle-teal to-miracle-sky rounded-full flex items-center justify-center">
-            <User className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
-          </div>
+          <GradientIcon icon={User} gradient="teal" />
           <button
             onClick={onSignOut}
             className="p-1 sm:p-2 text-gray-600 hover:text-miracle-gold transition-colors duration-200 touch-manipulation"

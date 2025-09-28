@@ -21,8 +21,7 @@ interface LeafletWorldMapProps {
   getTranslation: (key: string, fallback: string) => string
 }
 
-// Optimized map container component
-function SafeMapContainer({ selectedMapType, miracles, onMiracleSelect, onZoomControlsReady, getTranslation }: LeafletWorldMapProps) {
+export default function LeafletWorldMap({ selectedMapType, miracles, onMiracleSelect, onZoomControlsReady, getTranslation }: LeafletWorldMapProps) {
   const { mapRef, isReady, mapInstance } = useMapInstance({
     selectedMapType,
     miracles,
@@ -36,7 +35,15 @@ function SafeMapContainer({ selectedMapType, miracles, onMiracleSelect, onZoomCo
       <div 
         ref={mapRef} 
         className="w-full h-full"
-        style={{ height: '100%', width: '100%' }}
+        style={{ 
+          height: '100%', 
+          width: '100%', 
+          margin: 0, 
+          padding: 0,
+          border: 'none',
+          outline: 'none',
+          background: 'transparent'
+        }}
       />
 
       {/* Map Components */}
@@ -87,25 +94,4 @@ function SafeMapContainer({ selectedMapType, miracles, onMiracleSelect, onZoomCo
       </div>
     </div>
   )
-}
-
-export default function LeafletWorldMap(props: LeafletWorldMapProps) {
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  if (!isClient) {
-    return (
-      <div className="w-full h-full bg-gradient-to-br from-miracle-sky to-miracle-teal flex items-center justify-center">
-        <div className="text-center">
-          <div className="spinner mx-auto mb-4"></div>
-          <p className="text-white font-semibold">Loading the world of miracles...</p>
-        </div>
-      </div>
-    )
-  }
-
-  return <SafeMapContainer {...props} />
 }

@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import { ZoomIn, ZoomOut, Maximize, Globe } from 'lucide-react'
+import IconButton from '@/components/ui/IconButton'
 
 interface MapControlsProps {
   zoomControls: {
@@ -19,42 +19,34 @@ export default function MapControls({ zoomControls, getTranslation }: MapControl
 
   return (
     <div className="flex items-center space-x-0.5 sm:space-x-1 bg-gray-100 rounded-lg p-0.5 sm:p-1">
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      <IconButton
+        icon={ZoomOut}
         onClick={zoomControls.zoomOut}
-        className="p-1.5 sm:p-2 rounded-md hover:bg-gray-200 transition-colors duration-200 touch-manipulation"
         title={getTranslation('map.zoomOut', 'Zoom Out')}
-      >
-        <ZoomOut className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
-      </motion.button>
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        size="sm"
+        className="rounded-md"
+      />
+      <IconButton
+        icon={ZoomIn}
         onClick={zoomControls.zoomIn}
-        className="p-1.5 sm:p-2 rounded-md hover:bg-gray-200 transition-colors duration-200 touch-manipulation"
         title={getTranslation('map.zoomIn', 'Zoom In')}
-      >
-        <ZoomIn className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
-      </motion.button>
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        size="sm"
+        className="rounded-md"
+      />
+      <IconButton
+        icon={Maximize}
         onClick={zoomControls.fitBounds}
-        className="p-1.5 sm:p-2 rounded-md hover:bg-gray-200 transition-colors duration-200 touch-manipulation"
         title={getTranslation('map.fitBounds', 'Fit All Miracles')}
-      >
-        <Maximize className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
-      </motion.button>
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        size="sm"
+        className="rounded-md"
+      />
+      <IconButton
+        icon={Globe}
         onClick={zoomControls.worldView}
-        className="p-1.5 sm:p-2 rounded-md hover:bg-gray-200 transition-colors duration-200 touch-manipulation"
         title={getTranslation('map.worldView', 'Show Full World')}
-      >
-        <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
-      </motion.button>
+        size="sm"
+        className="rounded-md"
+      />
     </div>
   )
 }
