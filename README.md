@@ -4,13 +4,16 @@ A beautiful web and mobile app where people around the world can share their sma
 
 ## ✨ Features
 
-- **Interactive World Map**: Explore miracles on a beautiful Leaflet-based world map
+- **Interactive World Map**: Explore miracles on a beautiful Leaflet-based world map with 5 different map styles
 - **Miracle Sharing**: Submit your own miracles with photos, videos, and YouTube links
 - **Social Features**: Upvote, comment, and share miracles with the community
 - **Privacy Controls**: Choose from public, anonymous, or blurred location options
 - **Smart Filtering**: Filter by category, time range, and proximity
 - **Authentication**: Secure login with email/password or Google OAuth
 - **Content Moderation**: Built-in reporting system for inappropriate content
+- **Multi-language Support**: Available in 10 languages (EN, ES, FR, DE, PT, IT, JA, KO, ZH, AR)
+- **Map Type Selection**: Choose from OpenStreetMap, Voyager, Positron, Dark Matter, or Satellite views
+- **Help System**: Built-in help and guidance for new users
 - **Responsive Design**: Works beautifully on desktop and mobile devices
 
 ## 🚀 Quick Start
@@ -97,11 +100,13 @@ The app uses a warm, inspirational color palette:
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 14, React, TypeScript
+- **Frontend**: Next.js 15, React 18, TypeScript
 - **Styling**: Tailwind CSS, Framer Motion
-- **Maps**: Leaflet (2D Interactive Map)
+- **Maps**: Leaflet (2D Interactive Map) with multiple tile providers
 - **Backend**: Supabase (PostgreSQL, Auth, Storage)
 - **State Management**: React Context, Zustand
+- **Internationalization**: next-intl
+- **Performance**: Turbo (Next.js 15), Optimized re-rendering
 
 ## 📱 Mobile Support
 
@@ -127,6 +132,8 @@ The app is fully responsive and works great on mobile devices with:
 2. Add environment variables in Vercel dashboard
 3. Deploy automatically on push to main branch
 
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+
 ### Other Platforms
 
 The app can be deployed to any platform that supports Next.js:
@@ -134,6 +141,23 @@ The app can be deployed to any platform that supports Next.js:
 - Railway
 - DigitalOcean App Platform
 - AWS Amplify
+
+## 📋 Recent Updates
+
+### v1.1.0 - Map Refactoring & Performance
+- 🗺️ Added 5 different map styles (OSM, Voyager, Positron, Dark Matter, Satellite)
+- ⚡ Complete refactoring of map components with DRY principles
+- 🚀 Performance optimizations with useMemo/useCallback
+- 🌍 Enhanced internationalization (10 languages)
+- 🎨 Improved UI/UX with help system and better mobile support
+- 🔧 Upgraded to Next.js 15 with Turbo support
+
+### v1.0.0 - Initial Release
+- 🎉 Core miracle sharing functionality
+- 🗺️ Interactive world map with Leaflet
+- 🔐 Authentication with Supabase
+- 📱 Responsive design for mobile and desktop
+- 🎨 Beautiful UI with Tailwind CSS and Framer Motion
 
 ## 🤝 Contributing
 
