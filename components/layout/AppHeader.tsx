@@ -53,25 +53,22 @@ export default function AppHeader({
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-miracle-gold/20">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16">
+        <div className="w-full pl-3 pr-4 sm:pl-4 sm:pr-6 lg:pl-6 lg:pr-12 xl:pl-8 xl:pr-16">
+          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Logo */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-4"
             >
               <GradientIcon icon={Heart} gradient="gold" />
-              <h1 className="text-lg sm:text-xl font-bold gradient-text">
+              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold gradient-text">
                 {getTranslation('miracles.title', 'Miracles')}
               </h1>
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
-              {/* Language Switcher */}
-              <LanguageSwitcher />
-
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-8 xl:space-x-12">
               {/* Layer Toggle */}
               <LayerToggle
                 activeLayer={activeLayer}
@@ -79,11 +76,15 @@ export default function AppHeader({
                 getTranslation={getTranslation}
               />
 
-              {/* Map Type Selector */}
-              <MapTypeSelector
-                selectedMapType={selectedMapType}
-                onMapTypeChange={onMapTypeChange}
-                getTranslation={getTranslation}
+              {/* User Actions - Right after Layer Toggle */}
+              <UserActions
+                onShowAuthModal={onShowAuthModal}
+                onShowMiracleForm={onShowMiracleForm}
+                onShowPrayerForm={onShowPrayerForm}
+                onShowUserModal={() => {
+                  setIsUserModalOpen(true)
+                  setIsMobileMenuOpen(false)
+                }}
               />
 
               {/* Map Controls */}
@@ -106,15 +107,14 @@ export default function AppHeader({
                 title={getTranslation('help.title', 'Help')}
               />
 
-              {/* User Actions */}
-              <UserActions
-                onShowAuthModal={onShowAuthModal}
-                onShowMiracleForm={onShowMiracleForm}
-                onShowPrayerForm={onShowPrayerForm}
-                onShowUserModal={() => {
-                  setIsUserModalOpen(true)
-                  setIsMobileMenuOpen(false)
-                }}
+              {/* Language Switcher */}
+              <LanguageSwitcher />
+
+              {/* Map Type Selector */}
+              <MapTypeSelector
+                selectedMapType={selectedMapType}
+                onMapTypeChange={onMapTypeChange}
+                getTranslation={getTranslation}
               />
             </div>
 
@@ -210,25 +210,6 @@ export default function AppHeader({
                   <span className="font-medium text-gray-700">
                     {getTranslation('filters.title', 'Filters')}
                   </span>
-                </motion.button>
-              </div>
-
-              {/* Prayer Request Button */}
-              <div className="mb-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                  {getTranslation('prayers.title', 'Prayer Requests')}
-                </h3>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    onShowPrayerForm()
-                    setIsMobileMenuOpen(false)
-                  }}
-                  className="w-full flex items-center space-x-3 p-3 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-200"
-                >
-                  <Cross className="w-5 h-5" />
-                  <span className="font-medium">{getTranslation('prayers.requestPrayer', 'Request Prayer')}</span>
                 </motion.button>
               </div>
 

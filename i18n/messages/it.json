@@ -193,5 +193,60 @@
     "clickMarkers": "Clicca sui marcatori di miracoli per leggere le storie",
     "useFilters": "Usa i filtri per trovare tipi specifici",
     "tip": "Suggerimento: Usa il pulsante del menu (☰) per accedere a più opzioni"
+  },
+  "prayers": {
+    "title": "Richieste di Preghiera",
+    "subtitle": "Condividi le Tue Necessità di Preghiera",
+    "description": "Richiedi preghiere e supporto dalla nostra comunità globale. Condividi le tue necessità e ricevi supporto spirituale da persone di tutto il mondo.",
+    "requestPrayer": "Richiedi Preghiera",
+    "offerPrayer": "Offri Preghiera",
+    "prayersOffered": "Preghiere Offerte",
+    "answered": "Esaudita",
+    "unanswered": "Non Esaudita",
+    "categories": {
+      "health": "Salute e Guarigione",
+      "family": "Famiglia e Relazioni",
+      "work": "Lavoro e Carriera",
+      "relationships": "Relazioni",
+      "spiritual_growth": "Crescita Spirituale",
+      "financial": "Necessità Finanziarie",
+      "education": "Educazione",
+      "peace": "Pace e Conforto",
+      "grief": "Lutto e Perdita",
+      "other": "Altro"
+    },
+    "urgency": {
+      "low": "Bassa",
+      "medium": "Media",
+      "high": "Alta",
+      "urgent": "Urgente"
+    },
+    "form": {
+      "step1": "Dettagli della Preghiera",
+      "step2": "Posizione e Privacy",
+      "step3": "Rivedi e Invia",
+      "titlePlaceholder": "Breve descrizione della tua necessità di preghiera...",
+      "descriptionPlaceholder": "Condividi più dettagli sulla tua situazione e per cosa stai pregando...",
+      "urgencyLabel": "Quanto è urgente questa richiesta di preghiera?",
+      "categoryLabel": "Quale categoria descrive meglio la tua necessità di preghiera?",
+      "anonymousLabel": "Rendi questa richiesta anonima",
+      "anonymousDesc": "Nascondi il tuo nome ma mostra la tua posizione",
+      "sharing": "Condivisione in corso...",
+      "sharePrayer": "Condividi Richiesta di Preghiera",
+      "cancel": "Annulla",
+      "back": "Indietro",
+      "reviewTitle": "Rivedi la Tua Richiesta di Preghiera",
+      "previewAlt": "Anteprima",
+      "geolocationError": "La geolocalizzazione non è supportata da questo browser",
+      "locationError": "Impossibile ottenere la tua posizione: {error}",
+      "photoSizeError": "La foto deve essere più piccola di 10MB",
+      "submitError": "Errore nell'invio della richiesta di preghiera"
+    }
+  },
+  "layers": {
+    "miracles": "Miracoli",
+    "prayers": "Richieste di Preghiera",
+    "both": "Entrambi",
+    "switchLayer": "Cambia Livello"
   }
 }

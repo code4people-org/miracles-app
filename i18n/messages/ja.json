@@ -192,5 +192,60 @@
     "clickMarkers": "奇跡のマーカーをクリックしてストーリーを読む",
     "useFilters": "フィルターを使用して特定のタイプを見つける",
     "tip": "ヒント: メニューボタン（☰）を使用してより多くのオプションにアクセス"
+  },
+  "prayers": {
+    "title": "祈りのリクエスト",
+    "subtitle": "祈りのニーズを共有",
+    "description": "グローバルコミュニティから祈りとサポートをリクエストしてください。あなたのニーズを共有し、世界中の人々から精神的なサポートを受けましょう。",
+    "requestPrayer": "祈りをリクエスト",
+    "offerPrayer": "祈りを提供",
+    "prayersOffered": "提供された祈り",
+    "answered": "答えられた",
+    "unanswered": "答えられていない",
+    "categories": {
+      "health": "健康と癒し",
+      "family": "家族と関係",
+      "work": "仕事とキャリア",
+      "relationships": "人間関係",
+      "spiritual_growth": "精神的成長",
+      "financial": "経済的ニーズ",
+      "education": "教育",
+      "peace": "平和と慰め",
+      "grief": "悲しみと喪失",
+      "other": "その他"
+    },
+    "urgency": {
+      "low": "低い",
+      "medium": "中程度",
+      "high": "高い",
+      "urgent": "緊急"
+    },
+    "form": {
+      "step1": "祈りの詳細",
+      "step2": "場所とプライバシー",
+      "step3": "確認して送信",
+      "titlePlaceholder": "祈りのニーズの簡単な説明...",
+      "descriptionPlaceholder": "あなたの状況と何を祈っているかについて、より詳しく共有してください...",
+      "urgencyLabel": "この祈りのリクエストの緊急度はどの程度ですか？",
+      "categoryLabel": "どのカテゴリがあなたの祈りのニーズを最もよく説明しますか？",
+      "anonymousLabel": "このリクエストを匿名にする",
+      "anonymousDesc": "名前を隠すが場所を表示する",
+      "sharing": "共有中...",
+      "sharePrayer": "祈りのリクエストを共有",
+      "cancel": "キャンセル",
+      "back": "戻る",
+      "reviewTitle": "祈りのリクエストを確認",
+      "previewAlt": "プレビュー",
+      "geolocationError": "このブラウザは位置情報をサポートしていません",
+      "locationError": "位置情報を取得できませんでした: {error}",
+      "photoSizeError": "写真は10MB未満である必要があります",
+      "submitError": "祈りのリクエストの送信に失敗しました"
+    }
+  },
+  "layers": {
+    "miracles": "奇跡",
+    "prayers": "祈りのリクエスト",
+    "both": "両方",
+    "switchLayer": "レイヤーを切り替え"
   }
 }

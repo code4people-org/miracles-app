@@ -188,6 +188,7 @@ export default function HomePage() {
       <FloatingActionButton
         user={user}
         onShowMiracleForm={() => setShowMiracleForm(true)}
+        onShowPrayerForm={() => setShowPrayerForm(true)}
       />
 
       {/* Help Button - Mobile */}

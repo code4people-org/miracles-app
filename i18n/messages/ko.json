@@ -193,5 +193,60 @@
     "clickMarkers": "기적 마커를 클릭하여 이야기를 읽으세요",
     "useFilters": "필터를 사용하여 특정 유형을 찾으세요",
     "tip": "팁: 메뉴 버튼(☰)을 사용하여 더 많은 옵션에 액세스하세요"
+  },
+  "prayers": {
+    "title": "기도 요청",
+    "subtitle": "기도 필요를 공유하세요",
+    "description": "글로벌 커뮤니티에서 기도와 지원을 요청하세요. 당신의 필요를 공유하고 전 세계 사람들로부터 영적 지원을 받으세요.",
+    "requestPrayer": "기도 요청",
+    "offerPrayer": "기도 제공",
+    "prayersOffered": "제공된 기도",
+    "answered": "응답됨",
+    "unanswered": "응답되지 않음",
+    "categories": {
+      "health": "건강과 치유",
+      "family": "가족과 관계",
+      "work": "직업과 경력",
+      "relationships": "인간관계",
+      "spiritual_growth": "영적 성장",
+      "financial": "경제적 필요",
+      "education": "교육",
+      "peace": "평화와 위로",
+      "grief": "슬픔과 상실",
+      "other": "기타"
+    },
+    "urgency": {
+      "low": "낮음",
+      "medium": "보통",
+      "high": "높음",
+      "urgent": "긴급"
+    },
+    "form": {
+      "step1": "기도 세부사항",
+      "step2": "위치 및 개인정보",
+      "step3": "검토 및 제출",
+      "titlePlaceholder": "기도 필요에 대한 간단한 설명...",
+      "descriptionPlaceholder": "당신의 상황과 무엇을 위해 기도하고 있는지에 대해 더 자세히 공유하세요...",
+      "urgencyLabel": "이 기도 요청의 긴급도는 어느 정도인가요?",
+      "categoryLabel": "어떤 카테고리가 당신의 기도 필요를 가장 잘 설명하나요?",
+      "anonymousLabel": "이 요청을 익명으로 만들기",
+      "anonymousDesc": "이름을 숨기고 위치를 표시",
+      "sharing": "공유 중...",
+      "sharePrayer": "기도 요청 공유",
+      "cancel": "취소",
+      "back": "뒤로",
+      "reviewTitle": "기도 요청 검토",
+      "previewAlt": "미리보기",
+      "geolocationError": "이 브라우저는 위치 정보를 지원하지 않습니다",
+      "locationError": "위치를 가져올 수 없습니다: {error}",
+      "photoSizeError": "사진은 10MB보다 작아야 합니다",
+      "submitError": "기도 요청 제출 실패"
+    }
+  },
+  "layers": {
+    "miracles": "기적",
+    "prayers": "기도 요청",
+    "both": "둘 다",
+    "switchLayer": "레이어 전환"
   }
 }

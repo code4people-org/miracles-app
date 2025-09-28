@@ -193,5 +193,60 @@
     "clickMarkers": "点击奇迹标记阅读故事",
     "useFilters": "使用过滤器查找特定类型",
     "tip": "提示：使用菜单按钮（☰）访问更多选项"
+  },
+  "prayers": {
+    "title": "祈祷请求",
+    "subtitle": "分享您的祈祷需求",
+    "description": "从我们的全球社区请求祈祷和支持。分享您的需求，从世界各地的人们那里获得精神支持。",
+    "requestPrayer": "请求祈祷",
+    "offerPrayer": "提供祈祷",
+    "prayersOffered": "提供的祈祷",
+    "answered": "已回应",
+    "unanswered": "未回应",
+    "categories": {
+      "health": "健康与治愈",
+      "family": "家庭与关系",
+      "work": "工作与职业",
+      "relationships": "人际关系",
+      "spiritual_growth": "精神成长",
+      "financial": "经济需求",
+      "education": "教育",
+      "peace": "和平与安慰",
+      "grief": "悲伤与失去",
+      "other": "其他"
+    },
+    "urgency": {
+      "low": "低",
+      "medium": "中等",
+      "high": "高",
+      "urgent": "紧急"
+    },
+    "form": {
+      "step1": "祈祷详情",
+      "step2": "位置和隐私",
+      "step3": "审查和提交",
+      "titlePlaceholder": "您的祈祷需求的简要描述...",
+      "descriptionPlaceholder": "分享更多关于您的情况和您祈祷的内容的详细信息...",
+      "urgencyLabel": "这个祈祷请求的紧急程度如何？",
+      "categoryLabel": "哪个类别最能描述您的祈祷需求？",
+      "anonymousLabel": "使此请求匿名",
+      "anonymousDesc": "隐藏您的姓名但显示您的位置",
+      "sharing": "分享中...",
+      "sharePrayer": "分享祈祷请求",
+      "cancel": "取消",
+      "back": "返回",
+      "reviewTitle": "审查您的祈祷请求",
+      "previewAlt": "预览",
+      "geolocationError": "此浏览器不支持地理位置",
+      "locationError": "无法获取您的位置：{error}",
+      "photoSizeError": "照片必须小于10MB",
+      "submitError": "提交祈祷请求失败"
+    }
+  },
+  "layers": {
+    "miracles": "奇迹",
+    "prayers": "祈祷请求",
+    "both": "两者",
+    "switchLayer": "切换图层"
   }
 }

@@ -193,5 +193,60 @@
     "clickMarkers": "Cliquez sur les marqueurs de miracles pour lire les histoires",
     "useFilters": "Utilisez les filtres pour trouver des types spécifiques",
     "tip": "Astuce: Utilisez le bouton de menu (☰) pour accéder à plus d'options"
+  },
+  "prayers": {
+    "title": "Demandes de Prière",
+    "subtitle": "Partagez Vos Besoins de Prière",
+    "description": "Demandez des prières et du soutien de notre communauté mondiale. Partagez vos besoins et recevez un soutien spirituel de personnes du monde entier.",
+    "requestPrayer": "Demander une Prière",
+    "offerPrayer": "Offrir une Prière",
+    "prayersOffered": "Prière Offertes",
+    "answered": "Exaucée",
+    "unanswered": "Non Exaucée",
+    "categories": {
+      "health": "Santé et Guérison",
+      "family": "Famille et Relations",
+      "work": "Travail et Carrière",
+      "relationships": "Relations",
+      "spiritual_growth": "Croissance Spirituelle",
+      "financial": "Besoins Financiers",
+      "education": "Éducation",
+      "peace": "Paix et Réconfort",
+      "grief": "Deuil et Perte",
+      "other": "Autre"
+    },
+    "urgency": {
+      "low": "Faible",
+      "medium": "Moyenne",
+      "high": "Élevée",
+      "urgent": "Urgente"
+    },
+    "form": {
+      "step1": "Détails de la Prière",
+      "step2": "Localisation et Confidentialité",
+      "step3": "Réviser et Soumettre",
+      "titlePlaceholder": "Brève description de votre besoin de prière...",
+      "descriptionPlaceholder": "Partagez plus de détails sur votre situation et ce pour quoi vous priez...",
+      "urgencyLabel": "Quelle est l'urgence de cette demande de prière ?",
+      "categoryLabel": "Quelle catégorie décrit le mieux votre besoin de prière ?",
+      "anonymousLabel": "Rendre cette demande anonyme",
+      "anonymousDesc": "Masquer votre nom mais afficher votre localisation",
+      "sharing": "Partage en cours...",
+      "sharePrayer": "Partager la Demande de Prière",
+      "cancel": "Annuler",
+      "back": "Retour",
+      "reviewTitle": "Réviser Votre Demande de Prière",
+      "previewAlt": "Aperçu",
+      "geolocationError": "La géolocalisation n'est pas prise en charge par ce navigateur",
+      "locationError": "Impossible d'obtenir votre localisation : {error}",
+      "photoSizeError": "La photo doit être inférieure à 10MB",
+      "submitError": "Échec de la soumission de la demande de prière"
+    }
+  },
+  "layers": {
+    "miracles": "Miracles",
+    "prayers": "Demandes de Prière",
+    "both": "Les Deux",
+    "switchLayer": "Changer de Couche"
   }
 }

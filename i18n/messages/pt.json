@@ -193,5 +193,60 @@
     "clickMarkers": "Clique nos marcadores de milagres para ler histórias",
     "useFilters": "Use filtros para encontrar tipos específicos",
     "tip": "Dica: Use o botão do menu (☰) para acessar mais opções"
+  },
+  "prayers": {
+    "title": "Pedidos de Oração",
+    "subtitle": "Compartilhe Suas Necessidades de Oração",
+    "description": "Peça orações e apoio da nossa comunidade global. Compartilhe suas necessidades e receba apoio espiritual de pessoas ao redor do mundo.",
+    "requestPrayer": "Pedir Oração",
+    "offerPrayer": "Oferecer Oração",
+    "prayersOffered": "Orações Oferecidas",
+    "answered": "Atendida",
+    "unanswered": "Não Atendida",
+    "categories": {
+      "health": "Saúde e Cura",
+      "family": "Família e Relacionamentos",
+      "work": "Trabalho e Carreira",
+      "relationships": "Relacionamentos",
+      "spiritual_growth": "Crescimento Espiritual",
+      "financial": "Necessidades Financeiras",
+      "education": "Educação",
+      "peace": "Paz e Conforto",
+      "grief": "Luto e Perda",
+      "other": "Outro"
+    },
+    "urgency": {
+      "low": "Baixa",
+      "medium": "Média",
+      "high": "Alta",
+      "urgent": "Urgente"
+    },
+    "form": {
+      "step1": "Detalhes da Oração",
+      "step2": "Localização e Privacidade",
+      "step3": "Revisar e Enviar",
+      "titlePlaceholder": "Breve descrição da sua necessidade de oração...",
+      "descriptionPlaceholder": "Compartilhe mais detalhes sobre sua situação e pelo que você está orando...",
+      "urgencyLabel": "Quão urgente é este pedido de oração?",
+      "categoryLabel": "Qual categoria melhor descreve sua necessidade de oração?",
+      "anonymousLabel": "Tornar este pedido anônimo",
+      "anonymousDesc": "Ocultar seu nome mas mostrar sua localização",
+      "sharing": "Compartilhando...",
+      "sharePrayer": "Compartilhar Pedido de Oração",
+      "cancel": "Cancelar",
+      "back": "Voltar",
+      "reviewTitle": "Revisar Seu Pedido de Oração",
+      "previewAlt": "Visualização",
+      "geolocationError": "Geolocalização não é suportada por este navegador",
+      "locationError": "Não foi possível obter sua localização: {error}",
+      "photoSizeError": "A foto deve ser menor que 10MB",
+      "submitError": "Falha ao enviar o pedido de oração"
+    }
+  },
+  "layers": {
+    "miracles": "Milagres",
+    "prayers": "Pedidos de Oração",
+    "both": "Ambos",
+    "switchLayer": "Trocar Camada"
   }
 }

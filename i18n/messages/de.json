@@ -193,5 +193,60 @@
     "clickMarkers": "Klicken Sie auf Wunder-Marker, um Geschichten zu lesen",
     "useFilters": "Verwenden Sie Filter, um bestimmte Typen zu finden",
     "tip": "Tipp: Verwenden Sie die Menü-Schaltfläche (☰) für mehr Optionen"
+  },
+  "prayers": {
+    "title": "Gebetsanfragen",
+    "subtitle": "Teilen Sie Ihre Gebetsbedürfnisse",
+    "description": "Bitten Sie um Gebete und Unterstützung von unserer globalen Gemeinschaft. Teilen Sie Ihre Bedürfnisse und erhalten Sie spirituelle Unterstützung von Menschen auf der ganzen Welt.",
+    "requestPrayer": "Gebet Anfordern",
+    "offerPrayer": "Gebet Anbieten",
+    "prayersOffered": "Angebotene Gebete",
+    "answered": "Beantwortet",
+    "unanswered": "Unbeantwortet",
+    "categories": {
+      "health": "Gesundheit und Heilung",
+      "family": "Familie und Beziehungen",
+      "work": "Arbeit und Karriere",
+      "relationships": "Beziehungen",
+      "spiritual_growth": "Spirituelles Wachstum",
+      "financial": "Finanzielle Bedürfnisse",
+      "education": "Bildung",
+      "peace": "Frieden und Trost",
+      "grief": "Trauer und Verlust",
+      "other": "Andere"
+    },
+    "urgency": {
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch",
+      "urgent": "Dringend"
+    },
+    "form": {
+      "step1": "Gebetsdetails",
+      "step2": "Standort und Datenschutz",
+      "step3": "Überprüfen und Senden",
+      "titlePlaceholder": "Kurze Beschreibung Ihres Gebetsbedürfnisses...",
+      "descriptionPlaceholder": "Teilen Sie mehr Details über Ihre Situation und wofür Sie beten...",
+      "urgencyLabel": "Wie dringend ist diese Gebetsanfrage?",
+      "categoryLabel": "Welche Kategorie beschreibt Ihr Gebetsbedürfnis am besten?",
+      "anonymousLabel": "Diese Anfrage anonym machen",
+      "anonymousDesc": "Ihren Namen verbergen, aber Ihren Standort anzeigen",
+      "sharing": "Teilen...",
+      "sharePrayer": "Gebetsanfrage Teilen",
+      "cancel": "Abbrechen",
+      "back": "Zurück",
+      "reviewTitle": "Überprüfen Sie Ihre Gebetsanfrage",
+      "previewAlt": "Vorschau",
+      "geolocationError": "Geolokalisierung wird von diesem Browser nicht unterstützt",
+      "locationError": "Standort konnte nicht ermittelt werden: {error}",
+      "photoSizeError": "Foto muss kleiner als 10MB sein",
+      "submitError": "Fehler beim Senden der Gebetsanfrage"
+    }
+  },
+  "layers": {
+    "miracles": "Wunder",
+    "prayers": "Gebetsanfragen",
+    "both": "Beide",
+    "switchLayer": "Ebene Wechseln"
   }
 }
