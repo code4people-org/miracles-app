@@ -183,7 +183,14 @@
     "maxLength": "Must be no more than {max} characters",
     "url": "Please enter a valid URL",
     "number": "Please enter a valid number",
-    "positive": "Must be a positive number"
+    "positive": "Must be a positive number",
+    "checking": "Checking content...",
+    "inappropriate": "Content may be inappropriate",
+    "flaggedWords": "Flagged words",
+    "suggestions": "Suggestions",
+    "reviewRequired": "Your content will be reviewed before being published",
+    "approved": "Content looks good!",
+    "inappropriateContent": "Content contains inappropriate material. Please review and edit."
   },
   "help": {
     "title": "帮助",

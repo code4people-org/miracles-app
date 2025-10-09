@@ -193,7 +193,14 @@
     "maxLength": "No debe tener más de {max} caracteres",
     "url": "Por favor, ingresa una URL válida",
     "number": "Por favor, ingresa un número válido",
-    "positive": "Debe ser un número positivo"
+    "positive": "Debe ser un número positivo",
+    "checking": "Verificando contenido...",
+    "inappropriate": "El contenido puede ser inapropiado",
+    "flaggedWords": "Palabras marcadas",
+    "suggestions": "Sugerencias",
+    "reviewRequired": "Tu contenido será revisado antes de ser publicado",
+    "approved": "¡El contenido se ve bien!",
+    "inappropriateContent": "El contenido contiene material inapropiado. Por favor, revisa y edita."
   },
   "help": {
     "title": "Ayuda",

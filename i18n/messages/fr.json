@@ -183,7 +183,14 @@
     "maxLength": "Ne doit pas dépasser {max} caractères",
     "url": "Veuillez entrer une URL valide",
     "number": "Veuillez entrer un nombre valide",
-    "positive": "Doit être un nombre positif"
+    "positive": "Doit être un nombre positif",
+    "checking": "Vérification du contenu...",
+    "inappropriate": "Le contenu peut être inapproprié",
+    "flaggedWords": "Mots signalés",
+    "suggestions": "Suggestions",
+    "reviewRequired": "Votre contenu sera examiné avant publication",
+    "approved": "Le contenu semble bon !",
+    "inappropriateContent": "Le contenu contient du matériel inapproprié. Veuillez réviser et modifier."
   },
   "help": {
     "title": "Aide",

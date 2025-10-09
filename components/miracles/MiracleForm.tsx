@@ -7,6 +7,8 @@ import { X, Upload, MapPin, Heart, Camera, Video, Link, Eye, EyeOff } from 'luci
 import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import { miracleCategories } from '@/lib/miracleCategories'
+import { ContentValidation } from '@/components/forms/ContentValidation'
+import { ContentFilterResult } from '@/lib/contentFilter'
 
 interface MiracleFormProps {
   onClose: () => void
@@ -39,6 +41,7 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
   const [error, setError] = useState('')
   const [step, setStep] = useState(1)
   const [showLocationPicker, setShowLocationPicker] = useState(false)
+  const [validationResult, setValidationResult] = useState<ContentFilterResult | null>(null)
   
   const photoInputRef = useRef<HTMLInputElement>(null)
   const videoInputRef = useRef<HTMLInputElement>(null)
@@ -114,6 +117,13 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Check validation result
+    if (validationResult && !validationResult.isAppropriate) {
+      setError(getTranslation('validation.inappropriateContent', 'Content contains inappropriate material. Please review and edit.'))
+      return
+    }
+    
     if (!user || !location) return
 
     setLoading(true)
@@ -149,6 +159,7 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
           photo_url: photoUrl,
           video_url: videoUrl,
           youtube_url: formData.youtube_url || null,
+          is_approved: validationResult?.requiresReview ? false : true, // Auto-approve if no issues
         })
 
       if (error) throw error
@@ -489,6 +500,13 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
                 </div>
               </div>
 
+              {/* Content Validation */}
+              <ContentValidation
+                content={{ title: formData.title, description: formData.description }}
+                onValidationChange={setValidationResult}
+                getTranslation={getTranslation}
+              />
+
               <div className="bg-miracle-warm/50 p-4 rounded-lg">
                 <h4 className="font-medium text-gray-800 mb-2">Review Your Miracle</h4>
                 <div className="space-y-2 text-sm text-gray-600">
@@ -525,7 +543,7 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
             ) : (
               <motion.button
                 type="submit"
-                disabled={loading || !location}
+                disabled={loading || !location || (validationResult ? !validationResult.isAppropriate : false)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-miracle text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"

@@ -7,6 +7,8 @@ import { X, Upload, MapPin, Cross, Camera, Eye, EyeOff } from 'lucide-react'
 import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import { prayerCategories, prayerUrgencies } from '@/lib/prayerCategories'
+import { ContentValidation } from '@/components/forms/ContentValidation'
+import { ContentFilterResult } from '@/lib/contentFilter'
 
 interface PrayerRequestFormProps {
   onClose: () => void
@@ -37,6 +39,7 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [step, setStep] = useState(1)
+  const [validationResult, setValidationResult] = useState<ContentFilterResult | null>(null)
   
   const photoInputRef = useRef<HTMLInputElement>(null)
 
@@ -97,6 +100,13 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Check validation result
+    if (validationResult && !validationResult.isAppropriate) {
+      setError(getTranslation('validation.inappropriateContent', 'Content contains inappropriate material. Please review and edit.'))
+      return
+    }
+    
     if (!user || !location) return
 
     setLoading(true)
@@ -126,6 +136,7 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
           privacy_level: formData.privacy_level,
           photo_url: photoUrl,
           is_anonymous: formData.is_anonymous,
+          is_approved: validationResult?.requiresReview ? false : true, // Auto-approve if no issues
         })
 
       if (error) throw error
@@ -452,6 +463,13 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
               animate={{ opacity: 1, x: 0 }}
               className="space-y-6"
             >
+              {/* Content Validation */}
+              <ContentValidation
+                content={{ title: formData.title, description: formData.description }}
+                onValidationChange={setValidationResult}
+                getTranslation={getTranslation}
+              />
+
               <div className="bg-purple-50 p-4 rounded-lg">
                 <h4 className="font-medium text-gray-800 mb-2">{getTranslation('prayers.form.reviewTitle', 'Review Your Prayer Request')}</h4>
                 <div className="space-y-2 text-sm text-gray-600">
@@ -490,7 +508,7 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
             ) : (
               <motion.button
                 type="submit"
-                disabled={loading || !location}
+                disabled={loading || !location || (validationResult ? !validationResult.isAppropriate : false)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-700 transition-colors duration-200"
