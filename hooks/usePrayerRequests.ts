@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase } from '@/lib/supabase'
-import type { Database } from '@/lib/supabase'
+import { apiClient } from '@/lib/apiClient'
 
 // Temporary type definition until we regenerate Supabase types
 type PrayerRequest = {
@@ -48,14 +47,7 @@ export function usePrayerRequests() {
 
   const fetchPrayerRequests = useCallback(async () => {
     try {
-      const { data, error } = await supabase
-        .from('prayer_requests')
-        .select('*')
-        .eq('is_approved', true)
-        .order('created_at', { ascending: false })
-
-      if (error) throw error
-      
+      const data = await apiClient.get<PrayerRequest[]>('/api/v1/prayer-requests')
       setPrayerRequests(data || [])
     } catch (error) {
       console.error('Error fetching prayer requests:', error)
@@ -111,18 +103,7 @@ export function usePrayerRequests() {
 
   const offerPrayer = useCallback(async (prayerRequestId: string, message?: string) => {
     try {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) throw new Error('User not authenticated')
-
-      const { error } = await supabase
-        .from('prayers_offered')
-        .insert({
-          user_id: user.id,
-          prayer_request_id: prayerRequestId,
-          message: message || null,
-        })
-
-      if (error) throw error
+      await apiClient.post(`/api/v1/prayer-requests/${prayerRequestId}/pray`, { message: message || null })
 
       // Refresh prayer requests to update counts
       await fetchPrayerRequests()
@@ -135,19 +116,7 @@ export function usePrayerRequests() {
 
   const markAsAnswered = useCallback(async (prayerRequestId: string) => {
     try {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) throw new Error('User not authenticated')
-
-      const { error } = await supabase
-        .from('prayer_requests')
-        .update({ 
-          is_answered: true,
-          answered_at: new Date().toISOString()
-        })
-        .eq('id', prayerRequestId)
-        .eq('user_id', user.id) // Only the creator can mark as answered
-
-      if (error) throw error
+      await apiClient.put(`/api/v1/prayer-requests/${prayerRequestId}/answered`)
 
       // Refresh prayer requests
       await fetchPrayerRequests()
@@ -160,19 +129,8 @@ export function usePrayerRequests() {
 
   const checkPrayerStatus = useCallback(async (prayerRequestId: string) => {
     try {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return { hasPrayed: false }
-
-      const { data, error } = await supabase
-        .from('prayers_offered')
-        .select('id')
-        .eq('prayer_request_id', prayerRequestId)
-        .eq('user_id', user.id)
-        .limit(1)
-
-      if (error) throw error
-
-      return { hasPrayed: data && data.length > 0 }
+      const response = await apiClient.get<{ has_interacted: boolean }>(`/api/v1/interactions/status?type=prayer&id=${prayerRequestId}`)
+      return { hasPrayed: response.has_interacted }
     } catch (error) {
       console.error('Error checking prayer status:', error)
       return { hasPrayed: false }

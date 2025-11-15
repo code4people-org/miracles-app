@@ -3,7 +3,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, CheckCircle, XCircle, Eye, BarChart3, Users, FileText } from 'lucide-react';
-import { AdminUtils, ContentViolation, ViolationStats } from '@/lib/adminUtils';
+import { apiClient } from '@/lib/apiClient';
+
+export interface ContentViolation {
+  id: string;
+  user_id: string;
+  content_type: 'miracle' | 'prayer_request';
+  violation_type: string;
+  flagged_content: string;
+  content_id: string;
+  created_at: string;
+}
+
+export interface ViolationStats {
+  total: number;
+  byType: Record<string, number>;
+  byContentType: Record<string, number>;
+  recent: ContentViolation[];
+}
 
 interface PendingContent {
   id: string;
@@ -35,14 +52,28 @@ export default function ContentModerationDashboard() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const [pending, violationsData, statsData] = await Promise.all([
-        AdminUtils.getPendingContent(),
-        AdminUtils.getContentViolations(50),
-        AdminUtils.getViolationStats()
-      ]);
+      // Get pending content
+      const pending = await apiClient.get<PendingContent[]>('/api/v1/admin/pending');
+
+      // Get violations
+      const violationsData = await apiClient.get<ContentViolation[]>('/api/v1/admin/violations');
+
+      // Calculate stats
+      const allViolations = violationsData || [];
+      const statsData: ViolationStats = {
+        total: allViolations.length,
+        byType: {},
+        byContentType: {},
+        recent: allViolations.slice(0, 10)
+      };
       
-      setPendingContent(pending);
-      setViolations(violationsData);
+      allViolations.forEach(v => {
+        statsData.byType[v.violation_type] = (statsData.byType[v.violation_type] || 0) + 1;
+        statsData.byContentType[v.content_type] = (statsData.byContentType[v.content_type] || 0) + 1;
+      });
+      
+      setPendingContent(pending as PendingContent[]);
+      setViolations(allViolations as ContentViolation[]);
       setStats(statsData);
     } catch (error) {
       console.error('Error fetching admin data:', error);
@@ -52,20 +83,32 @@ export default function ContentModerationDashboard() {
   };
 
   const handleApprove = async (contentId: string, contentType: 'miracle' | 'prayer_request') => {
-    const success = await AdminUtils.approveContent(contentId, contentType);
-    if (success) {
+    try {
+      await apiClient.post('/api/v1/admin/approve', {
+        content_type: contentType,
+        content_id: contentId
+      });
       await fetchData(); // Refresh data
+    } catch (error) {
+      console.error('Error approving content:', error);
     }
   };
 
   const handleReject = async (contentId: string, contentType: 'miracle' | 'prayer_request') => {
     if (!rejectReason.trim()) return;
     
-    const success = await AdminUtils.rejectContent(contentId, contentType, rejectReason, 'admin');
-    if (success) {
+    try {
+      await apiClient.post('/api/v1/admin/reject', {
+        content_type: contentType,
+        content_id: contentId,
+        reason: rejectReason
+      });
+      
       setSelectedContent(null);
       setRejectReason('');
       await fetchData(); // Refresh data
+    } catch (error) {
+      console.error('Error rejecting content:', error);
     }
   };
 

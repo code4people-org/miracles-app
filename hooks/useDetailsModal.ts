@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
-import { supabase } from '@/lib/supabase'
+import { apiClient } from '@/lib/apiClient'
 
 interface UseDetailsModalProps {
   itemId: string
@@ -28,20 +28,8 @@ export function useDetailsModal({
 
   const fetchComments = useCallback(async () => {
     try {
-      const { data, error } = await supabase
-        .from(commentTable)
-        .select(`
-          *,
-          profiles:user_id (
-            id,
-            full_name,
-            avatar_url
-          )
-        `)
-        .eq(commentIdField, itemId)
-        .order('created_at', { ascending: true })
-
-      if (error) throw error
+      const type = commentTable === 'comments' ? 'miracle' : 'prayer'
+      const data = await apiClient.get<any[]>(`/api/v1/comments?type=${type}&id=${itemId}`)
       setComments(data || [])
     } catch (error) {
       console.error('Error fetching comments:', error)
@@ -52,19 +40,9 @@ export function useDetailsModal({
     if (!user || !interactionTable || !interactionIdField) return
 
     try {
-      const { data, error } = await supabase
-        .from(interactionTable)
-        .select('id')
-        .eq(interactionIdField, itemId)
-        .eq('user_id', user.id)
-        .limit(1)
-
-      if (error) {
-        console.error('Error checking interaction status:', error)
-        setHasInteracted(false)
-        return
-      }
-      setHasInteracted(data && data.length > 0)
+      const type = interactionTable === 'upvotes' ? 'miracle' : 'prayer'
+      const response = await apiClient.get<{ has_interacted: boolean }>(`/api/v1/interactions/status?type=${type}&id=${itemId}`)
+      setHasInteracted(response.has_interacted)
     } catch (error) {
       console.error('Error checking interaction status:', error)
       setHasInteracted(false)
@@ -81,31 +59,22 @@ export function useDetailsModal({
 
     setLoading(true)
     try {
-      if (action === 'remove') {
-        const { error } = await supabase
-          .from(interactionTable)
-          .delete()
-          .eq(interactionIdField, itemId)
-          .eq('user_id', user.id)
-
-        if (error) {
-          console.error('Error removing interaction:', error)
-          return
+      if (interactionTable === 'upvotes') {
+        // Handle upvote toggle
+        const response = await apiClient.post<{ upvoted: boolean }>('/api/v1/interactions/upvote', {
+          miracle_id: itemId
+        })
+        setHasInteracted(response.upvoted)
+      } else if (interactionTable === 'prayers_offered') {
+        // Handle prayer toggle
+        if (action === 'add') {
+          await apiClient.post(`/api/v1/prayer-requests/${itemId}/pray`)
+          setHasInteracted(true)
+        } else {
+          // Note: Backend doesn't support removing prayers, so we'll just refresh status
+          const response = await apiClient.get<{ has_interacted: boolean }>(`/api/v1/interactions/status?type=prayer&id=${itemId}`)
+          setHasInteracted(response.has_interacted)
         }
-        setHasInteracted(false)
-      } else {
-        const { error } = await supabase
-          .from(interactionTable)
-          .insert({
-            [interactionIdField]: itemId,
-            user_id: user.id,
-          })
-
-        if (error) {
-          console.error('Error adding interaction:', error)
-          return
-        }
-        setHasInteracted(true)
       }
       return true // Success
     } catch (error) {
@@ -122,15 +91,12 @@ export function useDetailsModal({
 
     setCommentLoading(true)
     try {
-      const { error } = await supabase
-        .from(commentTable)
-        .insert({
-          [commentIdField]: itemId,
-          user_id: user.id,
-          content: newComment.trim(),
-        })
-
-      if (error) throw error
+      const type = commentTable === 'comments' ? 'miracle' : 'prayer'
+      await apiClient.post('/api/v1/comments', {
+        type,
+        item_id: itemId,
+        content: newComment.trim(),
+      })
       setNewComment('')
       fetchComments()
       return true // Success
@@ -147,15 +113,15 @@ export function useDetailsModal({
     if (!user || !reportReason.trim()) return
 
     try {
-      const { error } = await supabase
-        .from('reports')
-        .insert({
-          reporter_id: user.id,
-          [commentIdField]: itemId,
-          reason: reportReason.trim(),
-        })
-
-      if (error) throw error
+      // Determine content type based on commentIdField
+      const content_type = commentIdField === 'miracle_id' ? 'miracle' : 
+                          commentIdField === 'prayer_request_id' ? 'prayer_request' : 'comment'
+      
+      await apiClient.post('/api/v1/reports', {
+        content_type,
+        content_id: itemId,
+        reason: reportReason.trim(),
+      })
       setShowReportForm(false)
       setReportReason('')
       alert('Thank you for reporting. We will review this content.')

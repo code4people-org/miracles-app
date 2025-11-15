@@ -190,7 +190,10 @@
     "suggestions": "Suggestions",
     "reviewRequired": "Your content will be reviewed before being published",
     "approved": "Content looks good!",
-    "inappropriateContent": "Content contains inappropriate material. Please review and edit."
+    "inappropriateContent": "Content contains inappropriate material. Please review and edit.",
+    "aiModeration": "AI 콘텐츠 보호 활성화",
+    "basicModeration": "기본 콘텐츠 보호",
+    "confidence": "신뢰도"
   },
   "help": {
     "title": "도움말",

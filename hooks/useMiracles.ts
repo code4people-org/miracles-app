@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { supabase } from '@/lib/supabase'
+import { apiClient } from '@/lib/apiClient'
 import { getSampleMiracles } from '@/lib/sampleData'
 import type { Database } from '@/lib/supabase'
 
@@ -23,13 +23,7 @@ export function useMiracles() {
 
   const fetchMiracles = useCallback(async () => {
     try {
-      const { data, error } = await supabase
-        .from('miracles')
-        .select('*')
-        .eq('is_approved', true)
-        .order('created_at', { ascending: false })
-
-      if (error) throw error
+      const data = await apiClient.get<Miracle[]>('/api/v1/miracles')
       
       // If no real miracles, use sample data for demonstration
       if (!data || data.length === 0) {

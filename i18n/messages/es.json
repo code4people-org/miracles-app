@@ -200,7 +200,10 @@
     "suggestions": "Sugerencias",
     "reviewRequired": "Tu contenido será revisado antes de ser publicado",
     "approved": "¡El contenido se ve bien!",
-    "inappropriateContent": "El contenido contiene material inapropiado. Por favor, revisa y edita."
+    "inappropriateContent": "El contenido contiene material inapropiado. Por favor, revisa y edita.",
+    "aiModeration": "Protección de Contenido con IA Activa",
+    "basicModeration": "Protección Básica de Contenido",
+    "confidence": "confianza"
   },
   "help": {
     "title": "Ayuda",

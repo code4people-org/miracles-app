@@ -190,7 +190,10 @@
     "suggestions": "Suggestions",
     "reviewRequired": "Your content will be reviewed before being published",
     "approved": "Content looks good!",
-    "inappropriateContent": "Content contains inappropriate material. Please review and edit."
+    "inappropriateContent": "Content contains inappropriate material. Please review and edit.",
+    "aiModeration": "حماية المحتوى بالذكاء الاصطناعي نشطة",
+    "basicModeration": "حماية أساسية للمحتوى",
+    "confidence": "ثقة"
   },
   "help": {
     "title": "مساعدة",

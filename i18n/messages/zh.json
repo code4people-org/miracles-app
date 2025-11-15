@@ -190,7 +190,10 @@
     "suggestions": "Suggestions",
     "reviewRequired": "Your content will be reviewed before being published",
     "approved": "Content looks good!",
-    "inappropriateContent": "Content contains inappropriate material. Please review and edit."
+    "inappropriateContent": "Content contains inappropriate material. Please review and edit.",
+    "aiModeration": "AI内容保护已激活",
+    "basicModeration": "基础内容保护",
+    "confidence": "置信度"
   },
   "help": {
     "title": "帮助",
