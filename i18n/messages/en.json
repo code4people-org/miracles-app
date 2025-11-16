@@ -37,7 +37,7 @@
     "joined": "Joined",
     "avatar": "Avatar",
     "googleAccount": "Google Account",
-    "miraclesShared": "Miracles Shared",
+    "miraclesShared": "Good Things Shared",
     "countriesVisited": "Countries",
     "settings": "Account Settings",
     "madeWithLove": "Made with ❤️ for the global community"
@@ -65,11 +65,11 @@
     "signOutSuccess": "Successfully signed out"
   },
   "miracles": {
-    "title": "Miracles",
+    "title": "Good Things",
     "subtitle": "Share the World's Small Wonders",
     "description": "Discover and share the small but meaningful miracles happening all around the world. Join our community of positivity and inspiration.",
-    "shareMiracle": "Share Miracle",
-    "shareNewMiracle": "Share a New Miracle",
+    "shareMiracle": "Share good things",
+    "shareNewMiracle": "Share good things",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
@@ -119,7 +119,7 @@
       "gettingLocation": "Getting location...",
       "useCurrentLocation": "Use my current location",
       "sharing": "Sharing...",
-      "shareMiracle": "Share Miracle",
+      "shareMiracle": "Share good things",
       "cancel": "Cancel",
       "back": "Back",
       "reviewTitle": "Review Your Miracle",
@@ -143,8 +143,8 @@
     "mapError": "Error loading map",
     "selectMapType": "Select Map Type",
     "mapTypes": "Map Types",
-    "miracleCategories": "Miracle Categories",
-    "miraclesShared": "Miracles Shared"
+    "miracleCategories": "Categories",
+    "miraclesShared": "Good Things Shared"
   },
   "filters": {
     "title": "Filters",
@@ -215,10 +215,10 @@
     "tip": "Tip: Use the menu button (☰) to access more options"
   },
   "prayers": {
-    "title": "Prayer Requests",
+    "title": "Help",
     "subtitle": "Share Your Prayer Needs",
     "description": "Request prayers and support from our global community. Share your needs and receive spiritual support from people around the world.",
-    "requestPrayer": "Request Prayer",
+    "requestPrayer": "I need help",
     "offerPrayer": "Offer Prayer",
     "prayersOffered": "Prayers Offered",
     "answered": "Answered",
@@ -252,7 +252,8 @@
       "anonymousLabel": "Make this request anonymous",
       "anonymousDesc": "Hide your name but show your location",
       "sharing": "Sharing...",
-      "sharePrayer": "Share Prayer Request",
+      "sharePrayer": "I need help",
+      "titleLabel": "Title",
       "cancel": "Cancel",
       "back": "Back",
       "reviewTitle": "Review Your Prayer Request",
@@ -264,8 +265,8 @@
     }
   },
   "layers": {
-    "miracles": "Miracles",
-    "prayers": "Prayer Requests", 
+    "miracles": "Good Things",
+    "prayers": "Help", 
     "both": "Both",
     "switchLayer": "Switch Layer"
   }

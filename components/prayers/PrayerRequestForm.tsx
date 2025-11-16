@@ -181,7 +181,7 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
               <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full flex items-center justify-center">
                 <Cross className="w-4 h-4 text-white" />
               </div>
-              <h2 className="text-xl font-bold text-gray-800">Request Prayer</h2>
+              <h2 className="text-xl font-bold text-gray-800">{getTranslation('prayers.requestPrayer', 'I need help')}</h2>
             </div>
             <button
               onClick={onClose}
@@ -230,7 +230,7 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
             >
               <div>
                 <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
-                  Prayer Request Title *
+                  {getTranslation('prayers.form.titleLabel', 'Title')} *
                 </label>
                 <input
                   id="title"
@@ -502,7 +502,7 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
                 whileTap={{ scale: 0.98 }}
                 className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-700 transition-colors duration-200"
               >
-                {loading ? getTranslation('prayers.form.sharing', 'Sharing...') : getTranslation('prayers.form.sharePrayer', 'Share Prayer Request')}
+                {loading ? getTranslation('prayers.form.sharing', 'Sharing...') : getTranslation('prayers.requestPrayer', 'I need help')}
               </motion.button>
             )}
           </div>

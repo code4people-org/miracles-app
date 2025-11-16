@@ -54,11 +54,11 @@
     "signOutSuccess": "Déconnexion réussie"
   },
   "miracles": {
-    "title": "Miracles",
+    "title": "Bonnes Choses",
     "subtitle": "Partagez les Petites Merveilles du Monde",
     "description": "Découvrez et partagez les petits mais significatifs miracles qui se produisent dans le monde entier. Rejoignez notre communauté de positivité et d'inspiration.",
-    "shareMiracle": "Partager un Miracle",
-    "shareNewMiracle": "Partager un Nouveau Miracle",
+    "shareMiracle": "Partager de bonnes choses",
+    "shareNewMiracle": "Partager de bonnes choses",
     "miracleDetails": "Détails du Miracle",
     "category": "Catégorie",
     "location": "Emplacement",
@@ -109,7 +109,7 @@
       "gettingLocation": "Obtention de la localisation...",
       "useCurrentLocation": "Utiliser ma localisation actuelle",
       "sharing": "Partage en cours...",
-      "shareMiracle": "Partager le Miracle",
+      "shareMiracle": "Partager de bonnes choses",
       "cancel": "Annuler",
       "back": "Retour",
       "reviewTitle": "Examinez Votre Miracle",
@@ -133,8 +133,8 @@
     "mapError": "Erreur lors du chargement de la carte",
     "selectMapType": "Sélectionner le Type de Carte",
     "mapTypes": "Types de Cartes",
-    "miracleCategories": "Catégories de Miracles",
-    "miraclesShared": "Miracles Partagés"
+    "miracleCategories": "Catégories",
+    "miraclesShared": "Bonnes Choses Partagées"
   },
   "filters": {
     "title": "Filtres",
@@ -205,10 +205,10 @@
     "tip": "Astuce: Utilisez le bouton de menu (☰) pour accéder à plus d'options"
   },
   "prayers": {
-    "title": "Demandes de Prière",
+    "title": "Aide",
     "subtitle": "Partagez Vos Besoins de Prière",
     "description": "Demandez des prières et du soutien de notre communauté mondiale. Partagez vos besoins et recevez un soutien spirituel de personnes du monde entier.",
-    "requestPrayer": "Demander une Prière",
+    "requestPrayer": "J'ai besoin d'aide",
     "offerPrayer": "Offrir une Prière",
     "prayersOffered": "Prière Offertes",
     "answered": "Exaucée",
@@ -242,7 +242,8 @@
       "anonymousLabel": "Rendre cette demande anonyme",
       "anonymousDesc": "Masquer votre nom mais afficher votre localisation",
       "sharing": "Partage en cours...",
-      "sharePrayer": "Partager la Demande de Prière",
+      "sharePrayer": "J'ai besoin d'aide",
+      "titleLabel": "Titre",
       "cancel": "Annuler",
       "back": "Retour",
       "reviewTitle": "Réviser Votre Demande de Prière",
@@ -254,8 +255,8 @@
     }
   },
   "layers": {
-    "miracles": "Miracles",
-    "prayers": "Demandes de Prière",
+    "miracles": "Bonnes Choses",
+    "prayers": "Aide",
     "both": "Les Deux",
     "switchLayer": "Changer de Couche"
   }

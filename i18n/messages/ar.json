@@ -54,11 +54,11 @@
     "signOutSuccess": "Successfully signed out"
   },
   "miracles": {
-    "title": "المعجزات",
+    "title": "أشياء جيدة",
     "subtitle": "شارك عجائب العالم الصغيرة",
     "description": "اكتشف وشارك المعجزات الصغيرة ولكن ذات المعنى التي تحدث في جميع أنحاء العالم. انضم إلى مجتمعنا الإيجابي والملهم.",
-    "shareMiracle": "مشاركة معجزة",
-    "shareNewMiracle": "Share a New Miracle",
+    "shareMiracle": "مشاركة الأشياء الجيدة",
+    "shareNewMiracle": "مشاركة الأشياء الجيدة",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
@@ -109,7 +109,7 @@
       "gettingLocation": "جاري الحصول على الموقع...",
       "useCurrentLocation": "استخدم موقعي الحالي",
       "sharing": "جاري المشاركة...",
-      "shareMiracle": "مشاركة المعجزة",
+      "shareMiracle": "مشاركة الأشياء الجيدة",
       "cancel": "إلغاء",
       "back": "رجوع",
       "reviewTitle": "راجع معجزتك",
@@ -133,8 +133,8 @@
     "mapError": "Error loading map",
     "selectMapType": "اختر نوع الخريطة",
     "mapTypes": "أنواع الخرائط",
-    "miracleCategories": "فئات المعجزات",
-    "miraclesShared": "المعجزات المشتركة"
+    "miracleCategories": "الفئات",
+    "miraclesShared": "الأشياء الجيدة المشتركة"
   },
   "filters": {
     "title": "Filters",
@@ -205,10 +205,10 @@
     "tip": "نصيحة: استخدم زر القائمة (☰) للوصول إلى المزيد من الخيارات"
   },
   "prayers": {
-    "title": "طلبات الصلاة",
+    "title": "مساعدة",
     "subtitle": "شارك احتياجاتك للصلاة",
     "description": "اطلب الصلاة والدعم من مجتمعنا العالمي. شارك احتياجاتك واحصل على الدعم الروحي من الناس حول العالم.",
-    "requestPrayer": "طلب الصلاة",
+    "requestPrayer": "أحتاج مساعدة",
     "offerPrayer": "تقديم الصلاة",
     "prayersOffered": "الصلوات المقدمة",
     "answered": "مُجاب",
@@ -242,7 +242,8 @@
       "anonymousLabel": "جعل هذا الطلب مجهولاً",
       "anonymousDesc": "إخفاء اسمك ولكن إظهار موقعك",
       "sharing": "جاري المشاركة...",
-      "sharePrayer": "مشاركة طلب الصلاة",
+      "sharePrayer": "أحتاج مساعدة",
+      "titleLabel": "العنوان",
       "cancel": "إلغاء",
       "back": "رجوع",
       "reviewTitle": "مراجعة طلب الصلاة",
@@ -254,8 +255,8 @@
     }
   },
   "layers": {
-    "miracles": "المعجزات",
-    "prayers": "طلبات الصلاة",
+    "miracles": "أشياء جيدة",
+    "prayers": "مساعدة",
     "both": "كلاهما",
     "switchLayer": "تبديل الطبقة"
   }

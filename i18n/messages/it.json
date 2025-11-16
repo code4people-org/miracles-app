@@ -54,11 +54,11 @@
     "signOutSuccess": "Successfully signed out"
   },
   "miracles": {
-    "title": "Miracoli",
+    "title": "Cose Buone",
     "subtitle": "Condividi le Piccole Meraviglie del Mondo",
     "description": "Scopri e condividi i piccoli ma significativi miracoli che accadono in tutto il mondo. Unisciti alla nostra comunità di positività e ispirazione.",
-    "shareMiracle": "Condividi Miracolo",
-    "shareNewMiracle": "Share a New Miracle",
+    "shareMiracle": "Condividere cose buone",
+    "shareNewMiracle": "Condividere cose buone",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
@@ -109,7 +109,7 @@
       "gettingLocation": "Ottenendo posizione...",
       "useCurrentLocation": "Usa la mia posizione attuale",
       "sharing": "Condivisione in corso...",
-      "shareMiracle": "Condividi Miracolo",
+      "shareMiracle": "Condividere cose buone",
       "cancel": "Annulla",
       "back": "Indietro",
       "reviewTitle": "Rivedi il Tuo Miracolo",
@@ -133,8 +133,8 @@
     "mapError": "Error loading map",
     "selectMapType": "Seleziona Tipo di Mappa",
     "mapTypes": "Tipi di Mappe",
-    "miracleCategories": "Categorie di Miracoli",
-    "miraclesShared": "Miracoli Condivisi"
+    "miracleCategories": "Categorie",
+    "miraclesShared": "Cose Buone Condivise"
   },
   "filters": {
     "title": "Filters",
@@ -205,10 +205,10 @@
     "tip": "Suggerimento: Usa il pulsante del menu (☰) per accedere a più opzioni"
   },
   "prayers": {
-    "title": "Richieste di Preghiera",
+    "title": "Aiuto",
     "subtitle": "Condividi le Tue Necessità di Preghiera",
     "description": "Richiedi preghiere e supporto dalla nostra comunità globale. Condividi le tue necessità e ricevi supporto spirituale da persone di tutto il mondo.",
-    "requestPrayer": "Richiedi Preghiera",
+    "requestPrayer": "Ho bisogno di aiuto",
     "offerPrayer": "Offri Preghiera",
     "prayersOffered": "Preghiere Offerte",
     "answered": "Esaudita",
@@ -242,7 +242,8 @@
       "anonymousLabel": "Rendi questa richiesta anonima",
       "anonymousDesc": "Nascondi il tuo nome ma mostra la tua posizione",
       "sharing": "Condivisione in corso...",
-      "sharePrayer": "Condividi Richiesta di Preghiera",
+      "sharePrayer": "Ho bisogno di aiuto",
+      "titleLabel": "Titolo",
       "cancel": "Annulla",
       "back": "Indietro",
       "reviewTitle": "Rivedi la Tua Richiesta di Preghiera",
@@ -254,8 +255,8 @@
     }
   },
   "layers": {
-    "miracles": "Miracoli",
-    "prayers": "Richieste di Preghiera",
+    "miracles": "Cose Buone",
+    "prayers": "Aiuto",
     "both": "Entrambi",
     "switchLayer": "Cambia Livello"
   }

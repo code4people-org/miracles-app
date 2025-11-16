@@ -54,11 +54,11 @@
     "signOutSuccess": "Successfully signed out"
   },
   "miracles": {
-    "title": "기적",
+    "title": "좋은 것",
     "subtitle": "세상의 작은 기적들을 공유하세요",
     "description": "전 세계에서 일어나는 작지만 의미 있는 기적들을 발견하고 공유하세요. 긍정과 영감의 커뮤니티에 참여하세요.",
-    "shareMiracle": "기적 공유하기",
-    "shareNewMiracle": "Share a New Miracle",
+    "shareMiracle": "좋은 것 공유하기",
+    "shareNewMiracle": "좋은 것 공유하기",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
@@ -109,7 +109,7 @@
       "gettingLocation": "위치 가져오는 중...",
       "useCurrentLocation": "현재 위치 사용",
       "sharing": "공유 중...",
-      "shareMiracle": "기적 공유",
+      "shareMiracle": "좋은 것 공유",
       "cancel": "취소",
       "back": "뒤로",
       "reviewTitle": "기적 검토",
@@ -133,8 +133,8 @@
     "mapError": "Error loading map",
     "selectMapType": "지도 유형 선택",
     "mapTypes": "지도 유형",
-    "miracleCategories": "기적 카테고리",
-    "miraclesShared": "공유된 기적"
+    "miracleCategories": "카테고리",
+    "miraclesShared": "공유된 좋은 것"
   },
   "filters": {
     "title": "Filters",
@@ -205,10 +205,10 @@
     "tip": "팁: 메뉴 버튼(☰)을 사용하여 더 많은 옵션에 액세스하세요"
   },
   "prayers": {
-    "title": "기도 요청",
+    "title": "도움",
     "subtitle": "기도 필요를 공유하세요",
     "description": "글로벌 커뮤니티에서 기도와 지원을 요청하세요. 당신의 필요를 공유하고 전 세계 사람들로부터 영적 지원을 받으세요.",
-    "requestPrayer": "기도 요청",
+    "requestPrayer": "도움이 필요합니다",
     "offerPrayer": "기도 제공",
     "prayersOffered": "제공된 기도",
     "answered": "응답됨",
@@ -242,7 +242,8 @@
       "anonymousLabel": "이 요청을 익명으로 만들기",
       "anonymousDesc": "이름을 숨기고 위치를 표시",
       "sharing": "공유 중...",
-      "sharePrayer": "기도 요청 공유",
+      "sharePrayer": "도움이 필요합니다",
+      "titleLabel": "제목",
       "cancel": "취소",
       "back": "뒤로",
       "reviewTitle": "기도 요청 검토",
@@ -254,8 +255,8 @@
     }
   },
   "layers": {
-    "miracles": "기적",
-    "prayers": "기도 요청",
+    "miracles": "좋은 것",
+    "prayers": "도움",
     "both": "둘 다",
     "switchLayer": "레이어 전환"
   }

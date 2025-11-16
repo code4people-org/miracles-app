@@ -184,7 +184,7 @@ export default function UserModal({ isOpen, onClose }: UserModalProps) {
             <div className="grid grid-cols-2 gap-4">
               <StatCard
                 icon={Heart}
-                label={getTranslation('user.miraclesShared', 'Miracles Shared')}
+                label={getTranslation('user.miraclesShared', 'Good Things Shared')}
                 value={statsLoading ? "..." : miraclesShared}
                 color="text-miracle-gold"
                 bgColor="from-miracle-gold/20 to-miracle-gold/10"

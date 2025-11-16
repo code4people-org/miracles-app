@@ -63,7 +63,7 @@ export default function AppHeader({
             >
               <GradientIcon icon={Heart} gradient="gold" />
               <h1 className="text-lg sm:text-xl lg:text-2xl font-bold gradient-text">
-                {getTranslation('miracles.title', 'Miracles')}
+                {getTranslation('miracles.title', 'Good Things')}
               </h1>
             </motion.div>
 
