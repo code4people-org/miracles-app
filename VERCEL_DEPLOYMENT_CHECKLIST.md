@@ -21,7 +21,7 @@
 - [ ] Storage bucket `miracle-media` created
 - [ ] Authentication providers configured
 - [ ] Site URL set to your Vercel domain
-- [ ] Redirect URLs configured: `https://your-app.vercel.app/auth/callback`
+- [ ] Redirect URLs configured: `https://miracleshappen.app/auth/callback`
 
 ### 4. Vercel Configuration
 - [ ] Repository connected to Vercel
