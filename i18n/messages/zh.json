@@ -54,11 +54,11 @@
     "signOutSuccess": "Successfully signed out"
   },
   "miracles": {
-    "title": "奇迹",
+    "title": "美好的事物",
     "subtitle": "分享世界的小奇迹",
     "description": "发现并分享世界各地发生的微小但有意义的奇迹。加入我们充满积极性和灵感的社区。",
-    "shareMiracle": "分享奇迹",
-    "shareNewMiracle": "Share a New Miracle",
+    "shareMiracle": "分享美好的事物",
+    "shareNewMiracle": "分享美好的事物",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
@@ -109,7 +109,7 @@
       "gettingLocation": "正在获取位置...",
       "useCurrentLocation": "使用我的当前位置",
       "sharing": "正在分享...",
-      "shareMiracle": "分享奇迹",
+      "shareMiracle": "分享美好的事物",
       "cancel": "取消",
       "back": "返回",
       "reviewTitle": "查看您的奇迹",
@@ -133,8 +133,8 @@
     "mapError": "Error loading map",
     "selectMapType": "选择地图类型",
     "mapTypes": "地图类型",
-    "miracleCategories": "奇迹类别",
-    "miraclesShared": "分享的奇迹"
+    "miracleCategories": "类别",
+    "miraclesShared": "分享的美好事物"
   },
   "filters": {
     "title": "Filters",
@@ -205,10 +205,10 @@
     "tip": "提示：使用菜单按钮（☰）访问更多选项"
   },
   "prayers": {
-    "title": "祈祷请求",
+    "title": "帮助",
     "subtitle": "分享您的祈祷需求",
     "description": "从我们的全球社区请求祈祷和支持。分享您的需求，从世界各地的人们那里获得精神支持。",
-    "requestPrayer": "请求祈祷",
+    "requestPrayer": "我需要帮助",
     "offerPrayer": "提供祈祷",
     "prayersOffered": "提供的祈祷",
     "answered": "已回应",
@@ -242,7 +242,8 @@
       "anonymousLabel": "使此请求匿名",
       "anonymousDesc": "隐藏您的姓名但显示您的位置",
       "sharing": "分享中...",
-      "sharePrayer": "分享祈祷请求",
+      "sharePrayer": "我需要帮助",
+      "titleLabel": "标题",
       "cancel": "取消",
       "back": "返回",
       "reviewTitle": "审查您的祈祷请求",
@@ -254,8 +255,8 @@
     }
   },
   "layers": {
-    "miracles": "奇迹",
-    "prayers": "祈祷请求",
+    "miracles": "美好的事物",
+    "prayers": "帮助",
     "both": "两者",
     "switchLayer": "切换图层"
   }

@@ -36,7 +36,7 @@ export default function MiracleCategoriesLegend({ getTranslation }: MiracleCateg
       >
         <h3 className="font-semibold text-gray-800 flex items-center">
           <MapPin className="w-4 h-4 mr-2 text-miracle-gold" />
-          {getTranslation('map.miracleCategories', 'Miracle Categories')}
+          {getTranslation('map.miracleCategories', 'Categories')}
         </h3>
         <motion.div
           animate={{ rotate: isExpanded ? 180 : 0 }}

@@ -208,7 +208,7 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
               <div className="w-8 h-8 bg-gradient-to-br from-miracle-gold to-miracle-coral rounded-full flex items-center justify-center">
                 <Heart className="w-4 h-4 text-white" />
               </div>
-              <h2 className="text-xl font-bold text-gray-800">Share Your Miracle</h2>
+              <h2 className="text-xl font-bold text-gray-800">{getTranslation('miracles.shareNewMiracle', 'Share good things')}</h2>
             </div>
             <button
               onClick={onClose}
@@ -541,7 +541,7 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
                 whileTap={{ scale: 0.98 }}
                 className="btn-miracle text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? getTranslation('miracles.form.sharing', 'Sharing...') : getTranslation('miracles.form.shareMiracle', 'Share Miracle')}
+                {loading ? getTranslation('miracles.form.sharing', 'Sharing...') : getTranslation('miracles.form.shareMiracle', 'Share good things')}
               </motion.button>
             )}
           </div>
