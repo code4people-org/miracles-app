@@ -37,14 +37,14 @@ Before deploying, you need to set up the following environment variables in Verc
 
 1. In your Supabase dashboard, go to "Settings" → "API"
 2. Add your Vercel domain to the "Site URL" and "Redirect URLs":
-   - Site URL: `https://your-app.vercel.app`
-   - Redirect URLs: `https://your-app.vercel.app/auth/callback`
+   - Site URL: `https://miracleshappen.app`
+   - Redirect URLs: `https://miracleshappen.app/auth/callback`
 
 ### 4. Deploy
 
 1. Push your code to your Git repository
 2. Vercel will automatically trigger a deployment
-3. Your app will be available at `https://your-app.vercel.app`
+3. Your app will be available at `https://miracleshappen.app`
 
 ## Database Setup
 
