@@ -1,6 +1,7 @@
 import { supabase } from './supabase'
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000'
+// Normalize BACKEND_URL to remove trailing slashes to prevent double slashes in URLs
+const BACKEND_URL = (process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000').replace(/\/+$/, '')
 
 class ApiClient {
   private async getHeaders(): Promise<HeadersInit> {
@@ -44,26 +45,11 @@ class ApiClient {
   }
 
   async get<T>(endpoint: string, options?: RequestInit): Promise<T> {
-    // Add trailing slash for root routes (e.g., /api/miracles/), but not for paths with segments
-    // Routes with path params (e.g., /api/users/{id}/stats) should not have trailing slashes
-    let normalizedEndpoint = endpoint
-    // Check if endpoint ends with a path segment (e.g., /stats, /pray, /{id})
-    const hasPathSegment = /\/[^\/]+$/.test(endpoint)
-    if (!endpoint.includes('?') && !hasPathSegment) {
-      // Add trailing slash if endpoint doesn't end with a path segment
-      normalizedEndpoint = endpoint.endsWith('/') ? endpoint : `${endpoint}/`
-    }
-    return this.request<T>(normalizedEndpoint, { ...options, method: 'GET' })
+    return this.request<T>(endpoint, { ...options, method: 'GET' })
   }
 
   async post<T>(endpoint: string, data?: any, options?: RequestInit): Promise<T> {
-    // Add trailing slash for root routes, but not for paths with segments
-    let normalizedEndpoint = endpoint
-    const hasPathSegment = /\/[^\/]+$/.test(endpoint)
-    if (!endpoint.includes('?') && !hasPathSegment) {
-      normalizedEndpoint = endpoint.endsWith('/') ? endpoint : `${endpoint}/`
-    }
-    return this.request<T>(normalizedEndpoint, {
+    return this.request<T>(endpoint, {
       ...options,
       method: 'POST',
       body: data ? JSON.stringify(data) : undefined,
@@ -71,13 +57,7 @@ class ApiClient {
   }
 
   async put<T>(endpoint: string, data?: any, options?: RequestInit): Promise<T> {
-    // Add trailing slash for root routes, but not for paths with segments
-    let normalizedEndpoint = endpoint
-    const hasPathSegment = /\/[^\/]+$/.test(endpoint)
-    if (!endpoint.includes('?') && !hasPathSegment) {
-      normalizedEndpoint = endpoint.endsWith('/') ? endpoint : `${endpoint}/`
-    }
-    return this.request<T>(normalizedEndpoint, {
+    return this.request<T>(endpoint, {
       ...options,
       method: 'PUT',
       body: data ? JSON.stringify(data) : undefined,
@@ -85,13 +65,7 @@ class ApiClient {
   }
 
   async delete<T>(endpoint: string, options?: RequestInit): Promise<T> {
-    // Add trailing slash for root routes, but not for paths with segments
-    let normalizedEndpoint = endpoint
-    const hasPathSegment = /\/[^\/]+$/.test(endpoint)
-    if (!endpoint.includes('?') && !hasPathSegment) {
-      normalizedEndpoint = endpoint.endsWith('/') ? endpoint : `${endpoint}/`
-    }
-    return this.request<T>(normalizedEndpoint, { ...options, method: 'DELETE' })
+    return this.request<T>(endpoint, { ...options, method: 'DELETE' })
   }
 
   async uploadFile(endpoint: string, file: File, folder: string = 'general'): Promise<{ url: string; path: string; filename: string }> {
