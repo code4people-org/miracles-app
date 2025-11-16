@@ -37,7 +37,7 @@
     "joined": "Se unió",
     "avatar": "Avatar",
     "googleAccount": "Cuenta de Google",
-    "miraclesShared": "Milagros Compartidos",
+    "miraclesShared": "Cosas Buenas Compartidas",
     "countriesVisited": "Países",
     "settings": "Configuración de Cuenta",
     "madeWithLove": "Hecho con ❤️ para la comunidad global"
@@ -65,11 +65,11 @@
     "signOutSuccess": "Sesión cerrada exitosamente"
   },
   "miracles": {
-    "title": "Milagros",
+    "title": "Cosas Buenas",
     "subtitle": "Comparte las Pequeñas Maravillas del Mundo",
     "description": "Descubre y comparte los pequeños pero significativos milagros que suceden en todo el mundo. Únete a nuestra comunidad de positividad e inspiración.",
-    "shareMiracle": "Compartir Milagro",
-    "shareNewMiracle": "Compartir un Nuevo Milagro",
+    "shareMiracle": "Compartir cosas buenas",
+    "shareNewMiracle": "Compartir cosas buenas",
     "miracleDetails": "Detalles del Milagro",
     "category": "Categoría",
     "location": "Ubicación",
@@ -119,7 +119,7 @@
       "gettingLocation": "Obteniendo ubicación...",
       "useCurrentLocation": "Usar mi ubicación actual",
       "sharing": "Compartiendo...",
-      "shareMiracle": "Compartir Milagro",
+      "shareMiracle": "Compartir cosas buenas",
       "cancel": "Cancelar",
       "back": "Atrás",
       "reviewTitle": "Revisa Tu Milagro",
@@ -143,8 +143,8 @@
     "mapError": "Error al cargar el mapa",
     "selectMapType": "Seleccionar Tipo de Mapa",
     "mapTypes": "Tipos de Mapas",
-    "miracleCategories": "Categorías de Milagros",
-    "miraclesShared": "Milagros Compartidos"
+    "miracleCategories": "Categorías",
+    "miraclesShared": "Cosas Buenas Compartidas"
   },
   "filters": {
     "title": "Filtros",
@@ -215,10 +215,10 @@
     "tip": "Consejo: Usa el botón de menú (☰) para acceder a más opciones"
   },
   "prayers": {
-    "title": "Solicitudes de Oración",
+    "title": "Ayuda",
     "subtitle": "Comparte Tus Necesidades de Oración",
     "description": "Solicita oraciones y apoyo de nuestra comunidad global. Comparte tus necesidades y recibe apoyo espiritual de personas de todo el mundo.",
-    "requestPrayer": "Solicitar Oración",
+    "requestPrayer": "Necesito ayuda",
     "offerPrayer": "Ofrecer Oración",
     "prayersOffered": "Oraciones Ofrecidas",
     "answered": "Respondida",
@@ -252,7 +252,8 @@
       "anonymousLabel": "Hacer esta solicitud anónima",
       "anonymousDesc": "Ocultar tu nombre pero mostrar tu ubicación",
       "sharing": "Compartiendo...",
-      "sharePrayer": "Compartir Solicitud de Oración",
+      "sharePrayer": "Necesito ayuda",
+      "titleLabel": "Título",
       "cancel": "Cancelar",
       "back": "Atrás",
       "reviewTitle": "Revisa Tu Solicitud de Oración",
@@ -264,8 +265,8 @@
     }
   },
   "layers": {
-    "miracles": "Milagros",
-    "prayers": "Solicitudes de Oración",
+    "miracles": "Cosas Buenas",
+    "prayers": "Ayuda",
     "both": "Ambos",
     "switchLayer": "Cambiar Capa"
   }

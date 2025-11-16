@@ -115,7 +115,7 @@ export default function LeafletWorldMap({
                 <Heart className="w-5 h-5 text-miracle-gold" />
                 <div>
                   <p className="text-2xl font-bold text-gray-800">{miracles.length}</p>
-                  <p className="text-sm text-gray-600">{getTranslation('map.miraclesShared', 'Miracles Shared')}</p>
+                  <p className="text-sm text-gray-600">{getTranslation('map.miraclesShared', 'Good Things Shared')}</p>
                 </div>
               </div>
             )}
@@ -124,7 +124,7 @@ export default function LeafletWorldMap({
                 <Hand className="w-5 h-5 text-purple-500" />
                 <div>
                   <p className="text-2xl font-bold text-gray-800">{prayerRequests.length}</p>
-                  <p className="text-sm text-gray-600">{getTranslation('prayers.title', 'Prayer Requests')}</p>
+                  <p className="text-sm text-gray-600">{getTranslation('prayers.title', 'Help')}</p>
                 </div>
               </div>
             )}

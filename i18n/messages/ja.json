@@ -54,11 +54,11 @@
     "signOutSuccess": "Successfully signed out"
   },
   "miracles": {
-    "title": "奇跡",
+    "title": "良いこと",
     "subtitle": "世界の小さな奇跡を共有しよう",
     "description": "世界中で起こっている小さくても意味のある奇跡を発見し、共有しましょう。ポジティブでインスピレーションに満ちたコミュニティに参加してください。",
-    "shareMiracle": "奇跡を共有",
-    "shareNewMiracle": "Share a New Miracle",
+    "shareMiracle": "良いことを共有",
+    "shareNewMiracle": "良いことを共有",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
@@ -108,7 +108,7 @@
       "gettingLocation": "位置情報を取得中...",
       "useCurrentLocation": "現在の位置を使用",
       "sharing": "共有中...",
-      "shareMiracle": "奇跡を共有",
+      "shareMiracle": "良いことを共有",
       "cancel": "キャンセル",
       "back": "戻る",
       "reviewTitle": "奇跡を確認",
@@ -132,8 +132,8 @@
     "mapError": "Error loading map",
     "selectMapType": "マップタイプを選択",
     "mapTypes": "マップタイプ",
-    "miracleCategories": "奇跡のカテゴリー",
-    "miraclesShared": "共有された奇跡"
+    "miracleCategories": "カテゴリー",
+    "miraclesShared": "共有された良いこと"
   },
   "filters": {
     "title": "Filters",
@@ -204,10 +204,10 @@
     "tip": "ヒント: メニューボタン（☰）を使用してより多くのオプションにアクセス"
   },
   "prayers": {
-    "title": "祈りのリクエスト",
+    "title": "助け",
     "subtitle": "祈りのニーズを共有",
     "description": "グローバルコミュニティから祈りとサポートをリクエストしてください。あなたのニーズを共有し、世界中の人々から精神的なサポートを受けましょう。",
-    "requestPrayer": "祈りをリクエスト",
+    "requestPrayer": "助けが必要です",
     "offerPrayer": "祈りを提供",
     "prayersOffered": "提供された祈り",
     "answered": "答えられた",
@@ -241,7 +241,8 @@
       "anonymousLabel": "このリクエストを匿名にする",
       "anonymousDesc": "名前を隠すが場所を表示する",
       "sharing": "共有中...",
-      "sharePrayer": "祈りのリクエストを共有",
+      "sharePrayer": "助けが必要です",
+      "titleLabel": "タイトル",
       "cancel": "キャンセル",
       "back": "戻る",
       "reviewTitle": "祈りのリクエストを確認",
@@ -253,8 +254,8 @@
     }
   },
   "layers": {
-    "miracles": "奇跡",
-    "prayers": "祈りのリクエスト",
+    "miracles": "良いこと",
+    "prayers": "助け",
     "both": "両方",
     "switchLayer": "レイヤーを切り替え"
   }

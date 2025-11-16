@@ -22,7 +22,7 @@ export default function LayerToggle({
   const layers = [
     {
       value: 'miracles' as LayerType,
-      label: getTranslation('layers.miracles', 'Miracles'),
+      label: getTranslation('layers.miracles', 'Good Things'),
       icon: Heart,
       color: 'text-miracle-gold',
       bgColor: 'bg-miracle-gold/10',
@@ -30,7 +30,7 @@ export default function LayerToggle({
     },
     {
       value: 'prayers' as LayerType,
-      label: getTranslation('layers.prayers', 'Prayer Requests'),
+      label: getTranslation('layers.prayers', 'Help'),
       icon: Cross,
       color: 'text-purple-600',
       bgColor: 'bg-purple-100',
@@ -89,14 +89,14 @@ export function LayerToggleMobile({
       icon: Heart,
       color: 'text-miracle-gold',
       bgColor: 'bg-miracle-gold/10',
-      title: getTranslation('layers.miracles', 'Miracles')
+      title: getTranslation('layers.miracles', 'Good Things')
     },
     {
       value: 'prayers' as LayerType,
       icon: Cross,
       color: 'text-purple-600',
       bgColor: 'bg-purple-100',
-      title: getTranslation('layers.prayers', 'Prayer Requests')
+      title: getTranslation('layers.prayers', 'Help')
     },
     {
       value: 'both' as LayerType,

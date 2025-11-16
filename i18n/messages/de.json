@@ -54,11 +54,11 @@
     "signOutSuccess": "Successfully signed out"
   },
   "miracles": {
-    "title": "Wunder",
+    "title": "Gute Dinge",
     "subtitle": "Teile die kleinen Wunder der Welt",
     "description": "Entdecke und teile die kleinen aber bedeutungsvollen Wunder, die überall auf der Welt geschehen. Tritt unserer Gemeinschaft der Positivität und Inspiration bei.",
-    "shareMiracle": "Wunder teilen",
-    "shareNewMiracle": "Share a New Miracle",
+    "shareMiracle": "Gute Dinge teilen",
+    "shareNewMiracle": "Gute Dinge teilen",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
@@ -109,7 +109,7 @@
       "gettingLocation": "Standort wird ermittelt...",
       "useCurrentLocation": "Meinen aktuellen Standort verwenden",
       "sharing": "Wird geteilt...",
-      "shareMiracle": "Wunder Teilen",
+      "shareMiracle": "Gute Dinge teilen",
       "cancel": "Abbrechen",
       "back": "Zurück",
       "reviewTitle": "Überprüfen Sie Ihr Wunder",
@@ -133,8 +133,8 @@
     "mapError": "Error loading map",
     "selectMapType": "Kartentyp Auswählen",
     "mapTypes": "Kartentypen",
-    "miracleCategories": "Wunder-Kategorien",
-    "miraclesShared": "Geteilte Wunder"
+    "miracleCategories": "Kategorien",
+    "miraclesShared": "Gute Dinge Geteilt"
   },
   "filters": {
     "title": "Filters",
@@ -205,10 +205,10 @@
     "tip": "Tipp: Verwenden Sie die Menü-Schaltfläche (☰) für mehr Optionen"
   },
   "prayers": {
-    "title": "Gebetsanfragen",
+    "title": "Hilfe",
     "subtitle": "Teilen Sie Ihre Gebetsbedürfnisse",
     "description": "Bitten Sie um Gebete und Unterstützung von unserer globalen Gemeinschaft. Teilen Sie Ihre Bedürfnisse und erhalten Sie spirituelle Unterstützung von Menschen auf der ganzen Welt.",
-    "requestPrayer": "Gebet Anfordern",
+    "requestPrayer": "Ich brauche Hilfe",
     "offerPrayer": "Gebet Anbieten",
     "prayersOffered": "Angebotene Gebete",
     "answered": "Beantwortet",
@@ -242,7 +242,8 @@
       "anonymousLabel": "Diese Anfrage anonym machen",
       "anonymousDesc": "Ihren Namen verbergen, aber Ihren Standort anzeigen",
       "sharing": "Teilen...",
-      "sharePrayer": "Gebetsanfrage Teilen",
+      "sharePrayer": "Ich brauche Hilfe",
+      "titleLabel": "Titel",
       "cancel": "Abbrechen",
       "back": "Zurück",
       "reviewTitle": "Überprüfen Sie Ihre Gebetsanfrage",
@@ -254,8 +255,8 @@
     }
   },
   "layers": {
-    "miracles": "Wunder",
-    "prayers": "Gebetsanfragen",
+    "miracles": "Gute Dinge",
+    "prayers": "Hilfe",
     "both": "Beide",
     "switchLayer": "Ebene Wechseln"
   }

@@ -54,11 +54,11 @@
     "signOutSuccess": "Successfully signed out"
   },
   "miracles": {
-    "title": "Milagres",
+    "title": "Coisas Boas",
     "subtitle": "Compartilhe as Pequenas Maravilhas do Mundo",
     "description": "Descubra e compartilhe os pequenos mas significativos milagres que acontecem ao redor do mundo. Junte-se à nossa comunidade de positividade e inspiração.",
-    "shareMiracle": "Compartilhar Milagre",
-    "shareNewMiracle": "Share a New Miracle",
+    "shareMiracle": "Compartilhar coisas boas",
+    "shareNewMiracle": "Compartilhar coisas boas",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
@@ -109,7 +109,7 @@
       "gettingLocation": "Obtendo localização...",
       "useCurrentLocation": "Usar minha localização atual",
       "sharing": "Compartilhando...",
-      "shareMiracle": "Compartilhar Milagre",
+      "shareMiracle": "Compartilhar coisas boas",
       "cancel": "Cancelar",
       "back": "Voltar",
       "reviewTitle": "Revise Seu Milagre",
@@ -133,8 +133,8 @@
     "mapError": "Error loading map",
     "selectMapType": "Selecionar Tipo de Mapa",
     "mapTypes": "Tipos de Mapas",
-    "miracleCategories": "Categorias de Milagres",
-    "miraclesShared": "Milagres Compartilhados"
+    "miracleCategories": "Categorias",
+    "miraclesShared": "Coisas Boas Compartilhadas"
   },
   "filters": {
     "title": "Filters",
@@ -205,10 +205,10 @@
     "tip": "Dica: Use o botão do menu (☰) para acessar mais opções"
   },
   "prayers": {
-    "title": "Pedidos de Oração",
+    "title": "Ajuda",
     "subtitle": "Compartilhe Suas Necessidades de Oração",
     "description": "Peça orações e apoio da nossa comunidade global. Compartilhe suas necessidades e receba apoio espiritual de pessoas ao redor do mundo.",
-    "requestPrayer": "Pedir Oração",
+    "requestPrayer": "Preciso de ajuda",
     "offerPrayer": "Oferecer Oração",
     "prayersOffered": "Orações Oferecidas",
     "answered": "Atendida",
@@ -242,7 +242,8 @@
       "anonymousLabel": "Tornar este pedido anônimo",
       "anonymousDesc": "Ocultar seu nome mas mostrar sua localização",
       "sharing": "Compartilhando...",
-      "sharePrayer": "Compartilhar Pedido de Oração",
+      "sharePrayer": "Preciso de ajuda",
+      "titleLabel": "Título",
       "cancel": "Cancelar",
       "back": "Voltar",
       "reviewTitle": "Revisar Seu Pedido de Oração",
@@ -254,8 +255,8 @@
     }
   },
   "layers": {
-    "miracles": "Milagres",
-    "prayers": "Pedidos de Oração",
+    "miracles": "Coisas Boas",
+    "prayers": "Ajuda",
     "both": "Ambos",
     "switchLayer": "Trocar Camada"
   }
