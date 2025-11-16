@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
 import { apiClient } from '@/lib/apiClient'
-import { getSampleMiracles } from '@/lib/sampleData'
 import type { Database } from '@/lib/supabase'
 
 type Miracle = Database['public']['Tables']['miracles']['Row']
@@ -24,17 +23,10 @@ export function useMiracles() {
   const fetchMiracles = useCallback(async () => {
     try {
       const data = await apiClient.get<Miracle[]>('/api/v1/miracles')
-      
-      // If no real miracles, use sample data for demonstration
-      if (!data || data.length === 0) {
-        setMiracles(getSampleMiracles())
-      } else {
-        setMiracles(data)
-      }
+      setMiracles(data || [])
     } catch (error) {
       console.error('Error fetching miracles:', error)
-      // Fallback to sample data if there's an error
-      setMiracles(getSampleMiracles())
+      setMiracles([])
     } finally {
       setLoading(false)
     }

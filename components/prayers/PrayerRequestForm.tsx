@@ -99,6 +99,9 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
       let photoUrl = null
       if (photoFile) {
         photoUrl = await uploadFile(photoFile, `prayer-photos/${Date.now()}-${photoFile.name}`)
+        if (!photoUrl) {
+          throw new Error(getTranslation('prayers.form.photoUploadError', 'Failed to upload photo. It may have been rejected by moderation.'))
+        }
       }
 
       // Create PostGIS POINT from lat/lng (longitude first, then latitude)
@@ -120,7 +123,23 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
 
       onSubmit()
     } catch (error: any) {
-      setError(error.message || getTranslation('prayers.form.submitError', 'Failed to submit prayer request'))
+      // Handle moderation errors (text or image)
+      const errorDetail = error.response?.data?.detail || error.message
+      if (typeof errorDetail === 'object') {
+        if (errorDetail.suggestions && Array.isArray(errorDetail.suggestions)) {
+          setError(errorDetail.suggestions.join(' ') || errorDetail.reason || error.message)
+        } else if (errorDetail.reason) {
+          setError(errorDetail.reason)
+        } else if (errorDetail.error) {
+          setError(errorDetail.error)
+        } else {
+          setError(error.message || getTranslation('prayers.form.submitError', 'Failed to submit prayer request'))
+        }
+      } else if (error.message?.includes('moderation') || error.message?.includes('rejected') || error.message?.includes('validation')) {
+        setError(error.message)
+      } else {
+        setError(error.message || getTranslation('prayers.form.submitError', 'Failed to submit prayer request'))
+      }
     } finally {
       setLoading(false)
     }

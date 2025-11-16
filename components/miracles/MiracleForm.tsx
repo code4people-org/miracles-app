@@ -119,10 +119,16 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
 
       if (photoFile) {
         photoUrl = await uploadFile(photoFile, `photos/${Date.now()}-${photoFile.name}`)
+        if (!photoUrl) {
+          throw new Error(getTranslation('miracles.form.photoUploadError', 'Failed to upload photo. It may have been rejected by moderation.'))
+        }
       }
 
       if (videoFile) {
         videoUrl = await uploadFile(videoFile, `videos/${Date.now()}-${videoFile.name}`)
+        if (!videoUrl) {
+          throw new Error(getTranslation('miracles.form.videoUploadError', 'Failed to upload video.'))
+        }
       }
 
       // Create PostGIS POINT from lat/lng (longitude first, then latitude)
@@ -144,7 +150,23 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
 
       onSubmit()
     } catch (error: any) {
-      setError(error.message || getTranslation('miracles.form.submitError', 'Failed to submit miracle'))
+      // Handle moderation errors (text or image)
+      const errorDetail = error.response?.data?.detail || error.message
+      if (typeof errorDetail === 'object') {
+        if (errorDetail.suggestions && Array.isArray(errorDetail.suggestions)) {
+          setError(errorDetail.suggestions.join(' ') || errorDetail.reason || error.message)
+        } else if (errorDetail.reason) {
+          setError(errorDetail.reason)
+        } else if (errorDetail.error) {
+          setError(errorDetail.error)
+        } else {
+          setError(error.message || getTranslation('miracles.form.submitError', 'Failed to submit miracle'))
+        }
+      } else if (error.message?.includes('moderation') || error.message?.includes('rejected') || error.message?.includes('validation')) {
+        setError(error.message)
+      } else {
+        setError(error.message || getTranslation('miracles.form.submitError', 'Failed to submit miracle'))
+      }
     } finally {
       setLoading(false)
     }
