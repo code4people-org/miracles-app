@@ -1,6 +1,8 @@
 # Miracles - Share the World's Small Wonders
 
-A beautiful web and mobile app where people around the world can share their small but meaningful "miracles" or positive experiences. Built with Next.js, TypeScript, Supabase, and Three.js for an immersive 3D world map experience.
+A beautiful web and mobile app where people around the world can share their small but meaningful "miracles" or positive experiences. Built with Next.js, TypeScript, and Supabase.
+
+🌐 **Live**: [miracleshappen.app](https://miracleshappen.app)
 
 ## ✨ Features
 
@@ -27,8 +29,8 @@ A beautiful web and mobile app where people around the world can share their sma
 ### 1. Clone and Install
 
 ```bash
-git clone <your-repo-url>
-cd miracles
+git clone git@github.com:code4people-org/miracles-app.git
+cd miracles_app
 npm install
 ```
 
@@ -45,8 +47,7 @@ cp .env.example .env.local
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID=your_google_client_id
-SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET=your_google_client_secret
+NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -58,7 +59,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 4. Create OAuth 2.0 credentials
 5. Add authorized redirect URIs:
    - `http://localhost:54321/auth/v1/callback` (for local development)
-   - `https://your-project.supabase.co/auth/v1/callback` (for production)
+   - `https://miracleshappen.app/auth/callback` (for production)
 
 ### 4. Run Database Migrations
 
@@ -128,11 +129,12 @@ The app is fully responsive and works great on mobile devices with:
 
 ### Vercel (Recommended)
 
-1. Connect your GitHub repository to Vercel
-2. Add environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
+Deployed at [miracleshappen.app](https://miracleshappen.app)
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+- **Production**: `main` branch → `miracleshappen.app`
+- **Staging**: `dev-release` branch → preview URL
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) and [docs/VERCEL_BRANCH_DEPLOYMENTS.md](docs/VERCEL_BRANCH_DEPLOYMENTS.md) for details.
 
 ### Other Platforms
 

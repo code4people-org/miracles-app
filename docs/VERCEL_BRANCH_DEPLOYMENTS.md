@@ -5,7 +5,7 @@
 Vercel automatically deploys all branches. Configure as follows:
 
 ### Production Branch: `main`
-- **URL**: `https://your-app.vercel.app` (production domain)
+- **URL**: `https://miracleshappen.app` (production domain)
 - **Auto-deploys**: On every push to `main`
 - **Environment**: Production
 
@@ -32,7 +32,7 @@ Vercel automatically deploys all branches. Configure as follows:
    ```
    NEXT_PUBLIC_SUPABASE_URL=<production-supabase-url>
    NEXT_PUBLIC_SUPABASE_ANON_KEY=<production-anon-key>
-   NEXT_PUBLIC_APP_URL=https://your-app.vercel.app
+   NEXT_PUBLIC_APP_URL=https://miracleshappen.app
    ```
 
    **Preview/Staging (`dev-release`):**
