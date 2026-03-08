@@ -9,10 +9,11 @@ interface UseMapInstanceProps {
   prayerRequests: PrayerRequest[]
   onMiracleSelect: (miracle: Miracle) => void
   onPrayerSelect: (prayerRequest: PrayerRequest) => void
+  onMapClick?: (location: { lat: number; lng: number }) => void
   onZoomControlsReady?: (controls: { zoomIn: () => void; zoomOut: () => void; fitBounds: () => void; worldView: () => void }) => void
 }
 
-export function useMapInstance({ selectedMapType, miracles, prayerRequests, onMiracleSelect, onPrayerSelect, onZoomControlsReady }: UseMapInstanceProps) {
+export function useMapInstance({ selectedMapType, miracles, prayerRequests, onMiracleSelect, onPrayerSelect, onMapClick, onZoomControlsReady }: UseMapInstanceProps) {
   const [isReady, setIsReady] = useState(false)
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstanceRef = useRef<L.Map | null>(null)
@@ -57,6 +58,12 @@ export function useMapInstance({ selectedMapType, miracles, prayerRequests, onMi
       if (onZoomControlsReady) {
         const controls = createZoomControls(map, [...miracles, ...prayerRequests])
         onZoomControlsReady(controls)
+      }
+
+      if (onMapClick) {
+        map.on('click', (e) => {
+          onMapClick({ lat: e.latlng.lat, lng: e.latlng.lng })
+        })
       }
 
     } catch (error) {

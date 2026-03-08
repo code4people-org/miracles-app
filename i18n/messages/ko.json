@@ -133,8 +133,17 @@
     "mapError": "Error loading map",
     "selectMapType": "지도 유형 선택",
     "mapTypes": "지도 유형",
+    "mapEngine": "지도 보기",
+    "maplibreView": "MapLibre 보기",
+    "switchToMapLibre": "MapLibre로 전환",
+    "switchToClassic": "클래식으로 전환",
     "miracleCategories": "카테고리",
-    "miraclesShared": "공유된 좋은 것"
+    "miraclesShared": "공유된 좋은 것",
+    "clickChoice": {
+      "title": "무엇을 하시겠습니까?",
+      "shareMiracle": "기적 공유하기",
+      "requestPrayers": "기도 요청하기"
+    }
   },
   "filters": {
     "title": "Filters",

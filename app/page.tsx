@@ -6,8 +6,20 @@ import { AnimatePresence } from 'framer-motion'
 import AuthModal from '@/components/auth/AuthModal'
 import dynamic from 'next/dynamic'
 
-// Dynamically import the Leaflet map to avoid SSR issues
+// Dynamically import maps to avoid SSR issues
 const LeafletWorldMap = dynamic(() => import('@/components/map/LeafletWorldMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full bg-gradient-to-br from-miracle-sky to-miracle-teal flex items-center justify-center">
+      <div className="text-center">
+        <div className="spinner mx-auto mb-4"></div>
+        <p className="text-white font-semibold">Loading the world of miracles...</p>
+      </div>
+    </div>
+  )
+})
+
+const MapLibreWorldMap = dynamic(() => import('@/components/map/MapLibreWorldMap'), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full bg-gradient-to-br from-miracle-sky to-miracle-teal flex items-center justify-center">
@@ -21,6 +33,7 @@ const LeafletWorldMap = dynamic(() => import('@/components/map/LeafletWorldMap')
 import MiracleForm from '@/components/miracles/MiracleForm'
 import MiracleDetails from '@/components/miracles/MiracleDetails'
 import PrayerRequestForm from '@/components/prayers/PrayerRequestForm'
+import MapClickChoiceModal from '@/components/map/MapClickChoiceModal'
 import PrayerRequestDetails from '@/components/prayers/PrayerRequestDetails'
 import Filters from '@/components/ui/Filters'
 import AppHeader from '@/components/layout/AppHeader'
@@ -79,10 +92,13 @@ export default function HomePage() {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [showMiracleForm, setShowMiracleForm] = useState(false)
   const [showPrayerForm, setShowPrayerForm] = useState(false)
+  const [showMapClickChoice, setShowMapClickChoice] = useState(false)
+  const [mapClickLocation, setMapClickLocation] = useState<{ lat: number; lng: number } | null>(null)
   const [showFilters, setShowFilters] = useState(false)
   const [selectedMiracle, setSelectedMiracle] = useState<Miracle | null>(null)
   const [selectedPrayerRequest, setSelectedPrayerRequest] = useState<PrayerRequest | null>(null)
   const [selectedMapType, setSelectedMapType] = useState<MapType>(getDefaultMapType())
+  const [mapEngine, setMapEngine] = useState<'leaflet' | 'maplibre'>('maplibre')
   const [activeLayer, setActiveLayer] = useState<LayerType>('both')
   const [zoomControls, setZoomControls] = useState<{
     zoomIn: () => void
@@ -103,7 +119,23 @@ export default function HomePage() {
 
   const handlePrayerSubmit = () => {
     setShowPrayerForm(false)
+    setMapClickLocation(null)
     fetchPrayerRequests() // Refresh the prayer requests list
+  }
+
+  const handleMapClick = (location: { lat: number; lng: number }) => {
+    setMapClickLocation(location)
+    setShowMapClickChoice(true)
+  }
+
+  const handleShareMiracleFromMap = () => {
+    setShowMapClickChoice(false)
+    setShowMiracleForm(true)
+  }
+
+  const handleRequestPrayersFromMap = () => {
+    setShowMapClickChoice(false)
+    setShowPrayerForm(true)
   }
 
   return (
@@ -119,6 +151,8 @@ export default function HomePage() {
         onShowPrayerForm={() => setShowPrayerForm(true)}
         selectedMapType={selectedMapType}
         onMapTypeChange={setSelectedMapType}
+        mapEngine={mapEngine}
+        onMapEngineChange={setMapEngine}
         activeLayer={activeLayer}
         onLayerChange={setActiveLayer}
       />
@@ -133,18 +167,35 @@ export default function HomePage() {
           padding: 0 
         }}
       >
-        <LeafletWorldMap
-          miracles={filteredMiracles}
-          prayerRequests={filteredPrayerRequests}
-          onMiracleSelect={setSelectedMiracle}
-          onPrayerSelect={setSelectedPrayerRequest}
-          loading={loading}
-          prayerLoading={prayerLoading}
-          selectedMapType={selectedMapType}
-          activeLayer={activeLayer}
-          onZoomControlsReady={setZoomControls}
-          getTranslation={getTranslation}
-        />
+        {mapEngine === 'leaflet' ? (
+          <LeafletWorldMap
+            miracles={filteredMiracles}
+            prayerRequests={filteredPrayerRequests}
+            onMiracleSelect={setSelectedMiracle}
+            onPrayerSelect={setSelectedPrayerRequest}
+            onMapClick={handleMapClick}
+            loading={loading}
+            prayerLoading={prayerLoading}
+            selectedMapType={selectedMapType}
+            activeLayer={activeLayer}
+            onZoomControlsReady={setZoomControls}
+            getTranslation={getTranslation}
+          />
+        ) : (
+          <MapLibreWorldMap
+            miracles={filteredMiracles}
+            prayerRequests={filteredPrayerRequests}
+            onMiracleSelect={setSelectedMiracle}
+            onPrayerSelect={setSelectedPrayerRequest}
+            onMapClick={handleMapClick}
+            loading={loading}
+            prayerLoading={prayerLoading}
+            selectedMapType={selectedMapType}
+            activeLayer={activeLayer}
+            onZoomControlsReady={setZoomControls}
+            getTranslation={getTranslation}
+          />
+        )}
       </div>
 
         {/* Filters Panel */}
@@ -202,11 +253,29 @@ export default function HomePage() {
       />
 
       <AnimatePresence>
+        {showMapClickChoice && mapClickLocation && (
+          <MapClickChoiceModal
+            onClose={() => {
+              setShowMapClickChoice(false)
+              setMapClickLocation(null)
+            }}
+            onShareMiracle={handleShareMiracleFromMap}
+            onRequestPrayers={handleRequestPrayersFromMap}
+            getTranslation={getTranslation}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {showMiracleForm && (
           <MiracleForm
-            onClose={() => setShowMiracleForm(false)}
+            onClose={() => {
+              setShowMiracleForm(false)
+              setMapClickLocation(null)
+            }}
             onSubmit={handleMiracleSubmit}
             getTranslation={getTranslation}
+            initialLocation={mapClickLocation ?? undefined}
           />
         )}
       </AnimatePresence>
@@ -214,9 +283,13 @@ export default function HomePage() {
       <AnimatePresence>
         {showPrayerForm && (
           <PrayerRequestForm
-            onClose={() => setShowPrayerForm(false)}
+            onClose={() => {
+              setShowPrayerForm(false)
+              setMapClickLocation(null)
+            }}
             onSubmit={handlePrayerSubmit}
             getTranslation={getTranslation}
+            initialLocation={mapClickLocation ?? undefined}
           />
         )}
       </AnimatePresence>

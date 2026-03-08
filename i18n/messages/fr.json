@@ -133,8 +133,17 @@
     "mapError": "Erreur lors du chargement de la carte",
     "selectMapType": "Sélectionner le Type de Carte",
     "mapTypes": "Types de Cartes",
+    "mapEngine": "Vue de la carte",
+    "maplibreView": "Vue MapLibre",
+    "switchToMapLibre": "Passer à MapLibre",
+    "switchToClassic": "Passer au classique",
     "miracleCategories": "Catégories",
-    "miraclesShared": "Bonnes Choses Partagées"
+    "miraclesShared": "Bonnes Choses Partagées",
+    "clickChoice": {
+      "title": "Que souhaitez-vous faire ?",
+      "shareMiracle": "Partager un miracle",
+      "requestPrayers": "Demander des prières"
+    }
   },
   "filters": {
     "title": "Filtres",

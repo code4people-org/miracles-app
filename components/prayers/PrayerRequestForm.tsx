@@ -12,6 +12,7 @@ interface PrayerRequestFormProps {
   onClose: () => void
   onSubmit: () => void
   getTranslation: (key: string, fallback: string) => string
+  initialLocation?: { lat: number; lng: number }
 }
 
 export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }: PrayerRequestFormProps) {
@@ -31,7 +32,7 @@ export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }:
     location_name: '',
     is_anonymous: false,
   })
-  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null)
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(initialLocation ?? null)
   const [photoFile, setPhotoFile] = useState<File | null>(null)
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)

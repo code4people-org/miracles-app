@@ -133,8 +133,17 @@
     "mapError": "Error loading map",
     "selectMapType": "Seleziona Tipo di Mappa",
     "mapTypes": "Tipi di Mappe",
+    "mapEngine": "Vista mappa",
+    "maplibreView": "Vista MapLibre",
+    "switchToMapLibre": "Passa a MapLibre",
+    "switchToClassic": "Passa al classico",
     "miracleCategories": "Categorie",
-    "miraclesShared": "Cose Buone Condivise"
+    "miraclesShared": "Cose Buone Condivise",
+    "clickChoice": {
+      "title": "Cosa vorresti fare?",
+      "shareMiracle": "Condividi un miracolo",
+      "requestPrayers": "Richiedi preghiere"
+    }
   },
   "filters": {
     "title": "Filters",

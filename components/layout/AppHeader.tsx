@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Heart, Filter, Menu, X, HelpCircle, Cross } from 'lucide-react'
+import { Heart, Filter, Menu, X, HelpCircle, Cross, Layers } from 'lucide-react'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
 import MapControls from '@/components/layout/MapControls'
 import UserActions from '@/components/layout/UserActions'
@@ -29,6 +29,8 @@ interface AppHeaderProps {
   onShowPrayerForm: () => void
   selectedMapType: MapType
   onMapTypeChange: (mapType: MapType) => void
+  mapEngine: 'leaflet' | 'maplibre'
+  onMapEngineChange: (engine: 'leaflet' | 'maplibre') => void
   activeLayer: LayerType
   onLayerChange: (layer: LayerType) => void
 }
@@ -43,6 +45,8 @@ export default function AppHeader({
   onShowPrayerForm,
   selectedMapType,
   onMapTypeChange,
+  mapEngine,
+  onMapEngineChange,
   activeLayer,
   onLayerChange
 }: AppHeaderProps) {
@@ -93,6 +97,22 @@ export default function AppHeader({
 
               {/* Secondary controls - only show on very large screens (1300px+) */}
               <div className="hidden 2xl:flex items-center space-x-2">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() =>
+                    onMapEngineChange(mapEngine === 'leaflet' ? 'maplibre' : 'leaflet')
+                  }
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all ${
+                    mapEngine === 'maplibre'
+                      ? 'bg-miracle-gold/20 border-miracle-gold/40 text-miracle-gold'
+                      : 'bg-white/90 border-miracle-gold/20 text-gray-700 hover:bg-white'
+                  }`}
+                  title={getTranslation('map.maplibreView', 'MapLibre view')}
+                >
+                  <Layers className="w-4 h-4" />
+                  <span className="text-sm font-medium">MapLibre</span>
+                </motion.button>
                 <IconButton
                   icon={Filter}
                   onClick={onToggleFilters}
@@ -174,6 +194,32 @@ export default function AppHeader({
                 <LanguageSwitcher />
               </div>
 
+
+              {/* Map Engine Toggle */}
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                  {getTranslation('map.mapEngine', 'Map View')}
+                </h3>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() =>
+                    onMapEngineChange(mapEngine === 'leaflet' ? 'maplibre' : 'leaflet')
+                  }
+                  className={`w-full flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+                    mapEngine === 'maplibre'
+                      ? 'bg-miracle-gold/20 text-miracle-gold'
+                      : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                  }`}
+                >
+                  <Layers className="w-5 h-5" />
+                  <span className="font-medium">
+                    {mapEngine === 'leaflet'
+                      ? getTranslation('map.switchToMapLibre', 'Switch to MapLibre')
+                      : getTranslation('map.switchToClassic', 'Switch to Classic')}
+                  </span>
+                </motion.button>
+              </div>
 
               {/* Map Type Selector */}
               <div className="mb-6">

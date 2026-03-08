@@ -132,8 +132,17 @@
     "mapError": "Error loading map",
     "selectMapType": "マップタイプを選択",
     "mapTypes": "マップタイプ",
+    "mapEngine": "マップ表示",
+    "maplibreView": "MapLibre表示",
+    "switchToMapLibre": "MapLibreに切り替え",
+    "switchToClassic": "クラシックに切り替え",
     "miracleCategories": "カテゴリー",
-    "miraclesShared": "共有された良いこと"
+    "miraclesShared": "共有された良いこと",
+    "clickChoice": {
+      "title": "何をしますか？",
+      "shareMiracle": "奇跡を共有する",
+      "requestPrayers": "祈りのリクエスト"
+    }
   },
   "filters": {
     "title": "Filters",
