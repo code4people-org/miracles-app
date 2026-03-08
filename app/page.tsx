@@ -33,6 +33,7 @@ const MapLibreWorldMap = dynamic(() => import('@/components/map/MapLibreWorldMap
 import MiracleForm from '@/components/miracles/MiracleForm'
 import MiracleDetails from '@/components/miracles/MiracleDetails'
 import PrayerRequestForm from '@/components/prayers/PrayerRequestForm'
+import MapClickChoiceModal from '@/components/map/MapClickChoiceModal'
 import PrayerRequestDetails from '@/components/prayers/PrayerRequestDetails'
 import Filters from '@/components/ui/Filters'
 import AppHeader from '@/components/layout/AppHeader'
@@ -91,6 +92,8 @@ export default function HomePage() {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [showMiracleForm, setShowMiracleForm] = useState(false)
   const [showPrayerForm, setShowPrayerForm] = useState(false)
+  const [showMapClickChoice, setShowMapClickChoice] = useState(false)
+  const [mapClickLocation, setMapClickLocation] = useState<{ lat: number; lng: number } | null>(null)
   const [showFilters, setShowFilters] = useState(false)
   const [selectedMiracle, setSelectedMiracle] = useState<Miracle | null>(null)
   const [selectedPrayerRequest, setSelectedPrayerRequest] = useState<PrayerRequest | null>(null)
@@ -116,7 +119,23 @@ export default function HomePage() {
 
   const handlePrayerSubmit = () => {
     setShowPrayerForm(false)
+    setMapClickLocation(null)
     fetchPrayerRequests() // Refresh the prayer requests list
+  }
+
+  const handleMapClick = (location: { lat: number; lng: number }) => {
+    setMapClickLocation(location)
+    setShowMapClickChoice(true)
+  }
+
+  const handleShareMiracleFromMap = () => {
+    setShowMapClickChoice(false)
+    setShowMiracleForm(true)
+  }
+
+  const handleRequestPrayersFromMap = () => {
+    setShowMapClickChoice(false)
+    setShowPrayerForm(true)
   }
 
   return (
@@ -154,6 +173,7 @@ export default function HomePage() {
             prayerRequests={filteredPrayerRequests}
             onMiracleSelect={setSelectedMiracle}
             onPrayerSelect={setSelectedPrayerRequest}
+            onMapClick={handleMapClick}
             loading={loading}
             prayerLoading={prayerLoading}
             selectedMapType={selectedMapType}
@@ -167,6 +187,7 @@ export default function HomePage() {
             prayerRequests={filteredPrayerRequests}
             onMiracleSelect={setSelectedMiracle}
             onPrayerSelect={setSelectedPrayerRequest}
+            onMapClick={handleMapClick}
             loading={loading}
             prayerLoading={prayerLoading}
             selectedMapType={selectedMapType}
@@ -232,11 +253,29 @@ export default function HomePage() {
       />
 
       <AnimatePresence>
+        {showMapClickChoice && mapClickLocation && (
+          <MapClickChoiceModal
+            onClose={() => {
+              setShowMapClickChoice(false)
+              setMapClickLocation(null)
+            }}
+            onShareMiracle={handleShareMiracleFromMap}
+            onRequestPrayers={handleRequestPrayersFromMap}
+            getTranslation={getTranslation}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {showMiracleForm && (
           <MiracleForm
-            onClose={() => setShowMiracleForm(false)}
+            onClose={() => {
+              setShowMiracleForm(false)
+              setMapClickLocation(null)
+            }}
             onSubmit={handleMiracleSubmit}
             getTranslation={getTranslation}
+            initialLocation={mapClickLocation ?? undefined}
           />
         )}
       </AnimatePresence>
@@ -244,9 +283,13 @@ export default function HomePage() {
       <AnimatePresence>
         {showPrayerForm && (
           <PrayerRequestForm
-            onClose={() => setShowPrayerForm(false)}
+            onClose={() => {
+              setShowPrayerForm(false)
+              setMapClickLocation(null)
+            }}
             onSubmit={handlePrayerSubmit}
             getTranslation={getTranslation}
+            initialLocation={mapClickLocation ?? undefined}
           />
         )}
       </AnimatePresence>

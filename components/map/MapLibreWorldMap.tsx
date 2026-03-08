@@ -22,6 +22,7 @@ interface MapLibreWorldMapProps {
   prayerRequests: PrayerRequest[]
   onMiracleSelect: (miracle: Miracle) => void
   onPrayerSelect: (prayerRequest: PrayerRequest) => void
+  onMapClick?: (location: { lat: number; lng: number }) => void
   loading: boolean
   prayerLoading: boolean
   selectedMapType: MapType
@@ -41,6 +42,7 @@ export default function MapLibreWorldMap({
   prayerRequests,
   onMiracleSelect,
   onPrayerSelect,
+  onMapClick,
   onZoomControlsReady,
   getTranslation,
   activeLayer
@@ -75,6 +77,11 @@ export default function MapLibreWorldMap({
         onZoomControlsReady(
           createMapLibreZoomControls(map, [...miracles, ...prayerRequests])
         )
+      }
+      if (onMapClick) {
+        map.on('click', (e) => {
+          onMapClick({ lat: e.lngLat.lat, lng: e.lngLat.lng })
+        })
       }
     })
 

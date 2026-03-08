@@ -19,6 +19,7 @@ interface LeafletWorldMapProps {
   prayerRequests: PrayerRequest[]
   onMiracleSelect: (miracle: Miracle) => void
   onPrayerSelect: (prayerRequest: PrayerRequest) => void
+  onMapClick?: (location: { lat: number; lng: number }) => void
   loading: boolean
   prayerLoading: boolean
   selectedMapType: MapType
@@ -33,6 +34,7 @@ export default function LeafletWorldMap({
   prayerRequests,
   onMiracleSelect, 
   onPrayerSelect,
+  onMapClick,
   onZoomControlsReady, 
   getTranslation,
   activeLayer 
@@ -43,6 +45,7 @@ export default function LeafletWorldMap({
     prayerRequests,
     onMiracleSelect,
     onPrayerSelect,
+    onMapClick,
     onZoomControlsReady
   })
 

@@ -12,10 +12,11 @@ interface MiracleFormProps {
   onClose: () => void
   onSubmit: () => void
   getTranslation: (key: string, fallback: string) => string
+  initialLocation?: { lat: number; lng: number }
 }
 
 
-export default function MiracleForm({ onClose, onSubmit, getTranslation }: MiracleFormProps) {
+export default function MiracleForm({ onClose, onSubmit, getTranslation, initialLocation }: MiracleFormProps) {
   const privacyOptions = [
     { value: 'public', label: getTranslation('miracles.privacy.public', 'Public'), description: getTranslation('miracles.privacy.publicDesc', 'Share your location and name') },
     { value: 'anonymous', label: getTranslation('miracles.privacy.anonymous', 'Anonymous'), description: getTranslation('miracles.privacy.anonymousDesc', 'Share your location but hide your name') },
@@ -30,7 +31,7 @@ export default function MiracleForm({ onClose, onSubmit, getTranslation }: Mirac
     location_name: '',
     youtube_url: '',
   })
-  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null)
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(initialLocation ?? null)
   const [photoFile, setPhotoFile] = useState<File | null>(null)
   const [videoFile, setVideoFile] = useState<File | null>(null)
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
