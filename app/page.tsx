@@ -6,8 +6,20 @@ import { AnimatePresence } from 'framer-motion'
 import AuthModal from '@/components/auth/AuthModal'
 import dynamic from 'next/dynamic'
 
-// Dynamically import the Leaflet map to avoid SSR issues
+// Dynamically import maps to avoid SSR issues
 const LeafletWorldMap = dynamic(() => import('@/components/map/LeafletWorldMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full bg-gradient-to-br from-miracle-sky to-miracle-teal flex items-center justify-center">
+      <div className="text-center">
+        <div className="spinner mx-auto mb-4"></div>
+        <p className="text-white font-semibold">Loading the world of miracles...</p>
+      </div>
+    </div>
+  )
+})
+
+const MapLibreWorldMap = dynamic(() => import('@/components/map/MapLibreWorldMap'), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full bg-gradient-to-br from-miracle-sky to-miracle-teal flex items-center justify-center">
@@ -83,6 +95,7 @@ export default function HomePage() {
   const [selectedMiracle, setSelectedMiracle] = useState<Miracle | null>(null)
   const [selectedPrayerRequest, setSelectedPrayerRequest] = useState<PrayerRequest | null>(null)
   const [selectedMapType, setSelectedMapType] = useState<MapType>(getDefaultMapType())
+  const [mapEngine, setMapEngine] = useState<'leaflet' | 'maplibre'>('maplibre')
   const [activeLayer, setActiveLayer] = useState<LayerType>('both')
   const [zoomControls, setZoomControls] = useState<{
     zoomIn: () => void
@@ -119,6 +132,8 @@ export default function HomePage() {
         onShowPrayerForm={() => setShowPrayerForm(true)}
         selectedMapType={selectedMapType}
         onMapTypeChange={setSelectedMapType}
+        mapEngine={mapEngine}
+        onMapEngineChange={setMapEngine}
         activeLayer={activeLayer}
         onLayerChange={setActiveLayer}
       />
@@ -133,18 +148,33 @@ export default function HomePage() {
           padding: 0 
         }}
       >
-        <LeafletWorldMap
-          miracles={filteredMiracles}
-          prayerRequests={filteredPrayerRequests}
-          onMiracleSelect={setSelectedMiracle}
-          onPrayerSelect={setSelectedPrayerRequest}
-          loading={loading}
-          prayerLoading={prayerLoading}
-          selectedMapType={selectedMapType}
-          activeLayer={activeLayer}
-          onZoomControlsReady={setZoomControls}
-          getTranslation={getTranslation}
-        />
+        {mapEngine === 'leaflet' ? (
+          <LeafletWorldMap
+            miracles={filteredMiracles}
+            prayerRequests={filteredPrayerRequests}
+            onMiracleSelect={setSelectedMiracle}
+            onPrayerSelect={setSelectedPrayerRequest}
+            loading={loading}
+            prayerLoading={prayerLoading}
+            selectedMapType={selectedMapType}
+            activeLayer={activeLayer}
+            onZoomControlsReady={setZoomControls}
+            getTranslation={getTranslation}
+          />
+        ) : (
+          <MapLibreWorldMap
+            miracles={filteredMiracles}
+            prayerRequests={filteredPrayerRequests}
+            onMiracleSelect={setSelectedMiracle}
+            onPrayerSelect={setSelectedPrayerRequest}
+            loading={loading}
+            prayerLoading={prayerLoading}
+            selectedMapType={selectedMapType}
+            activeLayer={activeLayer}
+            onZoomControlsReady={setZoomControls}
+            getTranslation={getTranslation}
+          />
+        )}
       </div>
 
         {/* Filters Panel */}

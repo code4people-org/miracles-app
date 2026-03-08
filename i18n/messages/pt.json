@@ -133,6 +133,10 @@
     "mapError": "Error loading map",
     "selectMapType": "Selecionar Tipo de Mapa",
     "mapTypes": "Tipos de Mapas",
+    "mapEngine": "Visualização do Mapa",
+    "maplibreView": "Visualização MapLibre",
+    "switchToMapLibre": "Mudar para MapLibre",
+    "switchToClassic": "Mudar para Clássico",
     "miracleCategories": "Categorias",
     "miraclesShared": "Coisas Boas Compartilhadas"
   },

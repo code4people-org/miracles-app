@@ -57,3 +57,12 @@ export const getMapTypeById = (id: string): MapType | undefined => {
 export const getDefaultMapType = (): MapType => {
   return mapTypes[1] // Voyager as default
 }
+
+// MapLibre uses raster source with tiles array. Convert Leaflet {s} subdomain format.
+export function getMapLibreTiles(url: string): string[] {
+  const subdomains = ['a', 'b', 'c']
+  if (url.includes('{s}')) {
+    return subdomains.map((s) => url.replace('{s}', s).replace('{r}', ''))
+  }
+  return [url.replace('{r}', '')]
+}

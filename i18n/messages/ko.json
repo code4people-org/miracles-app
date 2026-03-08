@@ -133,6 +133,10 @@
     "mapError": "Error loading map",
     "selectMapType": "지도 유형 선택",
     "mapTypes": "지도 유형",
+    "mapEngine": "지도 보기",
+    "maplibreView": "MapLibre 보기",
+    "switchToMapLibre": "MapLibre로 전환",
+    "switchToClassic": "클래식으로 전환",
     "miracleCategories": "카테고리",
     "miraclesShared": "공유된 좋은 것"
   },
