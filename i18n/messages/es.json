@@ -148,7 +148,12 @@
     "switchToMapLibre": "Cambiar a MapLibre",
     "switchToClassic": "Cambiar a Clásico",
     "miracleCategories": "Categorías",
-    "miraclesShared": "Cosas Buenas Compartidas"
+    "miraclesShared": "Cosas Buenas Compartidas",
+    "clickChoice": {
+      "title": "¿Qué te gustaría hacer?",
+      "shareMiracle": "Compartir un milagro",
+      "requestPrayers": "Solicitar oraciones"
+    }
   },
   "filters": {
     "title": "Filtros",

@@ -138,7 +138,12 @@
     "switchToMapLibre": "切换到MapLibre",
     "switchToClassic": "切换到经典",
     "miracleCategories": "类别",
-    "miraclesShared": "分享的美好事物"
+    "miraclesShared": "分享的美好事物",
+    "clickChoice": {
+      "title": "您想做什么？",
+      "shareMiracle": "分享奇迹",
+      "requestPrayers": "请求祷告"
+    }
   },
   "filters": {
     "title": "Filters",

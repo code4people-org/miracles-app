@@ -130,8 +130,6 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
           </motion.button>
         </form>
 
-        {/* Google Sign-In - Temporarily disabled */}
-        {/* 
         <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
@@ -143,6 +141,7 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
           </div>
 
           <motion.button
+            type="button"
             onClick={handleGoogleSignIn}
             disabled={loading}
             whileHover={{ scale: 1.02 }}
@@ -170,7 +169,6 @@ export default function LoginForm({ onToggleMode, onClose }: LoginFormProps) {
             <span>{t('auth.signInWithGoogle')}</span>
           </motion.button>
         </div>
-        */}
 
         <div className="mt-6 text-center">
           <p className="text-gray-600">

@@ -217,19 +217,18 @@ export default function SignupForm({ onToggleMode, onClose }: SignupFormProps) {
           </motion.button>
         </form>
 
-        {/* Google Sign-In - Temporarily disabled */}
-        {/* 
         <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              <span className="px-2 bg-white/90 text-gray-500">{t('auth.signUpWithGoogle')}</span>
             </div>
           </div>
 
           <motion.button
+            type="button"
             onClick={handleGoogleSignIn}
             disabled={loading}
             whileHover={{ scale: 1.02 }}
@@ -254,10 +253,9 @@ export default function SignupForm({ onToggleMode, onClose }: SignupFormProps) {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            <span>Continue with Google</span>
+            <span>{t('auth.signUpWithGoogle')}</span>
           </motion.button>
         </div>
-        */}
 
         <div className="mt-6 text-center">
           <p className="text-gray-600">

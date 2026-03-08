@@ -138,7 +138,12 @@
     "switchToMapLibre": "التبديل إلى MapLibre",
     "switchToClassic": "التبديل إلى الكلاسيكي",
     "miracleCategories": "الفئات",
-    "miraclesShared": "الأشياء الجيدة المشتركة"
+    "miraclesShared": "الأشياء الجيدة المشتركة",
+    "clickChoice": {
+      "title": "ماذا تريد أن تفعل؟",
+      "shareMiracle": "مشاركة معجزة",
+      "requestPrayers": "طلب صلوات"
+    }
   },
   "filters": {
     "title": "Filters",
