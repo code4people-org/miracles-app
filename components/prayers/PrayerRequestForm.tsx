@@ -15,7 +15,7 @@ interface PrayerRequestFormProps {
   initialLocation?: { lat: number; lng: number }
 }
 
-export default function PrayerRequestForm({ onClose, onSubmit, getTranslation }: PrayerRequestFormProps) {
+export default function PrayerRequestForm({ onClose, onSubmit, getTranslation, initialLocation }: PrayerRequestFormProps) {
   const privacyOptions = [
     { value: 'public', label: getTranslation('miracles.privacy.public', 'Public'), description: getTranslation('miracles.privacy.publicDesc', 'Share your location and name') },
     { value: 'anonymous', label: getTranslation('miracles.privacy.anonymous', 'Anonymous'), description: getTranslation('miracles.privacy.anonymousDesc', 'Share your location but hide your name') },

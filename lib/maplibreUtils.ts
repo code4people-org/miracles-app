@@ -1,4 +1,5 @@
 import type { Map as MapLibreMap } from 'maplibre-gl'
+import type { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 import { getMapLibreTiles } from '@/lib/mapTypes'
 import { parseLocation, type Miracle, type PrayerRequest } from '@/lib/mapUtils'
 import { getCategoryColor, getCategoryEmoji, type MiracleCategory } from '@/lib/miracleCategories'
@@ -18,7 +19,7 @@ export const MAPLIBRE_CONFIG = {
   MAX_ZOOM: 19
 } as const
 
-export function createMapLibreStyle(mapType: MapType) {
+export function createMapLibreStyle(mapType: MapType): StyleSpecification {
   const tiles = getMapLibreTiles(mapType.url)
   return {
     version: 8,
@@ -37,7 +38,7 @@ export function createMapLibreStyle(mapType: MapType) {
         source: 'raster-tiles'
       }
     ]
-  }
+  } as StyleSpecification
 }
 
 export function createMapLibreZoomControls(
