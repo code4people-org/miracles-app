@@ -52,7 +52,7 @@ export default function MapLibreWorldMap({
   const markersRef = useRef<maplibregl.Marker[]>([])
   const [isReady, setIsReady] = useState(false)
 
-  // Init map
+  // Init map (run once; style/zoom/markers updated in other effects)
   useEffect(() => {
     if (!mapRef.current) return
 
@@ -91,6 +91,7 @@ export default function MapLibreWorldMap({
       map.remove()
       mapInstanceRef.current = null
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- init once; style/zoom/markers in other effects
   }, [])
 
   // Update tile style when mapType changes
