@@ -56,13 +56,12 @@
   "miracles": {
     "title": "美好的事物",
     "subtitle": "分享世界的小奇迹",
-    "description": "发现并分享世界各地发生的微小但有意义的奇迹。加入我们充满积极性和灵感的社区。",
+    "description": "Description",
     "shareMiracle": "分享美好的事物",
     "shareNewMiracle": "分享美好的事物",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
-    "description": "Description",
     "date": "Date",
     "author": "Author",
     "likes": "Likes",
@@ -143,7 +142,8 @@
       "title": "您想做什么？",
       "shareMiracle": "分享奇迹",
       "requestPrayers": "请求祷告"
-    }
+    },
+    "loadingWorld": "正在唤醒糖果世界..."
   },
   "filters": {
     "title": "Filters",

@@ -56,13 +56,12 @@
   "miracles": {
     "title": "Bonnes Choses",
     "subtitle": "Partagez les Petites Merveilles du Monde",
-    "description": "Découvrez et partagez les petits mais significatifs miracles qui se produisent dans le monde entier. Rejoignez notre communauté de positivité et d'inspiration.",
+    "description": "Description",
     "shareMiracle": "Partager de bonnes choses",
     "shareNewMiracle": "Partager de bonnes choses",
     "miracleDetails": "Détails du Miracle",
     "category": "Catégorie",
     "location": "Emplacement",
-    "description": "Description",
     "date": "Date",
     "author": "Auteur",
     "likes": "J'aime",
@@ -143,7 +142,8 @@
       "title": "Que souhaitez-vous faire ?",
       "shareMiracle": "Partager un miracle",
       "requestPrayers": "Demander des prières"
-    }
+    },
+    "loadingWorld": "Réveil du monde candy..."
   },
   "filters": {
     "title": "Filtres",

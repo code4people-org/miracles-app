@@ -19,7 +19,13 @@ export const MAPLIBRE_CONFIG = {
   MAX_ZOOM: 19
 } as const
 
-export function createMapLibreStyle(mapType: MapType): StyleSpecification {
+export function createMapLibreStyle(
+  mapType: MapType
+): string | StyleSpecification {
+  if (mapType.styleUrl) {
+    return mapType.styleUrl
+  }
+
   const tiles = getMapLibreTiles(mapType.url)
   return {
     version: 8,

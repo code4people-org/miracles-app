@@ -3,40 +3,51 @@ export interface MapType {
   name: string
   attribution: string
   url: string
+  /** MapLibre vector style URL. When set, preferred over raster `url`. */
+  styleUrl?: string
   icon: string
   description: string
 }
+
+const OSM_RASTER_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+const OSM_ATTRIBUTION =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+const OPENFREEMAP_ATTRIBUTION =
+  '&copy; <a href="https://openfreemap.org/">OpenFreeMap</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 
 export const mapTypes: MapType[] = [
   {
     id: 'osm',
     name: 'OpenStreetMap',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: OSM_ATTRIBUTION,
+    url: OSM_RASTER_URL,
     icon: '🗺️',
     description: 'Classic street map with detailed roads and landmarks'
   },
   {
     id: 'carto-voyager',
     name: 'Voyager',
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
-    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    attribution: OPENFREEMAP_ATTRIBUTION,
+    url: OSM_RASTER_URL,
+    styleUrl: 'https://tiles.openfreemap.org/styles/liberty',
     icon: '🌍',
     description: 'Clean, colorful map perfect for data visualization'
   },
   {
     id: 'carto-positron',
     name: 'Positron',
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
-    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    attribution: OPENFREEMAP_ATTRIBUTION,
+    url: OSM_RASTER_URL,
+    styleUrl: 'https://tiles.openfreemap.org/styles/positron',
     icon: '⚪',
     description: 'Minimal light theme with subtle colors'
   },
   {
     id: 'carto-dark',
     name: 'Dark Matter',
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    attribution: OPENFREEMAP_ATTRIBUTION,
+    url: OSM_RASTER_URL,
+    styleUrl: 'https://tiles.openfreemap.org/styles/dark',
     icon: '🌑',
     description: 'Dark theme for comfortable viewing in low light'
   },

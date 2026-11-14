@@ -56,13 +56,12 @@
   "miracles": {
     "title": "Gute Dinge",
     "subtitle": "Teile die kleinen Wunder der Welt",
-    "description": "Entdecke und teile die kleinen aber bedeutungsvollen Wunder, die überall auf der Welt geschehen. Tritt unserer Gemeinschaft der Positivität und Inspiration bei.",
+    "description": "Description",
     "shareMiracle": "Gute Dinge teilen",
     "shareNewMiracle": "Gute Dinge teilen",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
-    "description": "Description",
     "date": "Date",
     "author": "Author",
     "likes": "Likes",
@@ -143,7 +142,8 @@
       "title": "Was möchtest du tun?",
       "shareMiracle": "Ein Wunder teilen",
       "requestPrayers": "Gebete anfragen"
-    }
+    },
+    "loadingWorld": "Die Candy-Welt erwacht..."
   },
   "filters": {
     "title": "Filters",

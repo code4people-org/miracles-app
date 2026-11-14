@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, X, ChevronDown, ChevronUp } from 'lucide-react'
+import { Heart, ChevronDown, ChevronUp } from 'lucide-react'
 import GradientIcon from '@/components/ui/GradientIcon'
 
 interface WelcomeMessageProps {
@@ -18,21 +18,21 @@ export default function WelcomeMessage({
   onShowAuthModal,
   getTranslation
 }: WelcomeMessageProps) {
-  const [isMinimized, setIsMinimized] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('welcomeMessageMinimized') === 'true'
+  // Always start expanded so SSR and the first client render match.
+  const [isMinimized, setIsMinimized] = useState(false)
+
+  useEffect(() => {
+    if (localStorage.getItem('welcomeMessageMinimized') === 'true') {
+      setIsMinimized(true)
     }
-    return false
-  })
+  }, [])
 
   if (user || showAuthModal) return null
 
   const handleToggle = () => {
     const newState = !isMinimized
     setIsMinimized(newState)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('welcomeMessageMinimized', String(newState))
-    }
+    localStorage.setItem('welcomeMessageMinimized', String(newState))
   }
 
   return (

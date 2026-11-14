@@ -153,7 +153,8 @@
       "title": "¿Qué te gustaría hacer?",
       "shareMiracle": "Compartir un milagro",
       "requestPrayers": "Solicitar oraciones"
-    }
+    },
+    "loadingWorld": "Despertando el mundo candy..."
   },
   "filters": {
     "title": "Filtros",

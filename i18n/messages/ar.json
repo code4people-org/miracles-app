@@ -56,13 +56,12 @@
   "miracles": {
     "title": "أشياء جيدة",
     "subtitle": "شارك عجائب العالم الصغيرة",
-    "description": "اكتشف وشارك المعجزات الصغيرة ولكن ذات المعنى التي تحدث في جميع أنحاء العالم. انضم إلى مجتمعنا الإيجابي والملهم.",
+    "description": "Description",
     "shareMiracle": "مشاركة الأشياء الجيدة",
     "shareNewMiracle": "مشاركة الأشياء الجيدة",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
-    "description": "Description",
     "date": "Date",
     "author": "Author",
     "likes": "Likes",
@@ -143,7 +142,8 @@
       "title": "ماذا تريد أن تفعل؟",
       "shareMiracle": "مشاركة معجزة",
       "requestPrayers": "طلب صلوات"
-    }
+    },
+    "loadingWorld": "إيقاظ عالم الحلوى..."
   },
   "filters": {
     "title": "Filters",

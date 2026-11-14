@@ -27,10 +27,12 @@ interface AppHeaderProps {
   onShowAuthModal: () => void
   onShowMiracleForm: () => void
   onShowPrayerForm: () => void
-  selectedMapType: MapType
-  onMapTypeChange: (mapType: MapType) => void
-  mapEngine: 'leaflet' | 'maplibre'
-  onMapEngineChange: (engine: 'leaflet' | 'maplibre') => void
+  /** Street-map chrome (engine + tile styles). Off for the candy globe home. */
+  showMapChrome?: boolean
+  selectedMapType?: MapType
+  onMapTypeChange?: (mapType: MapType) => void
+  mapEngine?: 'leaflet' | 'maplibre'
+  onMapEngineChange?: (engine: 'leaflet' | 'maplibre') => void
   activeLayer: LayerType
   onLayerChange: (layer: LayerType) => void
 }
@@ -43,9 +45,10 @@ export default function AppHeader({
   onShowAuthModal,
   onShowMiracleForm,
   onShowPrayerForm,
+  showMapChrome = false,
   selectedMapType,
   onMapTypeChange,
-  mapEngine,
+  mapEngine = 'maplibre',
   onMapEngineChange,
   activeLayer,
   onLayerChange
@@ -97,22 +100,24 @@ export default function AppHeader({
 
               {/* Secondary controls - only show on very large screens (1300px+) */}
               <div className="hidden 2xl:flex items-center space-x-2">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() =>
-                    onMapEngineChange(mapEngine === 'leaflet' ? 'maplibre' : 'leaflet')
-                  }
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all ${
-                    mapEngine === 'maplibre'
-                      ? 'bg-miracle-gold/20 border-miracle-gold/40 text-miracle-gold'
-                      : 'bg-white/90 border-miracle-gold/20 text-gray-700 hover:bg-white'
-                  }`}
-                  title={getTranslation('map.maplibreView', 'MapLibre view')}
-                >
-                  <Layers className="w-4 h-4" />
-                  <span className="text-sm font-medium">MapLibre</span>
-                </motion.button>
+                {showMapChrome && onMapEngineChange && (
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() =>
+                      onMapEngineChange(mapEngine === 'leaflet' ? 'maplibre' : 'leaflet')
+                    }
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all ${
+                      mapEngine === 'maplibre'
+                        ? 'bg-miracle-gold/20 border-miracle-gold/40 text-miracle-gold'
+                        : 'bg-white/90 border-miracle-gold/20 text-gray-700 hover:bg-white'
+                    }`}
+                    title={getTranslation('map.maplibreView', 'MapLibre view')}
+                  >
+                    <Layers className="w-4 h-4" />
+                    <span className="text-sm font-medium">MapLibre</span>
+                  </motion.button>
+                )}
                 <IconButton
                   icon={Filter}
                   onClick={onToggleFilters}
@@ -127,11 +132,13 @@ export default function AppHeader({
 
                 <LanguageSwitcher />
 
-                <MapTypeSelector
-                  selectedMapType={selectedMapType}
-                  onMapTypeChange={onMapTypeChange}
-                  getTranslation={getTranslation}
-                />
+                {showMapChrome && selectedMapType && onMapTypeChange && (
+                  <MapTypeSelector
+                    selectedMapType={selectedMapType}
+                    onMapTypeChange={onMapTypeChange}
+                    getTranslation={getTranslation}
+                  />
+                )}
               </div>
 
               {/* Compact menu for secondary controls on lg-xl screens */}
@@ -195,43 +202,45 @@ export default function AppHeader({
               </div>
 
 
-              {/* Map Engine Toggle */}
-              <div className="mb-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                  {getTranslation('map.mapEngine', 'Map View')}
-                </h3>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() =>
-                    onMapEngineChange(mapEngine === 'leaflet' ? 'maplibre' : 'leaflet')
-                  }
-                  className={`w-full flex items-center space-x-3 p-3 rounded-lg transition-colors ${
-                    mapEngine === 'maplibre'
-                      ? 'bg-miracle-gold/20 text-miracle-gold'
-                      : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                  }`}
-                >
-                  <Layers className="w-5 h-5" />
-                  <span className="font-medium">
-                    {mapEngine === 'leaflet'
-                      ? getTranslation('map.switchToMapLibre', 'Switch to MapLibre')
-                      : getTranslation('map.switchToClassic', 'Switch to Classic')}
-                  </span>
-                </motion.button>
-              </div>
+              {showMapChrome && onMapEngineChange && (
+                <div className="mb-6">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                    {getTranslation('map.mapEngine', 'Map View')}
+                  </h3>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() =>
+                      onMapEngineChange(mapEngine === 'leaflet' ? 'maplibre' : 'leaflet')
+                    }
+                    className={`w-full flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+                      mapEngine === 'maplibre'
+                        ? 'bg-miracle-gold/20 text-miracle-gold'
+                        : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                    }`}
+                  >
+                    <Layers className="w-5 h-5" />
+                    <span className="font-medium">
+                      {mapEngine === 'leaflet'
+                        ? getTranslation('map.switchToMapLibre', 'Switch to MapLibre')
+                        : getTranslation('map.switchToClassic', 'Switch to Classic')}
+                    </span>
+                  </motion.button>
+                </div>
+              )}
 
-              {/* Map Type Selector */}
-              <div className="mb-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                  {getTranslation('map.mapTypes', 'Map Types')}
-                </h3>
-                <MapTypeSelectorMobile
-                  selectedMapType={selectedMapType}
-                  onMapTypeChange={onMapTypeChange}
-                  getTranslation={getTranslation}
-                />
-              </div>
+              {showMapChrome && selectedMapType && onMapTypeChange && (
+                <div className="mb-6">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                    {getTranslation('map.mapTypes', 'Map Types')}
+                  </h3>
+                  <MapTypeSelectorMobile
+                    selectedMapType={selectedMapType}
+                    onMapTypeChange={onMapTypeChange}
+                    getTranslation={getTranslation}
+                  />
+                </div>
+              )}
 
               {/* Filters Button */}
               <div className="mb-6 2xl:hidden">

@@ -153,7 +153,8 @@
       "title": "What would you like to do?",
       "shareMiracle": "Share a miracle",
       "requestPrayers": "Request prayers"
-    }
+    },
+    "loadingWorld": "Waking up the candy world..."
   },
   "filters": {
     "title": "Filters",
@@ -246,7 +247,7 @@
     },
     "urgency": {
       "low": "Low",
-      "medium": "Medium", 
+      "medium": "Medium",
       "high": "High",
       "urgent": "Urgent"
     },
@@ -275,7 +276,7 @@
   },
   "layers": {
     "miracles": "Good Things",
-    "prayers": "Help", 
+    "prayers": "Help",
     "both": "Both",
     "switchLayer": "Switch Layer"
   }

@@ -56,13 +56,12 @@
   "miracles": {
     "title": "Coisas Boas",
     "subtitle": "Compartilhe as Pequenas Maravilhas do Mundo",
-    "description": "Descubra e compartilhe os pequenos mas significativos milagres que acontecem ao redor do mundo. Junte-se à nossa comunidade de positividade e inspiração.",
+    "description": "Description",
     "shareMiracle": "Compartilhar coisas boas",
     "shareNewMiracle": "Compartilhar coisas boas",
     "miracleDetails": "Miracle Details",
     "category": "Category",
     "location": "Location",
-    "description": "Description",
     "date": "Date",
     "author": "Author",
     "likes": "Likes",
@@ -143,7 +142,8 @@
       "title": "O que você gostaria de fazer?",
       "shareMiracle": "Compartilhar um milagre",
       "requestPrayers": "Solicitar orações"
-    }
+    },
+    "loadingWorld": "Acordando o mundo candy..."
   },
   "filters": {
     "title": "Filters",
